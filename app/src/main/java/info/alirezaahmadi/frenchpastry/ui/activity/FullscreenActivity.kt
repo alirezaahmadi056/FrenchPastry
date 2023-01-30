@@ -34,7 +34,7 @@ class FullscreenActivity : AppCompatActivity() {
                     )
                 else
                     startActivity(
-                        Intent(this@FullscreenActivity, MainActivity::class.java)
+                        Intent(this@FullscreenActivity, LoginActivity::class.java)
                     )
                 finish()
             }, 1300

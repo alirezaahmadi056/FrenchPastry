@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">FrenchPastry</string>
-    <string name="splash_logo_desc">splash logo</string>
+    <string name="logo_main_desc">logo main</string>
+    <string name="login_image_pastry_desc">login image pastry</string>
+    <string name="_09">09*********</string>
+    <string name="login_to_app">ورود به برنامه</string>
+    <string name="french_pastry">شیرینی فرانسوی</string>
+    <string name="send_code">ارسال کد به شماره موبایل</string>
 </resources>

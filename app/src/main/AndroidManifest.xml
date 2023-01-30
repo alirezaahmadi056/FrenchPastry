@@ -13,6 +13,9 @@
         android:theme="@style/Theme.FrenchPastry"
         tools:targetApi="32">
         <activity
+            android:name=".ui.activity.LoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.FullscreenActivity"
             android:exported="true">
             <intent-filter>
@@ -23,8 +26,7 @@
         </activity>
         <activity
             android:name=".ui.activity.MainActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false"/>
     </application>
 
 </manifest>
