@@ -10,7 +10,7 @@
     tools:context=".ui.activity.LoginActivity">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imgLoginPastry"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:contentDescription="@string/logo_main_desc"
@@ -21,19 +21,19 @@
         android:src="@drawable/img_pastry_login" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/imgLoginLogo"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:contentDescription="@string/login_image_pastry_desc"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintBottom_toBottomOf="@+id/imgLoginPastry"
+        app:layout_constraintEnd_toEndOf="@+id/imgLoginPastry"
+        app:layout_constraintStart_toStartOf="@+id/imgLoginPastry"
+        app:layout_constraintTop_toTopOf="@+id/imgLoginPastry"
         app:layout_constraintVertical_bias="0.23"
         android:src="@drawable/black_logo" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtLoginApp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
@@ -41,17 +41,17 @@
         android:textSize="24sp"
         android:textColor="@color/black_main"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/imgLoginPastry" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/txtFrenchPastry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/french_pastry"
         android:textSize="30sp"
         android:textColor="@color/black_main"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintEnd_toEndOf="@+id/txtLoginApp"
+        app:layout_constraintTop_toBottomOf="@+id/txtLoginApp" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/editTextPhone"
@@ -64,8 +64,8 @@
         android:textColorHint="@color/color_text_gray"
         android:ems="11"
         android:inputType="phone"
-        app:layout_constraintEnd_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintEnd_toEndOf="@+id/txtFrenchPastry"
+        app:layout_constraintTop_toBottomOf="@+id/txtFrenchPastry" />
 
     <Button
         android:id="@+id/button"
