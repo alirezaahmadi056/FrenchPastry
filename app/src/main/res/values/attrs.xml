@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CustomEditText">
+        <attr name="hintText" format="string"/>
+        <attr name="type" format="integer"/>
+        <attr name="rtlSupport" format="boolean"/>
+        <attr name="max" format="integer"/>
+        <attr name="centerGravity" format="boolean"/>
+    </declare-styleable>
+
+</resources>

@@ -53,31 +53,15 @@
         app:layout_constraintEnd_toEndOf="@+id/txtLoginApp"
         app:layout_constraintTop_toBottomOf="@+id/txtLoginApp" />
 
-    <com.google.android.material.textfield.TextInputLayout
+    <info.alirezaahmadi.frenchpastry.ui.customView.CustomEditText
         android:id="@+id/inputTextPhone"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:paddingTop="16dp"
-        app:hintEnabled="false"
-        app:errorEnabled="true"
+        app:type="3"
+        app:max="11"
+        app:hintText="@string/_09"
         app:layout_constraintEnd_toEndOf="@+id/txtFrenchPastry"
-        app:layout_constraintTop_toBottomOf="@+id/txtFrenchPastry">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextPhone"
-            android:background="@drawable/back_edit_text"
-            android:textSize="@dimen/text_normal_size"
-            android:paddingTop="4dp"
-            android:paddingBottom="-4dp"
-            android:hint="@string/_09"
-            android:maxLength="11"
-            android:textColorHint="@color/color_text_gray"
-            android:textColor="@color/color_text_black"
-            android:inputType="phone"
-            android:layout_width="300dp"
-            android:layout_height="50dp"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintTop_toBottomOf="@+id/txtFrenchPastry"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnLogin"
