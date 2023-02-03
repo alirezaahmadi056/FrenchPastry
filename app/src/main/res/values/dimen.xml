@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="text_small_size">16sp</dimen>
+    <dimen name="text_normal_size">18sp</dimen>
+    <dimen name="text_large_size">20sp</dimen>
+    <dimen name="text_x_large_size">22sp</dimen>
+
+    <dimen name="heading_small_size">20sp</dimen>
+    <dimen name="heading_normal_size">24sp</dimen>
+    <dimen name="heading_large_size">26sp</dimen>
+
+    <dimen name="button_small_size">16sp</dimen>
+    <dimen name="button_normal_size">18sp</dimen>
+    <dimen name="button_large_size">20sp</dimen>
+
+</resources>

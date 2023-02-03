@@ -10,7 +10,7 @@ class PresenterLoginActivity(
 ) : BaseLifeCycle {
 
     override fun onCreate() {
-
+        view.test()
     }
 
 }

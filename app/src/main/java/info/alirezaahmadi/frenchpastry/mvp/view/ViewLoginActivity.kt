@@ -11,4 +11,8 @@ class ViewLoginActivity(
 
     val binding = ActivityLoginBinding.inflate(LayoutInflater.from(context))
 
+    fun test() {
+
+    }
+
 }

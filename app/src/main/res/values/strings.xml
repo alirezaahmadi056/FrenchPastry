@@ -5,5 +5,5 @@
     <string name="_09">09*********</string>
     <string name="login_to_app">ورود به برنامه</string>
     <string name="french_pastry">شیرینی فرانسوی</string>
-    <string name="send_code">ارسال کد به شماره موبایل</string>
+    <string name="send_code">ارسال کد تایید</string>
 </resources>

@@ -13,5 +13,13 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="android:windowFullscreen">true</item>
+        <item name="android:fontFamily">@font/sans_regular</item>
+        <item name="textInputStyle">@style/Widget.MyApp.TextInputLayout</item>
     </style>
+
+    <style name="Widget.MyApp.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+    </style>
+
 </resources>

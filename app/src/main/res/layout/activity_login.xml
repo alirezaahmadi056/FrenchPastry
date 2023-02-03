@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:text="@string/login_to_app"
-        android:textSize="24sp"
+        android:textSize="@dimen/text_normal_size"
         android:textColor="@color/black_main"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgLoginPastry" />
@@ -48,34 +48,48 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/french_pastry"
-        android:textSize="30sp"
+        android:textSize="@dimen/heading_large_size"
         android:textColor="@color/black_main"
         app:layout_constraintEnd_toEndOf="@+id/txtLoginApp"
         app:layout_constraintTop_toBottomOf="@+id/txtLoginApp" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/editTextPhone"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="@string/_09"
-        android:textSize="22sp"
-        android:textColor="@color/color_text_black"
-        android:textColorHint="@color/color_text_gray"
-        android:ems="11"
-        android:inputType="phone"
-        app:layout_constraintEnd_toEndOf="@+id/txtFrenchPastry"
-        app:layout_constraintTop_toBottomOf="@+id/txtFrenchPastry" />
-
-    <Button
-        android:id="@+id/button"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputTextPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/send_code"
-        android:textSize="22sp"
+        android:paddingTop="16dp"
+        app:hintEnabled="false"
+        app:errorEnabled="true"
+        app:layout_constraintEnd_toEndOf="@+id/txtFrenchPastry"
+        app:layout_constraintTop_toBottomOf="@+id/txtFrenchPastry">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextPhone"
+            android:background="@drawable/back_edit_text"
+            android:textSize="@dimen/text_normal_size"
+            android:paddingTop="4dp"
+            android:paddingBottom="-4dp"
+            android:hint="@string/_09"
+            android:maxLength="11"
+            android:textColorHint="@color/color_text_gray"
+            android:textColor="@color/color_text_black"
+            android:inputType="phone"
+            android:layout_width="300dp"
+            android:layout_height="50dp"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="8dp"
+        android:paddingHorizontal="20dp"
         android:textColor="@color/white_main"
-        app:layout_constraintEnd_toEndOf="@+id/editTextPhone"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
+        android:text="@string/send_code"
+        android:background="@drawable/back_button_black"
+        android:textSize="@dimen/button_normal_size"
+        app:layout_constraintEnd_toEndOf="@+id/inputTextPhone"
+        app:layout_constraintTop_toBottomOf="@+id/inputTextPhone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
