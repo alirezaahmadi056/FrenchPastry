@@ -1,106 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:cardCornerRadius="25dp"
-    app:cardElevation="40dp"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:background="@drawable/back_alert_dialog"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:layoutDirection="ltr">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/code_login"
+        android:textColor="@color/color_text_black"
+        android:textSize="@dimen/heading_large_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtShowNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/color_text_gray"
+        android:textSize="@dimen/text_small_size"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:text="کد به شماره 09035802464 ارسال شد" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputEnterCode"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:paddingTop="16dp"
+        app:errorEnabled="true"
+        app:hintEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtShowNumber">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
-            android:text="@string/code_login"
-            android:textColor="@color/color_text_black"
-            android:textSize="@dimen/heading_large_size"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txtShowNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            tools:text="کد به شماره 09035802464 ارسال شد"
-            android:textSize="@dimen/text_small_size"
-            android:textColor="@color/color_text_gray"
-            app:layout_constraintEnd_toEndOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-        <info.alirezaahmadi.frenchpastry.ui.customView.CustomEditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtEnterCode"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            app:centerGravity="true"
-            app:rtlSupport="true"
-            app:hintText="_ _ _ _"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtShowNumber" />
-
-        <TextView
-            android:id="@+id/txtTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:background="@drawable/back_text_time"
-            android:padding="5dp"
-            android:textSize="@dimen/text_small_size"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/back_edit_text"
+            android:gravity="center_horizontal"
+            android:hint="@string/enter_code_sample"
+            android:inputType="number"
+            android:maxLength="4"
+            android:paddingTop="12dp"
+            android:paddingBottom="-12dp"
             android:textColor="@color/color_text_black"
-            tools:text="02:28"
-            app:layout_constraintBottom_toBottomOf="@+id/edtEnterCode"
-            app:layout_constraintStart_toStartOf="@+id/edtEnterCode"
-            app:layout_constraintTop_toTopOf="@+id/edtEnterCode"
-            app:layout_constraintVertical_bias="0.46" />
+            android:textColorHint="@color/color_text_gray"
+            android:textSize="@dimen/text_normal_size" />
 
-        <info.alirezaahmadi.frenchpastry.ui.customView.CustomButton
-            android:id="@+id/btnConfirm"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:buttonText="@string/confirm_code"
-            app:layout_constraintEnd_toEndOf="@+id/edtEnterCode"
-            app:layout_constraintStart_toStartOf="@+id/edtEnterCode"
-            app:layout_constraintTop_toBottomOf="@+id/edtEnterCode" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/txtEditPhone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="24dp"
-            android:text="@string/edit_phone"
-            android:textColor="@color/color_text_black"
-            android:textSize="@dimen/button_small_size"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/btnConfirm"
-            app:layout_constraintTop_toBottomOf="@+id/btnConfirm" />
+    <TextView
+        android:id="@+id/txtTime"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:gravity="center"
+        android:background="@drawable/back_text_time"
+        android:padding="5dp"
+        android:textColor="@color/color_text_black"
+        android:textSize="@dimen/text_small_size"
+        app:layout_constraintBottom_toBottomOf="@+id/inputEnterCode"
+        app:layout_constraintStart_toStartOf="@+id/inputEnterCode"
+        app:layout_constraintTop_toTopOf="@+id/inputEnterCode"
+        app:layout_constraintVertical_bias="0.42000002"
+        tools:text="00:59" />
 
-        <TextView
-            android:id="@+id/txtResend"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="@string/resend_code"
-            android:textColor="@color/color_text_black"
-            android:textSize="@dimen/button_small_size"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/txtEditPhone"
-            app:layout_constraintStart_toStartOf="@+id/btnConfirm"
-            app:layout_constraintTop_toTopOf="@+id/txtEditPhone" />
+    <info.alirezaahmadi.frenchpastry.ui.customView.CustomButton
+        android:id="@+id/btnConfirm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:buttonText="@string/confirm_code"
+        app:layout_constraintEnd_toEndOf="@+id/inputEnterCode"
+        app:layout_constraintStart_toStartOf="@+id/inputEnterCode"
+        app:layout_constraintTop_toBottomOf="@+id/inputEnterCode" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/txtEditPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/edit_phone"
+        android:textColor="@color/color_text_black"
+        android:textSize="@dimen/button_small_size"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btnConfirm"
+        app:layout_constraintTop_toBottomOf="@+id/btnConfirm" />
 
-</androidx.cardview.widget.CardView>
+    <TextView
+        android:id="@+id/txtResend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/resend_code"
+        android:textColor="@color/color_text_black"
+        android:textSize="@dimen/button_small_size"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/txtEditPhone"
+        app:layout_constraintStart_toStartOf="@+id/btnConfirm"
+        app:layout_constraintTop_toTopOf="@+id/txtEditPhone" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

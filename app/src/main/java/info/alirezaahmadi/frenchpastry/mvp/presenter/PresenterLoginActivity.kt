@@ -11,6 +11,11 @@ class PresenterLoginActivity(
 
     override fun onCreate() {
         view.test()
+        onClickSendCode()
+    }
+
+    private fun onClickSendCode(){
+        view.pressedSendCode()
     }
 
 }

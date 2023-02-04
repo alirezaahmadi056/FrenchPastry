@@ -41,4 +41,6 @@ class CustomButton(
 
     }
 
+    fun getView() = binding.button
+
 }

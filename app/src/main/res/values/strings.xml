@@ -10,4 +10,5 @@
     <string name="confirm_code">تایید کد و ادامه</string>
     <string name="edit_phone">ویرایش شماره</string>
     <string name="resend_code">ارسال مجدد</string>
+    <string name="enter_code_sample">_ _ _ _</string>
 </resources>

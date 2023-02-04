@@ -1,10 +1,9 @@
 package info.alirezaahmadi.frenchpastry.ui.activity
 
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
-import info.alirezaahmadi.frenchpastry.databinding.ActivityLoginBinding
+import androidx.appcompat.app.AppCompatActivity
 import info.alirezaahmadi.frenchpastry.mvp.model.ModelLoginActivity
 import info.alirezaahmadi.frenchpastry.mvp.presenter.PresenterLoginActivity
 import info.alirezaahmadi.frenchpastry.mvp.view.ViewLoginActivity
