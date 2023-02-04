@@ -10,4 +10,8 @@ interface ActivityUtils {
 
     fun finishedAffinity() {}
 
+    fun showToast(){}
+
+    fun showSnackBar(){}
+
 }

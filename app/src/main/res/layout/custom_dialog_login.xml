@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="25dp"
+    app:cardElevation="40dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/code_login"
+            android:textColor="@color/color_text_black"
+            android:textSize="@dimen/heading_large_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtShowNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            tools:text="کد به شماره 09035802464 ارسال شد"
+            android:textSize="@dimen/text_small_size"
+            android:textColor="@color/color_text_gray"
+            app:layout_constraintEnd_toEndOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <info.alirezaahmadi.frenchpastry.ui.customView.CustomEditText
+            android:id="@+id/edtEnterCode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:centerGravity="true"
+            app:rtlSupport="true"
+            app:hintText="_ _ _ _"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtShowNumber" />
+
+        <TextView
+            android:id="@+id/txtTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/back_text_time"
+            android:padding="5dp"
+            android:textSize="@dimen/text_small_size"
+            android:textColor="@color/color_text_black"
+            tools:text="02:28"
+            app:layout_constraintBottom_toBottomOf="@+id/edtEnterCode"
+            app:layout_constraintStart_toStartOf="@+id/edtEnterCode"
+            app:layout_constraintTop_toTopOf="@+id/edtEnterCode"
+            app:layout_constraintVertical_bias="0.46" />
+
+        <info.alirezaahmadi.frenchpastry.ui.customView.CustomButton
+            android:id="@+id/btnConfirm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:buttonText="@string/confirm_code"
+            app:layout_constraintEnd_toEndOf="@+id/edtEnterCode"
+            app:layout_constraintStart_toStartOf="@+id/edtEnterCode"
+            app:layout_constraintTop_toBottomOf="@+id/edtEnterCode" />
+
+        <TextView
+            android:id="@+id/txtEditPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="24dp"
+            android:text="@string/edit_phone"
+            android:textColor="@color/color_text_black"
+            android:textSize="@dimen/button_small_size"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/btnConfirm"
+            app:layout_constraintTop_toBottomOf="@+id/btnConfirm" />
+
+        <TextView
+            android:id="@+id/txtResend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/resend_code"
+            android:textColor="@color/color_text_black"
+            android:textSize="@dimen/button_small_size"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/txtEditPhone"
+            app:layout_constraintStart_toStartOf="@+id/btnConfirm"
+            app:layout_constraintTop_toTopOf="@+id/txtEditPhone" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

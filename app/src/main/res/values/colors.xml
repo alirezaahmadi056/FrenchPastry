@@ -6,12 +6,15 @@
     <color name="red_main">#CF3C3C</color>
     <color name="green_main">#24A751</color>
     <color name="gray_main">#555353</color>
+    <color name="color_gray_100">#4CB6B0B0</color>
+    <color name="color_gray_200">#B6B0B0</color>
     <color name="yellow_main">#FFC700</color>
     <color name="purple_main">#F0F3FF</color>
 
     <color name="color_text_gray">@color/gray_main</color>
     <color name="color_text_black">@color/black_main</color>
-    <color name="color_edit_text_stroke">#B6B0B0</color>
+    <color name="color_edit_text_stroke">@color/color_gray_200</color>
+    <color name="color_back_text_time">@color/color_gray_100</color>
 
     <color name="primary_color">@color/black_main</color>
     <color name="primary_color_variant">@color/black_main</color>

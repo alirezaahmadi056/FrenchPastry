@@ -63,16 +63,11 @@
         app:layout_constraintEnd_toEndOf="@+id/txtFrenchPastry"
         app:layout_constraintTop_toBottomOf="@+id/txtFrenchPastry"/>
 
-    <androidx.appcompat.widget.AppCompatButton
+    <info.alirezaahmadi.frenchpastry.ui.customView.CustomButton
         android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingVertical="8dp"
-        android:paddingHorizontal="20dp"
-        android:textColor="@color/white_main"
-        android:text="@string/send_code"
-        android:background="@drawable/back_button_black"
-        android:textSize="@dimen/button_normal_size"
+        app:buttonText="@string/send_code"
         app:layout_constraintEnd_toEndOf="@+id/inputTextPhone"
         app:layout_constraintTop_toBottomOf="@+id/inputTextPhone" />
 

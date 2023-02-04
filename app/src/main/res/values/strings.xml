@@ -6,4 +6,8 @@
     <string name="login_to_app">ورود به برنامه</string>
     <string name="french_pastry">شیرینی فرانسوی</string>
     <string name="send_code">ارسال کد تایید</string>
+    <string name="code_login">کد تایید</string>
+    <string name="confirm_code">تایید کد و ادامه</string>
+    <string name="edit_phone">ویرایش شماره</string>
+    <string name="resend_code">ارسال مجدد</string>
 </resources>
