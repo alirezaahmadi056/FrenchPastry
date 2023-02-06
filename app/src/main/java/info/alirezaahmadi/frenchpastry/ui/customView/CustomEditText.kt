@@ -61,7 +61,7 @@ class CustomEditText(
 
     }
 
-    fun setError(errorText: String) {
+    fun setError(errorText: String?) {
         binding.textInputLayout.error = errorText
     }
 

@@ -74,7 +74,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/inputEnterCode"
         app:layout_constraintStart_toStartOf="@+id/inputEnterCode"
         app:layout_constraintTop_toTopOf="@+id/inputEnterCode"
-        app:layout_constraintVertical_bias="0.42000002"
+        app:layout_constraintVertical_bias="0.44"
         tools:text="00:59" />
 
     <info.alirezaahmadi.frenchpastry.ui.customView.CustomButton
