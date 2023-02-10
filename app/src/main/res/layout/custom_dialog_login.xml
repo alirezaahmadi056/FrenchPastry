@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/back_alert_dialog"
+    android:paddingBottom="24dp"
     android:layout_width="350dp"
     android:layout_height="wrap_content"
     android:layoutDirection="ltr">
@@ -93,7 +94,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="24dp"
         android:text="@string/edit_phone"
         android:textColor="@color/color_text_black"
         android:textSize="@dimen/button_small_size"

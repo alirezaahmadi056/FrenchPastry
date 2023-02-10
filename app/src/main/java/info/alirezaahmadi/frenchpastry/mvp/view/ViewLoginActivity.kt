@@ -5,13 +5,13 @@ import android.app.AlertDialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.os.Build
 import android.os.CountDownTimer
-import android.provider.Settings
+import android.text.InputFilter
+import android.text.InputType
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import android.widget.Toast
-import info.alirezaahmadi.frenchpastry.R
 import info.alirezaahmadi.frenchpastry.databinding.ActivityLoginBinding
 import info.alirezaahmadi.frenchpastry.databinding.CustomDialogLoginBinding
 import java.math.BigInteger
@@ -81,16 +81,53 @@ class ViewLoginActivity(
             } else
                 view.inputEnterCode.error = null
 
-        }
+            if(confirmCode()){
 
-        view.txtResend.setOnClickListener {
-            //resend code
+                dialog.dismiss()
+
+                val viewName = CustomDialogLoginBinding.inflate(inflater)
+                val builder2 = AlertDialog.Builder(context)
+                    .setView(viewName.root)
+                    .setCancelable(false)
+
+                viewName.txtResend.visibility = GONE
+                viewName.txtTime.visibility = GONE
+                viewName.txtEditPhone.visibility = GONE
+                viewName.txtShowNumber.visibility = GONE
+                viewName.edtEnterCode.inputType = InputType.TYPE_CLASS_TEXT
+                viewName.textView.text = "اطلاعات کاربری"
+                viewName.edtEnterCode.hint = "نام و نام خانوادگی"
+                viewName.edtEnterCode.gravity = Gravity.START
+                viewName.edtEnterCode.textDirection = TEXT_DIRECTION_RTL
+                viewName.edtEnterCode.filters = arrayOf(InputFilter.LengthFilter(40))
+                viewName.btnConfirm.getView().text = "ثبت اطلاعات"
+
+                val dialog2 = builder2.create()
+                dialog2.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                dialog2.show()
+
+                viewName.btnConfirm.getView().setOnClickListener {
+                    val name = viewName.edtEnterCode.text.toString().trim()
+                    if (name.isEmpty() || name.length < 3)
+                        viewName.inputEnterCode.error = "لطفا نام خود را وارد کنید"
+                    else
+                        viewName.inputEnterCode.error = null
+                    Toast.makeText(context, name, Toast.LENGTH_SHORT).show()
+                }
+
+            }
+
         }
 
         view.txtEditPhone.setOnClickListener {
             dialog.dismiss()
         }
 
+    }
+
+    private fun confirmCode(): Boolean {
+
+        return true
     }
 
     private fun createTimer(view: CustomDialogLoginBinding) {
