@@ -2,6 +2,7 @@ package info.alirezaahmadi.frenchpastry.mvp.view
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -10,13 +11,13 @@ import android.text.InputFilter
 import android.text.InputType
 import android.view.Gravity
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.FrameLayout
 import android.widget.Toast
 import info.alirezaahmadi.frenchpastry.databinding.ActivityLoginBinding
 import info.alirezaahmadi.frenchpastry.databinding.CustomDialogLoginBinding
 import java.math.BigInteger
 import java.security.MessageDigest
-
 
 class ViewLoginActivity(
     contextInstance: Context
@@ -62,12 +63,9 @@ class ViewLoginActivity(
         // Run Timer
         createTimer(view)
 
-        // Config Alert Dialog
-        val builder = AlertDialog.Builder(context)
-            .setView(view.root)
-            .setCancelable(false)
-
-        val dialog = builder.create()
+        val dialog = Dialog(context)
+        dialog.setContentView(view.root)
+        dialog.setCancelable(false)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.show()
 
@@ -81,37 +79,26 @@ class ViewLoginActivity(
             } else
                 view.inputEnterCode.error = null
 
-            if(confirmCode()){
+            if (confirmCode()) {
 
                 dialog.dismiss()
 
-                val viewName = CustomDialogLoginBinding.inflate(inflater)
-                val builder2 = AlertDialog.Builder(context)
-                    .setView(viewName.root)
-                    .setCancelable(false)
+                val nameView = CustomDialogLoginBinding.inflate(inflater)
+                val nameDialog = Dialog(context)
+                nameDialog.setContentView(nameView.root)
+                nameDialog.setCancelable(false)
 
-                viewName.txtResend.visibility = GONE
-                viewName.txtTime.visibility = GONE
-                viewName.txtEditPhone.visibility = GONE
-                viewName.txtShowNumber.visibility = GONE
-                viewName.edtEnterCode.inputType = InputType.TYPE_CLASS_TEXT
-                viewName.textView.text = "اطلاعات کاربری"
-                viewName.edtEnterCode.hint = "نام و نام خانوادگی"
-                viewName.edtEnterCode.gravity = Gravity.START
-                viewName.edtEnterCode.textDirection = TEXT_DIRECTION_RTL
-                viewName.edtEnterCode.filters = arrayOf(InputFilter.LengthFilter(40))
-                viewName.btnConfirm.getView().text = "ثبت اطلاعات"
+                createNameView(nameView)
 
-                val dialog2 = builder2.create()
-                dialog2.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-                dialog2.show()
+                nameDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                nameDialog.show()
 
-                viewName.btnConfirm.getView().setOnClickListener {
-                    val name = viewName.edtEnterCode.text.toString().trim()
+                nameView.btnConfirm.getView().setOnClickListener {
+                    val name = nameView.edtEnterCode.text.toString().trim()
                     if (name.isEmpty() || name.length < 3)
-                        viewName.inputEnterCode.error = "لطفا نام خود را وارد کنید"
+                        nameView.inputEnterCode.error = "لطفا نام خود را وارد کنید"
                     else
-                        viewName.inputEnterCode.error = null
+                        nameView.inputEnterCode.error = null
                     Toast.makeText(context, name, Toast.LENGTH_SHORT).show()
                 }
 
@@ -125,21 +112,37 @@ class ViewLoginActivity(
 
     }
 
+    private fun createNameView(nameView: CustomDialogLoginBinding) {
+
+        nameView.txtResend.visibility = GONE
+        nameView.txtTime.visibility = GONE
+        nameView.txtEditPhone.visibility = GONE
+        nameView.txtShowNumber.visibility = GONE
+        nameView.edtEnterCode.inputType = InputType.TYPE_CLASS_TEXT
+        nameView.textView.text = "اطلاعات کاربری"
+        nameView.edtEnterCode.hint = "نام و نام خانوادگی"
+        nameView.edtEnterCode.gravity = Gravity.START
+        nameView.edtEnterCode.textDirection = TEXT_DIRECTION_RTL
+        nameView.edtEnterCode.filters = arrayOf(InputFilter.LengthFilter(40))
+        nameView.btnConfirm.getView().text = "ثبت اطلاعات"
+
+    }
+
     private fun confirmCode(): Boolean {
 
         return true
+
     }
 
+    @SuppressLint("SetTextI18n")
     private fun createTimer(view: CustomDialogLoginBinding) {
 
         object : CountDownTimer(60000, 1000) {
 
-            @SuppressLint("SetTextI18n")
             override fun onTick(millisUntilFinished: Long) {
                 view.txtTime.text = "00:${millisUntilFinished / 1000}"
             }
 
-            @SuppressLint("SetTextI18n")
             override fun onFinish() {
                 view.txtTime.text = "00:00"
                 resendState = true

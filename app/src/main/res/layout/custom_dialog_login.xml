@@ -5,20 +5,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/back_alert_dialog"
     android:paddingBottom="24dp"
-    android:layout_width="350dp"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layoutDirection="ltr">
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="24dp"
         android:text="@string/code_login"
         android:textColor="@color/color_text_black"
         android:textSize="@dimen/heading_large_size"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -34,15 +36,13 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputEnterCode"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
         android:paddingTop="16dp"
         app:errorEnabled="true"
         app:hintEnabled="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/txtShowNumber">
 
         <com.google.android.material.textfield.TextInputEditText
