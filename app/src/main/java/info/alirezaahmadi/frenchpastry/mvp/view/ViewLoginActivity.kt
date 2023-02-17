@@ -1,7 +1,6 @@
 package info.alirezaahmadi.frenchpastry.mvp.view
 
 import android.annotation.SuppressLint
-import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
@@ -11,9 +10,9 @@ import android.text.InputFilter
 import android.text.InputType
 import android.view.Gravity
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.FrameLayout
 import android.widget.Toast
+import info.alirezaahmadi.frenchpastry.data.remote.apiRepository.LoginApiRepository
 import info.alirezaahmadi.frenchpastry.databinding.ActivityLoginBinding
 import info.alirezaahmadi.frenchpastry.databinding.CustomDialogLoginBinding
 import java.math.BigInteger
@@ -45,6 +44,8 @@ class ViewLoginActivity(
             val number = binding.inputTextPhone.getText()
 
             if (numberValidation(number)) {
+
+                LoginApiRepository.instance.sendPhoneAuth(number)
                 createDialog(number)
             }
 
