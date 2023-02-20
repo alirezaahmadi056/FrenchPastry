@@ -65,7 +65,11 @@ dependencies {
     implementation "androidx.room:room-rxjava3:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
 
-    // RXJava
+    //RXJava
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'
+
+    //Lottie
+    def lottieVersion = "6.0.0"
+    implementation "com.airbnb.android:lottie:$lottieVersion"
 
 }

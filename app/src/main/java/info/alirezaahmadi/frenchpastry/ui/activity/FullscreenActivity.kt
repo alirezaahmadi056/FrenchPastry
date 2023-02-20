@@ -3,11 +3,12 @@ package info.alirezaahmadi.frenchpastry.ui.activity
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
+import info.alirezaahmadi.frenchpastry.androidWrapper.NetworkInfo
 import info.alirezaahmadi.frenchpastry.data.local.preferences.LoginInfo
 import info.alirezaahmadi.frenchpastry.databinding.ActivityFullscreenBinding
 
@@ -23,6 +24,21 @@ class FullscreenActivity : AppCompatActivity() {
         hideStatus()
 
         loginState = getSharedPreferences(LoginInfo.LOGIN_PREFERENCES, MODE_PRIVATE)
+
+        if (NetworkInfo.internetInfo(this))
+            setHandler()
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        if (NetworkInfo.internetInfo(this))
+            setHandler()
+
+    }
+
+    private fun setHandler(){
 
         Handler(Looper.getMainLooper()).postDelayed(
             {

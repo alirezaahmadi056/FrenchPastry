@@ -12,9 +12,15 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import android.widget.Toast
+import info.alirezaahmadi.frenchpastry.androidWrapper.DeviceInfo
+import info.alirezaahmadi.frenchpastry.androidWrapper.NetworkInfo
 import info.alirezaahmadi.frenchpastry.data.remote.apiRepository.LoginApiRepository
+import info.alirezaahmadi.frenchpastry.data.remote.dataModel.RequestSendPhone
+import info.alirezaahmadi.frenchpastry.data.remote.dataModel.RequestVerifyCode
+import info.alirezaahmadi.frenchpastry.data.remote.ext.CallbackRequest
 import info.alirezaahmadi.frenchpastry.databinding.ActivityLoginBinding
 import info.alirezaahmadi.frenchpastry.databinding.CustomDialogLoginBinding
+import info.alirezaahmadi.frenchpastry.mvp.ext.ToastUtils
 import java.math.BigInteger
 import java.security.MessageDigest
 
@@ -24,41 +30,76 @@ class ViewLoginActivity(
 
     private val inflater = LayoutInflater.from(context)
     val binding = ActivityLoginBinding.inflate(inflater)
+
+    private lateinit var number: String
+    private lateinit var deviceInfo: DeviceInfo
+
     private var resendState = false
 
-    fun test() {
-
-        val input = "AlirezaAhmadi"
-        val md = MessageDigest.getInstance("MD5")
-        val hash = BigInteger(
-            1,
-            md.digest(input.toByteArray())
-        ).toString(16).padStart(32, '0')
-
+    fun setDeviceInfo(info: DeviceInfo) {
+        deviceInfo = info
     }
 
     fun pressedSendCode() {
 
         binding.btnLogin.getView().setOnClickListener {
 
-            val number = binding.inputTextPhone.getText()
+            number = binding.inputTextPhone.getText()
 
             if (numberValidation(number)) {
+                binding.btnLogin.enableProgress()
+                if (NetworkInfo.internetInfo(context))
+                    LoginApiRepository.instance.sendPhoneAuth(
+                        number,
+                        object : CallbackRequest<RequestSendPhone> {
 
-                LoginApiRepository.instance.sendPhoneAuth(number)
-                createDialog(number)
+                            override fun onSuccess(code: Int, data: RequestSendPhone) {
+                                binding.btnLogin.disableProgress()
+                                createDialog()
+                            }
+
+                            override fun onError(error: String) {
+                                binding.btnLogin.disableProgress()
+                                ToastUtils.toastServerError(context)
+                            }
+
+                        }
+                    )
             }
 
         }
 
     }
 
+    private fun numberValidation(number: String): Boolean {
+
+        if (number.isEmpty()) {
+            binding.inputTextPhone.setError("شماره خود را وارد کنید")
+            return false
+        }
+
+        if (number.length < 11) {
+            binding.inputTextPhone.setError("شماره را صحیح وارد کنید")
+            return false
+        }
+
+        if (!number.matches(Regex("(\\+98|0)?9\\d{9}"))) {
+            binding.inputTextPhone.setError("شماره را صحیح وارد کنید")
+            return false
+        }
+
+        binding.inputTextPhone.setError(null)
+
+        return true
+
+    }
+
     @SuppressLint("SetTextI18n")
-    private fun createDialog(number: String) {
+    private fun createDialog() {
 
         val view = CustomDialogLoginBinding.inflate(inflater)
 
-        view.txtShowNumber.text = "کد تایید به شماره $number ارسال شد"
+        view.txtShowNumber.text = "کد تایید به $number ارسال شد"
         view.txtResend.setTextColor(Color.parseColor("#D9888383"))
 
         // Run Timer
@@ -80,30 +121,57 @@ class ViewLoginActivity(
             } else
                 view.inputEnterCode.error = null
 
-            if (confirmCode()) {
+            view.btnConfirm.enableProgress()
 
-                dialog.dismiss()
+            if (NetworkInfo.internetInfo(context))
+                LoginApiRepository.instance.verifyCodeAuth(
+                    code,
+                    number,
+                    object : CallbackRequest<RequestVerifyCode> {
 
-                val nameView = CustomDialogLoginBinding.inflate(inflater)
-                val nameDialog = Dialog(context)
-                nameDialog.setContentView(nameView.root)
-                nameDialog.setCancelable(false)
+                        override fun onSuccess(code: Int, data: RequestVerifyCode) {
 
-                createNameView(nameView)
+                            view.btnConfirm.disableProgress()
 
-                nameDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-                nameDialog.show()
+                            ToastUtils.toast(context, "$code ${data.message}")
 
-                nameView.btnConfirm.getView().setOnClickListener {
-                    val name = nameView.edtEnterCode.text.toString().trim()
-                    if (name.isEmpty() || name.length < 3)
-                        nameView.inputEnterCode.error = "لطفا نام خود را وارد کنید"
-                    else
-                        nameView.inputEnterCode.error = null
-                    Toast.makeText(context, name, Toast.LENGTH_SHORT).show()
-                }
+                            dialog.dismiss()
 
-            }
+                            val nameView = CustomDialogLoginBinding.inflate(inflater)
+                            val nameDialog = Dialog(context)
+                            nameDialog.setContentView(nameView.root)
+                            nameDialog.setCancelable(false)
+
+                            createNameView(nameView)
+
+                            nameDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                            nameDialog.show()
+
+                            nameView.btnConfirm.getView().setOnClickListener {
+
+                                val name = nameView.edtEnterCode.text.toString().trim()
+
+                                if (name.isEmpty() || name.length < 3)
+                                    nameView.inputEnterCode.error = "لطفا نام خود را وارد کنید"
+                                else
+                                    nameView.inputEnterCode.error = null
+
+                            }
+
+                        }
+
+                        override fun onNotSuccess(code: Int, error: String, message: String) {
+                            view.btnConfirm.disableProgress()
+                            ToastUtils.toast(context, message)
+                        }
+
+                        override fun onError(error: String) {
+                            view.btnConfirm.disableProgress()
+                            ToastUtils.toastServerError(context)
+                        }
+
+                    }
+                )
 
         }
 
@@ -126,12 +194,6 @@ class ViewLoginActivity(
         nameView.edtEnterCode.textDirection = TEXT_DIRECTION_RTL
         nameView.edtEnterCode.filters = arrayOf(InputFilter.LengthFilter(40))
         nameView.btnConfirm.getView().text = "ثبت اطلاعات"
-
-    }
-
-    private fun confirmCode(): Boolean {
-
-        return true
 
     }
 
@@ -158,29 +220,6 @@ class ViewLoginActivity(
             }
 
         }.start()
-
-    }
-
-    private fun numberValidation(number: String): Boolean {
-
-        if (number.isEmpty()) {
-            binding.inputTextPhone.setError("شماره خود را وارد کنید")
-            return false
-        }
-
-        if (number.length < 11) {
-            binding.inputTextPhone.setError("شماره را صحیح وارد کنید")
-            return false
-        }
-
-        if (!number.matches(Regex("(\\+98|0)?9\\d{9}"))) {
-            binding.inputTextPhone.setError("شماره را صحیح وارد کنید")
-            return false
-        }
-
-        binding.inputTextPhone.setError(null)
-
-        return true
 
     }
 

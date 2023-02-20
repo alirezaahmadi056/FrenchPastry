@@ -10,12 +10,16 @@ class PresenterLoginActivity(
 ) : BaseLifeCycle {
 
     override fun onCreate() {
-        view.test()
+        sendDeviceInfo()
         onClickSendCode()
     }
 
-    private fun onClickSendCode(){
+    private fun onClickSendCode() {
         view.pressedSendCode()
+    }
+
+    private fun sendDeviceInfo() {
+        view.setDeviceInfo(model.getDeviceInfo())
     }
 
 }

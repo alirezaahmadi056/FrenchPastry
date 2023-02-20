@@ -1,13 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.AppCompatButton
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/button"
-    android:background="@drawable/back_button_black"
-    android:paddingHorizontal="20dp"
-    android:paddingVertical="8dp"
-    tools:text="متن نمونه آزمایشی"
-    android:textColor="@color/white_main"
-    android:textSize="@dimen/button_normal_size"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
+    android:layout_height="wrap_content"
+    android:background="@drawable/back_button_black"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button"
+        android:background="@drawable/back_button_black"
+        android:paddingHorizontal="20dp"
+        tools:text="متن نمونه آزمایشی"
+        android:textColor="@color/white_main"
+        android:layout_gravity="center"
+        android:textSize="@dimen/button_normal_size"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/progress_indicator"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"
+        android:scaleX="2"
+        android:scaleY="2"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/loading" />
+
+</FrameLayout>

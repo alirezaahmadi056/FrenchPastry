@@ -1,13 +1,15 @@
 package info.alirezaahmadi.frenchpastry.data.remote.apiRepository
 
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.RequestSendPhone
+import info.alirezaahmadi.frenchpastry.data.remote.dataModel.RequestVerifyCode
+import info.alirezaahmadi.frenchpastry.data.remote.ext.CallbackRequest
 import info.alirezaahmadi.frenchpastry.data.remote.mainService.RetrofitService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.http.GET
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
-import retrofit2.http.Query
 
 class LoginApiRepository private constructor() {
 
@@ -23,7 +25,10 @@ class LoginApiRepository private constructor() {
 
     }
 
-    fun sendPhoneAuth(phone: String) {
+    fun sendPhoneAuth(
+        phone: String,
+        callbackRequest: CallbackRequest<RequestSendPhone>
+    ) {
 
         RetrofitService.apiService.sendPhone(phone).enqueue(
 
@@ -33,11 +38,59 @@ class LoginApiRepository private constructor() {
                     call: Call<RequestSendPhone>,
                     response: Response<RequestSendPhone>
                 ) {
-
+                    if (response.isSuccessful)
+                        callbackRequest.onSuccess(
+                            response.code(),
+                            response.body() as RequestSendPhone
+                        )
+                    else
+                        callbackRequest.onNotSuccess(
+                            response.code(),
+                            response.errorBody().toString(),
+                            response.message().toString()
+                        )
                 }
 
                 override fun onFailure(call: Call<RequestSendPhone>, t: Throwable) {
+                    callbackRequest.onError(t.message.toString())
+                }
 
+            }
+
+        )
+
+    }
+
+    fun verifyCodeAuth(
+        code: String,
+        phone: String,
+        callbackRequest: CallbackRequest<RequestVerifyCode>
+    ) {
+
+        RetrofitService.apiService.verifyCode(code, phone).enqueue(
+
+            object : Callback<RequestVerifyCode> {
+
+                override fun onResponse(call: Call<RequestVerifyCode>, response: Response<RequestVerifyCode>) {
+
+                    if (response.isSuccessful)
+                        callbackRequest.onSuccess(
+                            response.code(),
+                            response.body() as RequestVerifyCode
+                        )
+                    else {
+                        val data = response.body() as RequestVerifyCode
+                        callbackRequest.onNotSuccess(
+                            response.code(),
+                            response.errorBody().toString(),
+                            data.message
+                        )
+                    }
+
+                }
+
+                override fun onFailure(call: Call<RequestVerifyCode>, t: Throwable) {
+                    callbackRequest.onError(t.message.toString())
                 }
 
             }
@@ -50,9 +103,17 @@ class LoginApiRepository private constructor() {
 
 interface LoginApiService {
 
+    @FormUrlEncoded
     @POST("auth/phone/login")
     fun sendPhone(
-        @Query("phone") phone: String
+        @Field("phone") phone: String
     ): Call<RequestSendPhone>
+
+    @FormUrlEncoded
+    @POST("auth/phone/login/verify")
+    fun verifyCode(
+        @Field("code") code: String,
+        @Field("phone") phone: String
+    ): Call<RequestVerifyCode>
 
 }

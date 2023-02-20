@@ -66,7 +66,7 @@
     <info.alirezaahmadi.frenchpastry.ui.customView.CustomButton
         android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         app:buttonText="@string/send_code"
         app:layout_constraintEnd_toEndOf="@+id/inputTextPhone"
         app:layout_constraintTop_toBottomOf="@+id/inputTextPhone" />

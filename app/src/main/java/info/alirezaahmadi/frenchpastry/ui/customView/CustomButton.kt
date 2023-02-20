@@ -43,4 +43,14 @@ class CustomButton(
 
     fun getView() = binding.button
 
+    fun enableProgress() {
+        binding.progressIndicator.visibility = VISIBLE
+        binding.button.visibility = INVISIBLE
+    }
+
+    fun disableProgress() {
+        binding.progressIndicator.visibility = INVISIBLE
+        binding.button.visibility = VISIBLE
+    }
+
 }
