@@ -11,4 +11,10 @@
     <string name="edit_phone">ویرایش شماره</string>
     <string name="resend_code">ارسال مجدد</string>
     <string name="enter_code_sample">_ _ _ _</string>
+    <string name="not_internet">لطفا گوشی خود را به اینترنت متصل کنید</string>
+    <string name="internet_error_desc">آیکن هشدار اینترنت</string>
+    <string name="retry">تلاش مجدد</string>
+    <string name="exit_app">خروج از برنامه</string>
+    <string name="settings">تنظیمات</string>
+    <string name="error">خطا</string>
 </resources>

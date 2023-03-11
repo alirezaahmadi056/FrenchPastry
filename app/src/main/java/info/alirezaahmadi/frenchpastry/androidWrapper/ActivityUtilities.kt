@@ -1,4 +1,4 @@
-package info.alirezaahmadi.frenchpastry.mvp.ext
+package info.alirezaahmadi.frenchpastry.androidWrapper
 
 import androidx.fragment.app.Fragment
 
@@ -13,5 +13,7 @@ interface ActivityUtils {
     fun showToast(){}
 
     fun showSnackBar(){}
+
+    fun activeNetwork(){}
 
 }

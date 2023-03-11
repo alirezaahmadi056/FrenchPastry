@@ -32,6 +32,7 @@ class CustomButton(
         val white = typeArray.getBoolean(R.styleable.CustomButton_buttonWhite, false)
 
         binding.button.text = text
+
         if (white) {
             binding.button.setBackgroundResource(R.drawable.back_button_white)
             binding.button.setTextColor(Color.parseColor("#101219"))

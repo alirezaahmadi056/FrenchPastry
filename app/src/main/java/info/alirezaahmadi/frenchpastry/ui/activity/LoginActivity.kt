@@ -1,8 +1,11 @@
 package info.alirezaahmadi.frenchpastry.ui.activity
 
 import android.os.Build
+import android.os.Build.VERSION
 import android.os.Bundle
 import android.view.WindowManager
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import info.alirezaahmadi.frenchpastry.mvp.model.ModelLoginActivity
 import info.alirezaahmadi.frenchpastry.mvp.presenter.PresenterLoginActivity
@@ -23,11 +26,26 @@ class LoginActivity : AppCompatActivity() {
         presenter = PresenterLoginActivity(view, model)
         presenter.onCreate()
 
+        onBack()
+
+    }
+
+    private fun onBack(){
+
+        onBackPressedDispatcher.addCallback(
+            this /* lifecycle owner */,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    // Back is pressed... Finishing the activity
+                    finishAffinity()
+                }
+            })
+
     }
 
     private fun hideStatus() {
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+        if (VERSION.SDK_INT >= Build.VERSION_CODES.P) {
 
             window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
             val attrib = window.attributes

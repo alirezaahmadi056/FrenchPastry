@@ -48,6 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/french_pastry"
+        android:textStyle="bold"
         android:textSize="@dimen/heading_large_size"
         android:textColor="@color/black_main"
         app:layout_constraintEnd_toEndOf="@+id/txtLoginApp"

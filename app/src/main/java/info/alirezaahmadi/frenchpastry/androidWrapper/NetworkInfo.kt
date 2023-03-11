@@ -1,21 +1,26 @@
 package info.alirezaahmadi.frenchpastry.androidWrapper
 
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.provider.Settings
-import androidx.appcompat.app.AlertDialog
+import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
+import info.alirezaahmadi.frenchpastry.databinding.CustomDialogInternetBinding
 
 object NetworkInfo {
 
-    fun internetInfo(context: Context): Boolean {
+    fun internetInfo(context: Context, activityUtils: ActivityUtils): Boolean {
 
-        return if (netInfo(context))
+        return if (netInfo(context)) {
+            activityUtils.activeNetwork()
             true
-        else {
-            showNetDialog(context)
+        } else {
+            showNetDialog(context, activityUtils)
             false
         }
 
@@ -39,23 +44,23 @@ object NetworkInfo {
 
     }
 
-    private fun showNetDialog(context: Context) {
+    private fun showNetDialog(context: Context, activityUtils: ActivityUtils) {
 
-        val dialog = AlertDialog.Builder(context)
-        dialog.setTitle("خطا")
+        val view5 = CustomDialogInternetBinding.inflate(LayoutInflater.from(context))
+        val dialog = Dialog(context)
+        dialog.setContentView(view5.root)
         dialog.setCancelable(false)
-        dialog.setMessage("لطفا گوشی خود را به اینترنت متصل کنید")
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.show()
 
-        dialog.setPositiveButton("تلاش مجدد") { view, _ ->
-            view.dismiss()
-            internetInfo(context)
+        view5.btnRetry.setOnClickListener {
+            dialog.dismiss()
+            internetInfo(context, activityUtils)
         }
 
-        dialog.setNeutralButton("تنظیمات") { _, _ ->
+        view5.btnSettings.setOnClickListener {
             context.startActivity(Intent(Settings.ACTION_SETTINGS))
         }
-
-        dialog.create().show()
 
     }
 

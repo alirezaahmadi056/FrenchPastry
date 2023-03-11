@@ -12,6 +12,8 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
 import info.alirezaahmadi.frenchpastry.androidWrapper.DeviceInfo
 import info.alirezaahmadi.frenchpastry.androidWrapper.NetworkInfo
 import info.alirezaahmadi.frenchpastry.data.remote.apiRepository.LoginApiRepository
@@ -26,7 +28,7 @@ import java.security.MessageDigest
 
 class ViewLoginActivity(
     contextInstance: Context
-) : FrameLayout(contextInstance) {
+) : FrameLayout(contextInstance), ActivityUtils {
 
     private val inflater = LayoutInflater.from(context)
     val binding = ActivityLoginBinding.inflate(inflater)
@@ -47,8 +49,8 @@ class ViewLoginActivity(
             number = binding.inputTextPhone.getText()
 
             if (numberValidation(number)) {
-                binding.btnLogin.enableProgress()
-                if (NetworkInfo.internetInfo(context))
+                if (isCheckedNetwork()) {
+                    binding.btnLogin.enableProgress()
                     LoginApiRepository.instance.sendPhoneAuth(
                         number,
                         object : CallbackRequest<RequestSendPhone> {
@@ -65,6 +67,7 @@ class ViewLoginActivity(
 
                         }
                     )
+                }
             }
 
         }
@@ -121,9 +124,10 @@ class ViewLoginActivity(
             } else
                 view.inputEnterCode.error = null
 
-            view.btnConfirm.enableProgress()
+            if (isCheckedNetwork()) {
 
-            if (NetworkInfo.internetInfo(context))
+                view.btnConfirm.enableProgress()
+
                 LoginApiRepository.instance.verifyCodeAuth(
                     code,
                     number,
@@ -132,8 +136,6 @@ class ViewLoginActivity(
                         override fun onSuccess(code: Int, data: RequestVerifyCode) {
 
                             view.btnConfirm.disableProgress()
-
-                            ToastUtils.toast(context, "$code ${data.message}")
 
                             dialog.dismiss()
 
@@ -156,6 +158,10 @@ class ViewLoginActivity(
                                 else
                                     nameView.inputEnterCode.error = null
 
+                                if (isCheckedNetwork()) {
+                                    //code
+                                }
+
                             }
 
                         }
@@ -172,6 +178,8 @@ class ViewLoginActivity(
 
                     }
                 )
+
+            }
 
         }
 
@@ -200,7 +208,7 @@ class ViewLoginActivity(
     @SuppressLint("SetTextI18n")
     private fun createTimer(view: CustomDialogLoginBinding) {
 
-        object : CountDownTimer(60000, 1000) {
+        object : CountDownTimer(70000, 1000) {
 
             override fun onTick(millisUntilFinished: Long) {
                 view.txtTime.text = "00:${millisUntilFinished / 1000}"
@@ -214,6 +222,21 @@ class ViewLoginActivity(
                     if (resendState) {
                         view.txtResend.setTextColor(Color.parseColor("#D9888383"))
                         resendState = false
+                        LoginApiRepository.instance.sendPhoneAuth(
+                            number,
+                            object : CallbackRequest<RequestSendPhone> {
+
+                                override fun onSuccess(code: Int, data: RequestSendPhone) {
+                                    binding.btnLogin.disableProgress()
+                                }
+
+                                override fun onError(error: String) {
+                                    binding.btnLogin.disableProgress()
+                                    ToastUtils.toastServerError(context)
+                                }
+
+                            }
+                        )
                         createTimer(view)
                     }
                 }
@@ -222,5 +245,7 @@ class ViewLoginActivity(
         }.start()
 
     }
+
+    private fun isCheckedNetwork() = NetworkInfo.internetInfo(context, this)
 
 }

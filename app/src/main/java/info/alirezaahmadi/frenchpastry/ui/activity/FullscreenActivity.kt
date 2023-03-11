@@ -8,11 +8,12 @@ import android.os.Handler
 import android.os.Looper
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
 import info.alirezaahmadi.frenchpastry.androidWrapper.NetworkInfo
 import info.alirezaahmadi.frenchpastry.data.local.preferences.LoginInfo
 import info.alirezaahmadi.frenchpastry.databinding.ActivityFullscreenBinding
 
-class FullscreenActivity : AppCompatActivity() {
+class FullscreenActivity : AppCompatActivity(), ActivityUtils {
 
     private lateinit var loginState: SharedPreferences
 
@@ -25,16 +26,14 @@ class FullscreenActivity : AppCompatActivity() {
 
         loginState = getSharedPreferences(LoginInfo.LOGIN_PREFERENCES, MODE_PRIVATE)
 
-        if (NetworkInfo.internetInfo(this))
-            setHandler()
+        NetworkInfo.internetInfo(this, this)
 
     }
 
     override fun onResume() {
         super.onResume()
 
-        if (NetworkInfo.internetInfo(this))
-            setHandler()
+        NetworkInfo.internetInfo(this, this)
 
     }
 
@@ -76,6 +75,10 @@ class FullscreenActivity : AppCompatActivity() {
 
         }
 
+    }
+
+    override fun activeNetwork() {
+        setHandler()
     }
 
 }
