@@ -32,7 +32,7 @@ class DeviceInfo {
             return BigInteger(
                 1,
                 md.digest(input.toByteArray())
-            ).toString(16).padStart(24, '0')
+            ).toString(16).padStart(32, '0')
 
         }
 

@@ -9,6 +9,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.Header
 import retrofit2.http.POST
 
 class LoginApiRepository private constructor() {
@@ -26,11 +27,17 @@ class LoginApiRepository private constructor() {
     }
 
     fun sendPhoneAuth(
+        id: String,
+        key: String,
         phone: String,
         callbackRequest: CallbackRequest<RequestSendPhone>
     ) {
 
-        RetrofitService.apiService.sendPhone(phone).enqueue(
+        RetrofitService.apiService.sendPhone(
+            id,
+            key,
+            phone
+        ).enqueue(
 
             object : Callback<RequestSendPhone> {
 
@@ -71,7 +78,10 @@ class LoginApiRepository private constructor() {
 
             object : Callback<RequestVerifyCode> {
 
-                override fun onResponse(call: Call<RequestVerifyCode>, response: Response<RequestVerifyCode>) {
+                override fun onResponse(
+                    call: Call<RequestVerifyCode>,
+                    response: Response<RequestVerifyCode>
+                ) {
 
                     if (response.isSuccessful)
                         callbackRequest.onSuccess(
@@ -106,6 +116,8 @@ interface LoginApiService {
     @FormUrlEncoded
     @POST("auth/phone/login")
     fun sendPhone(
+        @Header("app-device-uid") id: String,
+        @Header("app-public-key") key: String,
         @Field("phone") phone: String
     ): Call<RequestSendPhone>
 

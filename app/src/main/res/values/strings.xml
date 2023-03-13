@@ -17,4 +17,10 @@
     <string name="exit_app">خروج از برنامه</string>
     <string name="settings">تنظیمات</string>
     <string name="error">خطا</string>
+    <string name="image_home_desc">image_home</string>
+    <string name="image_cake_desc">image_cake</string>
+    <string name="image_pastry_desc">image_pastry</string>
+    <string name="image_profile_desc">image_profile</string>
+    <string name="image_shopping_desc">image_shopping</string>
+    <string name="alert_icon_desc">alert_icon</string>
 </resources>

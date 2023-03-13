@@ -6,6 +6,7 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.CountDownTimer
+import android.text.Editable
 import android.text.InputFilter
 import android.text.InputType
 import android.view.Gravity
@@ -52,12 +53,19 @@ class ViewLoginActivity(
                 if (isCheckedNetwork()) {
                     binding.btnLogin.enableProgress()
                     LoginApiRepository.instance.sendPhoneAuth(
+                        DeviceInfo.getDeviceID(context),
+                        DeviceInfo.getPublicKey(context),
                         number,
                         object : CallbackRequest<RequestSendPhone> {
 
                             override fun onSuccess(code: Int, data: RequestSendPhone) {
                                 binding.btnLogin.disableProgress()
                                 createDialog()
+                            }
+
+                            override fun onNotSuccess(code: Int, error: String, message: String) {
+                                binding.btnLogin.disableProgress()
+                                ToastUtils.toast(context, "دستگاه نامعتبر")
                             }
 
                             override fun onError(error: String) {
@@ -224,6 +232,8 @@ class ViewLoginActivity(
                         resendState = false
                         LoginApiRepository.instance.sendPhoneAuth(
                             number,
+                            DeviceInfo.getDeviceID(context),
+                            DeviceInfo.getPublicKey(context),
                             object : CallbackRequest<RequestSendPhone> {
 
                                 override fun onSuccess(code: Int, data: RequestSendPhone) {
