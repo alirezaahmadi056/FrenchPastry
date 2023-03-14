@@ -23,4 +23,13 @@
     <string name="image_profile_desc">image_profile</string>
     <string name="image_shopping_desc">image_shopping</string>
     <string name="alert_icon_desc">alert_icon</string>
+    <string name="profile">پروفایل کاربری</string>
+    <string name="my_orders">سفارشات من</string>
+    <string name="support">پشتیبانی</string>
+    <string name="about_us">درباره ما</string>
+    <string name="contact_us">ارتباط با ما</string>
+    <string name="upgrade">بروزرسانی نرم افزار</string>
+    <string name="logout">خروج از حساب کاربری</string>
+    <string name="open">باز</string>
+    <string name="close">بسته</string>
 </resources>

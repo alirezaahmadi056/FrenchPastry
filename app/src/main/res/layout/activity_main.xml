@@ -9,18 +9,23 @@
     android:layoutDirection="rtl"
     tools:context=".ui.activity.MainActivity">
 
-    <include
+    <!--<include
         android:id="@+id/main_content"
-        layout="@layout/activity_main_content"/>
+        layout="@layout/activity_main_content"/>-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/drawer_view"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layoutDirection="rtl"
-        app:menu="@menu/drawer_menu"
-        android:background="@color/white_back"
-        app:headerLayout="@layout/drawer_header"
+        android:background="@color/white_color200"
+        app:headerLayout="@layout/custom_navigation_drawer"
         android:layout_gravity="start"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>
