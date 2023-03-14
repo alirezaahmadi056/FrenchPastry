@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".androidWrapper.A"
@@ -16,12 +16,14 @@
         android:theme="@style/Theme.FrenchPastry"
         tools:targetApi="32">
         <activity
+            android:name=".NavDrawerActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activity.FullscreenActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".ui.activity.MainActivity"
             android:exported="true">
