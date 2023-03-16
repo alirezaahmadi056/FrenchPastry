@@ -9,7 +9,6 @@ import android.os.Looper
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
-import info.alirezaahmadi.frenchpastry.androidWrapper.NetworkInfo
 import info.alirezaahmadi.frenchpastry.data.local.preferences.LoginInfo
 import info.alirezaahmadi.frenchpastry.databinding.ActivityFullscreenBinding
 
@@ -26,24 +25,10 @@ class FullscreenActivity : AppCompatActivity(), ActivityUtils {
 
         loginState = getSharedPreferences(LoginInfo.LOGIN_PREFERENCES, MODE_PRIVATE)
 
-        NetworkInfo.internetInfo(this, this)
-
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        NetworkInfo.internetInfo(this, this)
-
-    }
-
-    private fun setHandler(){
-
         Handler(Looper.getMainLooper()).postDelayed(
             {
-                if (
-                    loginState.getBoolean(LoginInfo.LOGIN_STATE_KEY, false)
-                )
+                //TODO change default to false
+                if (loginState.getBoolean(LoginInfo.LOGIN_STATE_KEY, true))
                     startActivity(
                         Intent(this@FullscreenActivity, MainActivity::class.java)
                     )
@@ -75,10 +60,6 @@ class FullscreenActivity : AppCompatActivity(), ActivityUtils {
 
         }
 
-    }
-
-    override fun activeNetwork() {
-        setHandler()
     }
 
 }

@@ -1,31 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/drawerLayout"
-    android:layoutDirection="rtl"
+    android:background="@color/white_color200"
+    android:layoutDirection="ltr"
     tools:context=".ui.activity.MainActivity">
 
-    <!--<include
-        android:id="@+id/main_content"
-        layout="@layout/activity_main_content"/>-->
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <info.alirezaahmadi.frenchpastry.ui.customView.CustomAppBar
+        android:id="@+id/customAppBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/drawer_view"
+    <info.alirezaahmadi.frenchpastry.ui.customView.bottomNav.CustomBottomNavigation
+        android:id="@+id/bottomNav"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layoutDirection="rtl"
-        android:background="@color/white_color200"
-        app:headerLayout="@layout/custom_navigation_drawer"
-        android:layout_gravity="start"/>
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-</androidx.drawerlayout.widget.DrawerLayout>
+    <FrameLayout
+        android:id="@+id/mainFrameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/customAppBar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

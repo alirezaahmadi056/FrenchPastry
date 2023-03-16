@@ -43,7 +43,7 @@ class ViewLoginActivity(
         deviceInfo = info
     }
 
-    fun pressedSendCode() {
+    fun pressedSendCode(id: String, key: String) {
 
         binding.btnLogin.getView().setOnClickListener {
 
@@ -52,29 +52,7 @@ class ViewLoginActivity(
             if (numberValidation(number)) {
                 if (isCheckedNetwork()) {
                     binding.btnLogin.enableProgress()
-                    LoginApiRepository.instance.sendPhoneAuth(
-                        DeviceInfo.getDeviceID(context),
-                        DeviceInfo.getPublicKey(context),
-                        number,
-                        object : CallbackRequest<RequestSendPhone> {
-
-                            override fun onSuccess(code: Int, data: RequestSendPhone) {
-                                binding.btnLogin.disableProgress()
-                                createDialog()
-                            }
-
-                            override fun onNotSuccess(code: Int, error: String, message: String) {
-                                binding.btnLogin.disableProgress()
-                                ToastUtils.toast(context, "دستگاه نامعتبر")
-                            }
-
-                            override fun onError(error: String) {
-                                binding.btnLogin.disableProgress()
-                                ToastUtils.toastServerError(context)
-                            }
-
-                        }
-                    )
+                    sendCode(true, id, key)
                 }
             }
 
@@ -106,7 +84,7 @@ class ViewLoginActivity(
     }
 
     @SuppressLint("SetTextI18n")
-    private fun createDialog() {
+    private fun createDialog(id: String, key: String) {
 
         val view = CustomDialogLoginBinding.inflate(inflater)
 
@@ -114,7 +92,7 @@ class ViewLoginActivity(
         view.txtResend.setTextColor(Color.parseColor("#D9888383"))
 
         // Run Timer
-        createTimer(view)
+        createTimer(view, id, key)
 
         val dialog = Dialog(context)
         dialog.setContentView(view.root)
@@ -214,7 +192,11 @@ class ViewLoginActivity(
     }
 
     @SuppressLint("SetTextI18n")
-    private fun createTimer(view: CustomDialogLoginBinding) {
+    private fun createTimer(
+        view: CustomDialogLoginBinding,
+        id: String,
+        key: String
+    ) {
 
         object : CountDownTimer(70000, 1000) {
 
@@ -230,29 +212,42 @@ class ViewLoginActivity(
                     if (resendState) {
                         view.txtResend.setTextColor(Color.parseColor("#D9888383"))
                         resendState = false
-                        LoginApiRepository.instance.sendPhoneAuth(
-                            number,
-                            DeviceInfo.getDeviceID(context),
-                            DeviceInfo.getPublicKey(context),
-                            object : CallbackRequest<RequestSendPhone> {
-
-                                override fun onSuccess(code: Int, data: RequestSendPhone) {
-                                    binding.btnLogin.disableProgress()
-                                }
-
-                                override fun onError(error: String) {
-                                    binding.btnLogin.disableProgress()
-                                    ToastUtils.toastServerError(context)
-                                }
-
-                            }
-                        )
-                        createTimer(view)
+                        sendCode(false, id, key)
+                        createTimer(view, id, key)
                     }
                 }
             }
 
         }.start()
+
+    }
+
+    private fun sendCode(dialog: Boolean, id: String, key: String) {
+
+        LoginApiRepository.instance.sendPhoneAuth(
+            id,
+            key,
+            number,
+            object : CallbackRequest<RequestSendPhone> {
+
+                override fun onSuccess(code: Int, data: RequestSendPhone) {
+                    binding.btnLogin.disableProgress()
+                    if (dialog)
+                        createDialog(id, key)
+                }
+
+                override fun onNotSuccess(code: Int, error: String, message: String) {
+                    binding.btnLogin.disableProgress()
+                    ToastUtils.toast(context, message)
+                }
+
+                override fun onError(error: String) {
+                    binding.btnLogin.disableProgress()
+                    ToastUtils.toastServerError(context)
+                }
+
+            }
+        )
 
     }
 

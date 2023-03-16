@@ -16,17 +16,29 @@ class DeviceInfo {
 
     companion object {
 
+        private const val PRIVATE_KEY = "NKFewSfScCRrbxzULrSivWAXq2yvGd"
+
         @SuppressLint("HardwareIds")
         fun getDeviceID(context: Context): String = Settings.Secure.getString(
             context.contentResolver,
             Settings.Secure.ANDROID_ID
         ) ?: ""
 
-        fun getPublicKey(context: Context): String {
+        fun getPublicKey(context: Context, api: String): String {
 
-            val privateKey = "NKFewSfScCRrbxzULrSivWAXq2yvGd"
+            val input = PRIVATE_KEY + api + getDeviceID(context)
+            val md = MessageDigest.getInstance("MD5")
 
-            val input = privateKey + getDeviceID(context)
+            return BigInteger(
+                1,
+                md.digest(input.toByteArray())
+            ).toString(16).padStart(32, '0')
+
+        }
+
+        fun getPublicKeyWithoutApi(context: Context): String {
+
+            val input = PRIVATE_KEY + getDeviceID(context)
             val md = MessageDigest.getInstance("MD5")
 
             return BigInteger(

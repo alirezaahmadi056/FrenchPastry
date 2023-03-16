@@ -50,12 +50,14 @@ class LoginApiRepository private constructor() {
                             response.code(),
                             response.body() as RequestSendPhone
                         )
-                    else
+                    else {
+                        val data = response.body() as RequestSendPhone
                         callbackRequest.onNotSuccess(
                             response.code(),
                             response.errorBody().toString(),
-                            response.message().toString()
+                            data.message
                         )
+                    }
                 }
 
                 override fun onFailure(call: Call<RequestSendPhone>, t: Throwable) {

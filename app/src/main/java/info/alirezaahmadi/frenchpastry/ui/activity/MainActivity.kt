@@ -1,30 +1,24 @@
 package info.alirezaahmadi.frenchpastry.ui.activity
 
 import android.os.Bundle
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import info.alirezaahmadi.frenchpastry.R
 import info.alirezaahmadi.frenchpastry.databinding.ActivityMainBinding
+import info.alirezaahmadi.frenchpastry.mvp.model.ModelMainActivity
+import info.alirezaahmadi.frenchpastry.mvp.presenter.PresenterMainActivity
+import info.alirezaahmadi.frenchpastry.mvp.view.ViewMainActivity
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var presenter: PresenterMainActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        val view = ViewMainActivity(this)
+        setContentView(view.binding.root)
 
-        val toggle = ActionBarDrawerToggle(
-            this,
-            binding.drawerLayout,
-            binding.toolBar,
-            R.string.open,
-            R.string.close
-        )
-        toggle.isDrawerIndicatorEnabled = true
-        binding.drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
+        val model = ModelMainActivity()
+        presenter = PresenterMainActivity(view, model)
+        presenter.onCreate()
 
     }
 

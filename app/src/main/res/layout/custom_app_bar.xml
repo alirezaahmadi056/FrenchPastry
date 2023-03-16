@@ -4,11 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layoutDirection="ltr"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
+        android:background="@color/white_main"
         android:layout_height="65dp"
         android:layoutDirection="rtl"
         android:theme="@style/ThemeOverlay.AppCompat.Dark"
@@ -29,8 +31,8 @@
 
     <ImageView
         android:id="@+id/imgAlert"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
         android:contentDescription="@string/alert_icon_desc"
         android:layout_marginStart="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar"
@@ -59,5 +61,23 @@
         app:layout_constraintStart_toStartOf="@+id/view6"
         app:layout_constraintTop_toTopOf="@+id/view6"
         tools:text="55" />
+
+    <ImageView
+        android:id="@+id/imgMenu"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:contentDescription="@string/menu"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_menu" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/alertGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:constraint_referenced_ids="view6,txtAlertCount"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

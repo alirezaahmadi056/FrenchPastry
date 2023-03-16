@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
+import androidx.core.view.marginBottom
 import info.alirezaahmadi.frenchpastry.R
 import info.alirezaahmadi.frenchpastry.databinding.CustomBottomNavigationBinding
 
@@ -18,10 +19,11 @@ class CustomBottomNavigation(
 
         binding = CustomBottomNavigationBinding.inflate(LayoutInflater.from(context))
         addView(binding.root)
+        binding.txtShoppingCount.text = "0"
 
     }
 
-    fun onClickHelper(activeFragment: ActiveFragment){
+    fun onClickHelper(activeFragment: ActiveFragment) {
 
         binding.homes.setOnClickListener {
             activeHome()
@@ -45,40 +47,44 @@ class CustomBottomNavigation(
 
     }
 
-    private fun activeHome(){
+    private fun activeHome() {
 
-        binding.homes.setBackgroundResource(R.drawable.back_view_bottom_nav)
+        binding.homes.setBackgroundResource(R.drawable.back_item_bottom_nav)
         binding.cake.background = null
         binding.pastry.background = null
         binding.profile.background = null
 
     }
 
-    private fun activeCake(){
+    private fun activeCake() {
 
-        binding.cake.setBackgroundResource(R.drawable.back_view_bottom_nav)
+        binding.cake.setBackgroundResource(R.drawable.back_item_bottom_nav)
         binding.homes.background = null
         binding.pastry.background = null
         binding.profile.background = null
 
     }
 
-    private fun activePastry(){
+    private fun activePastry() {
 
-        binding.pastry.setBackgroundResource(R.drawable.back_view_bottom_nav)
+        binding.pastry.setBackgroundResource(R.drawable.back_item_bottom_nav)
         binding.homes.background = null
         binding.cake.background = null
         binding.profile.background = null
 
     }
 
-    private fun activeProfile(){
+    private fun activeProfile() {
 
-        binding.profile.setBackgroundResource(R.drawable.back_view_bottom_nav)
+        binding.profile.setBackgroundResource(R.drawable.back_item_bottom_nav)
         binding.homes.background = null
         binding.cake.background = null
         binding.pastry.background = null
 
+    }
+
+    fun changeCount(count: String) {
+        binding.txtShoppingCount.text = count
     }
 
 }

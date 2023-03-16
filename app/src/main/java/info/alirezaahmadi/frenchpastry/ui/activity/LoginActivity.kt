@@ -22,7 +22,7 @@ class LoginActivity : AppCompatActivity() {
 
         hideStatus()
 
-        val model = ModelLoginActivity()
+        val model = ModelLoginActivity(this)
         presenter = PresenterLoginActivity(view, model)
         presenter.onCreate()
 

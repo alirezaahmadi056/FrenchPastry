@@ -15,7 +15,7 @@ class PresenterLoginActivity(
     }
 
     private fun onClickSendCode() {
-        view.pressedSendCode()
+        view.pressedSendCode(model.getUID(), model.getPublicKey())
     }
 
     private fun sendDeviceInfo() {
