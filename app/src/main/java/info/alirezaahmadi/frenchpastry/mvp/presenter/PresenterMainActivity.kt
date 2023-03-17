@@ -10,6 +10,7 @@ class PresenterMainActivity(
 ) : BaseLifeCycle {
 
     override fun onCreate() {
+        view.initialize()
         showNavigationDrawer()
         initBottomNavigation()
     }

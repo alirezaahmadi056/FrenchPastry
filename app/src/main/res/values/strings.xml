@@ -33,4 +33,5 @@
     <string name="open">باز</string>
     <string name="close">بسته</string>
     <string name="menu">menu</string>
+    <string name="slider_desc">slider</string>
 </resources>

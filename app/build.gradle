@@ -72,4 +72,7 @@ dependencies {
     def lottieVersion = "6.0.0"
     implementation "com.airbnb.android:lottie:$lottieVersion"
 
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.8'
+
 }
