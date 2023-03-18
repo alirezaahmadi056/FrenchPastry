@@ -6,12 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import info.alirezaahmadi.frenchpastry.databinding.FragmentHomeBinding
+import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
 import info.alirezaahmadi.frenchpastry.mvp.model.ModelHomeFragment
 import info.alirezaahmadi.frenchpastry.mvp.presenter.PresenterHomeFragment
 import info.alirezaahmadi.frenchpastry.mvp.view.ViewHomeFragment
 
-class HomeFragment(private val mContext: Context) : Fragment() {
+class HomeFragment(
+    private val mContext: Context,
+    private val activityUtils: ActivityUtils
+) : Fragment() {
 
     private lateinit var presenter: PresenterHomeFragment
 
@@ -21,7 +24,7 @@ class HomeFragment(private val mContext: Context) : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        val view = ViewHomeFragment(mContext)
+        val view = ViewHomeFragment(mContext, activityUtils)
         presenter = PresenterHomeFragment(view, ModelHomeFragment())
         return view.binding.root
 

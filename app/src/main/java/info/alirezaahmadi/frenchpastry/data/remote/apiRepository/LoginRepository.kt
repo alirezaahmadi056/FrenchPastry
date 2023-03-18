@@ -1,7 +1,7 @@
 package info.alirezaahmadi.frenchpastry.data.remote.apiRepository
 
-import info.alirezaahmadi.frenchpastry.data.remote.dataModel.RequestSendPhone
-import info.alirezaahmadi.frenchpastry.data.remote.dataModel.RequestVerifyCode
+import info.alirezaahmadi.frenchpastry.data.remote.dataModel.login.RequestSendPhone
+import info.alirezaahmadi.frenchpastry.data.remote.dataModel.login.RequestVerifyCode
 import info.alirezaahmadi.frenchpastry.data.remote.ext.CallbackRequest
 import info.alirezaahmadi.frenchpastry.data.remote.mainService.RetrofitService
 import retrofit2.Call

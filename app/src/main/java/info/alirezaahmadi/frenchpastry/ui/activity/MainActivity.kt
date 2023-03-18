@@ -3,9 +3,10 @@ package info.alirezaahmadi.frenchpastry.ui.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.viewpager2.widget.ViewPager2
 import info.alirezaahmadi.frenchpastry.R
+import info.alirezaahmadi.frenchpastry.adapter.viewPager.CustomSliderPagerAdapter
 import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
-import info.alirezaahmadi.frenchpastry.databinding.ActivityMainBinding
 import info.alirezaahmadi.frenchpastry.mvp.model.ModelMainActivity
 import info.alirezaahmadi.frenchpastry.mvp.presenter.PresenterMainActivity
 import info.alirezaahmadi.frenchpastry.mvp.view.ViewMainActivity
@@ -31,6 +32,11 @@ class MainActivity : AppCompatActivity(), ActivityUtils {
             .replace(R.id.mainFrameLayout, fragment)
             .commit()
 
+    }
+
+    override fun setViewPagerFragment(viewPager: ViewPager2, url: ArrayList<String>) {
+        viewPager.adapter =
+            CustomSliderPagerAdapter(supportFragmentManager, lifecycle, url)
     }
 
 }

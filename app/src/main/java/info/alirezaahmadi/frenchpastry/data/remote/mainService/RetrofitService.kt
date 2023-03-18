@@ -1,6 +1,7 @@
 package info.alirezaahmadi.frenchpastry.data.remote.mainService
 
 import info.alirezaahmadi.frenchpastry.data.remote.apiRepository.LoginApiService
+import info.alirezaahmadi.frenchpastry.data.remote.apiRepository.MainApiService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -14,5 +15,6 @@ object RetrofitService {
         .build()
 
     val apiService: LoginApiService = retrofit.create(LoginApiService::class.java)
+    val mainApiService: MainApiService = retrofit.create(MainApiService::class.java)
 
 }

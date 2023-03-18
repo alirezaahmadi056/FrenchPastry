@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.widget.FrameLayout
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
 import info.alirezaahmadi.frenchpastry.databinding.ActivityMainBinding
@@ -22,7 +21,7 @@ class ViewMainActivity(
     val binding = ActivityMainBinding.inflate(inflater)
 
     fun initialize(){
-        activityUtils.setFragment(HomeFragment(context))
+        activityUtils.setFragment(HomeFragment(context, activityUtils))
     }
 
     fun showNavDrawer() {
@@ -36,7 +35,7 @@ class ViewMainActivity(
     override fun setFragment(type: FragmentType) {
 
         val fragment = when(type){
-            FragmentType.HOME -> HomeFragment(context)
+            FragmentType.HOME -> HomeFragment(context, activityUtils)
             FragmentType.CAKE -> Fragment()
             FragmentType.PASTRY -> Fragment()
             FragmentType.PROFILE -> Fragment()

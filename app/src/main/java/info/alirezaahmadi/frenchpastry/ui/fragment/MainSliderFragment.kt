@@ -21,8 +21,8 @@ class MainSliderFragment(private val url: String) : Fragment() {
 
         Picasso.get()
             .load(url)
-            .placeholder(R.drawable.ic_alert)
-            .error(R.drawable.ic_alert)
+            .placeholder(R.drawable.img_place_holder)
+            .error(R.drawable.img_place_holder)
             .fit()
             .into(binding.imgSlider)
 
