@@ -10,9 +10,9 @@
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/sliderViewPager"
-            android:layout_margin="12dp"
+            android:layout_margin="8dp"
             android:layout_width="match_parent"
-            android:layout_height="230dp"/>
+            android:layout_height="210dp"/>
 
     </LinearLayout>
 

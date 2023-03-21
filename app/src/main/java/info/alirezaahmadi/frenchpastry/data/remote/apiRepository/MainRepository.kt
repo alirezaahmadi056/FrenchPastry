@@ -32,9 +32,25 @@ class MainApiRepository private constructor() {
 
                 override fun onResponse(call: Call<RequestMain>, response: Response<RequestMain>) {
 
+                    val data = response.body() as RequestMain
+
+                    if (response.isSuccessful)
+                        callbackRequest.onSuccess(
+                            response.code(),
+                            data
+                        )
+                    else
+                        callbackRequest.onNotSuccess(
+                            response.code(),
+                            response.errorBody().toString(),
+                            data.message
+                        )
+
                 }
 
                 override fun onFailure(call: Call<RequestMain>, t: Throwable) {
+
+                    callbackRequest.onError(t.message.toString())
 
                 }
 

@@ -25,7 +25,7 @@ class HomeFragment(
     ): View {
 
         val view = ViewHomeFragment(mContext, activityUtils)
-        presenter = PresenterHomeFragment(view, ModelHomeFragment())
+        presenter = PresenterHomeFragment(view, ModelHomeFragment(), mContext)
         return view.binding.root
 
     }

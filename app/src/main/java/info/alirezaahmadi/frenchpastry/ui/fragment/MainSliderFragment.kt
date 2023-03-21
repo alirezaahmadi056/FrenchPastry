@@ -19,6 +19,7 @@ class MainSliderFragment(private val url: String) : Fragment() {
 
         val binding = FragmentMainImageSliderBinding.inflate(inflater)
 
+        //TODO place holder image low quality (change place holder image)
         Picasso.get()
             .load(url)
             .placeholder(R.drawable.img_place_holder)
