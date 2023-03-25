@@ -5,6 +5,9 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import info.alirezaahmadi.frenchpastry.adapter.recycler.NewPastryRecyclerAdapter
 import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.main.RequestMain
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.main.SliderModel
@@ -23,8 +26,12 @@ class ViewHomeFragment(
     fun initialized(data: RequestMain) {
 
         binding.sliderViewPager.layoutDirection = View.LAYOUT_DIRECTION_RTL
+        binding.newPastryRecycler.getRecycler().layoutManager =
+            LinearLayoutManager(context, RecyclerView.HORIZONTAL, true)
 
         activityUtils.setViewPagerFragment(binding.sliderViewPager, data.sliders)
+        binding.newPastryRecycler.getRecycler().adapter =
+            NewPastryRecyclerAdapter(data.pastries[0].pastries)
 
     }
 

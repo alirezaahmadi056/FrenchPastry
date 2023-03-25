@@ -16,8 +16,6 @@ class HomeFragment(
     private val activityUtils: ActivityUtils
 ) : Fragment() {
 
-    private lateinit var presenter: PresenterHomeFragment
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -25,15 +23,9 @@ class HomeFragment(
     ): View {
 
         val view = ViewHomeFragment(mContext, activityUtils)
-        presenter = PresenterHomeFragment(view, ModelHomeFragment(), mContext)
-        return view.binding.root
-
-    }
-
-    override fun onStart() {
-        super.onStart()
-
+        val presenter = PresenterHomeFragment(view, ModelHomeFragment(), mContext)
         presenter.onCreate()
+        return view.binding.root
 
     }
 

@@ -34,4 +34,11 @@
     <string name="close">بسته</string>
     <string name="menu">menu</string>
     <string name="slider_desc">slider</string>
+    <string name="sell">تومان</string>
+    <string name="all">بیشتر</string>
+    <string name="arrow_desc">arrow</string>
+    <string name="f_logo_desc">f_logo</string>
+    <string name="off_desc">off</string>
+    <string name="shopping_desc">shopping</string>
+    <string name="main_image_desc">main_image</string>
 </resources>
