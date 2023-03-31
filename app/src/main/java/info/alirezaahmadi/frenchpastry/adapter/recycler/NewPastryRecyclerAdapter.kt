@@ -41,22 +41,17 @@ class NewPastryRecyclerAdapter(
             binding.txtPastryName.text = data.title
             binding.txtMainPrice.text = data.price.toString()
 
-            if (data.sale_price != 0) {
+            if (data.has_discount) {
 
                 binding.txtMainPrice.paintFlags =
                     binding.txtMainPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
                 binding.txtMainPrice.setTextColor(Color.GRAY)
 
                 binding.txtOffPrice.text = data.price.toString()
-                binding.txtOff.text = "50%"
+                binding.txtOff.text = data.discount
 
-            } else {
-
-                binding.txtOff.visibility = View.GONE
-                binding.txtOffPrice.visibility = View.GONE
-                binding.imgOff.visibility = View.GONE
-
-            }
+            } else
+                binding.off.visibility = View.GONE
 
             Picasso.get()
                 .load(data.thumbnail)

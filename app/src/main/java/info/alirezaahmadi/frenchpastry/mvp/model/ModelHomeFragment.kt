@@ -22,50 +22,44 @@ class ModelHomeFragment {
                     "news",
                     "",
                     arrayListOf(
-                        PastriesModel("", 2, "https://test.com/test.png", 0, 0),
-                        PastriesModel("", 2, "https://test.com/test.png", 0, 0),
-                        PastriesModel("", 2, "https://test.com/test.png", 0, 0),
-                        PastriesModel("", 2, "https://test.com/test.png", 0, 0),
-                        PastriesModel("", 2, "https://test.com/test.png", 0, 0),
-                        PastriesModel("", 2, "https://test.com/test.png", 0, 0)
+                        PastriesModel("", 2, "https://test.com/test.png", 0, 0, false,"20%"),
+                        PastriesModel("", 2, "https://test.com/test.png", 0, 0, false,"20%"),
+                        PastriesModel("", 2, "https://test.com/test.png", 0, 0, false,"20%"),
+                        PastriesModel("", 2, "https://test.com/test.png", 0, 0, false,"20%"),
+                        PastriesModel("", 2, "https://test.com/test.png", 0, 0, false,"20%"),
+                        PastriesModel("", 2, "https://test.com/test.png", 0, 0, false,"20%")
                     )
                 ),
                 MainPastriesModel(
                     "special",
                     "",
                     arrayListOf(
-                        PastriesModel("", 2, "https://test.com/test.png", 0, 0),
-                        PastriesModel("", 2, "https://test.com/test.png", 0, 0),
-                        PastriesModel("", 2, "https://test.com/test.png", 0, 0),
-                        PastriesModel("", 2, "https://test.com/test.png", 0, 0),
-                        PastriesModel("", 2, "https://test.com/test.png", 0, 0),
-                        PastriesModel("", 2, "https://test.com/test.png", 0, 0)
+                        PastriesModel("", 2, "https://test.com/test.png", 0, 0, false,"20%"),
+                        PastriesModel("", 2, "https://test.com/test.png", 0, 0, false,"20%"),
+                        PastriesModel("", 2, "https://test.com/test.png", 0, 0, false,"20%"),
+                        PastriesModel("", 2, "https://test.com/test.png", 0, 0, false,"20%"),
+                        PastriesModel("", 2, "https://test.com/test.png", 0, 0, false,"20%"),
+                        PastriesModel("", 2, "https://test.com/test.png", 0, 0, false,"20%")
                     )
                 ),
                 MainPastriesModel(
                     "top_rated",
                     "",
                     arrayListOf(
-                        PastriesModel("", 2, "https://test.com/test.png", 0, 0),
-                        PastriesModel("", 2, "https://test.com/test.png", 0, 0),
-                        PastriesModel("", 2, "https://test.com/test.png", 0, 0),
-                        PastriesModel("", 2, "https://test.com/test.png", 0, 0),
-                        PastriesModel("", 2, "https://test.com/test.png", 0, 0),
-                        PastriesModel("", 2, "https://test.com/test.png", 0, 0)
+                        PastriesModel("", 2, "https://test.com/test.png", 0, 0, false,"20%"),
+                        PastriesModel("", 2, "https://test.com/test.png", 0, 0, false,"20%"),
+                        PastriesModel("", 2, "https://test.com/test.png", 0, 0, false,"20%"),
+                        PastriesModel("", 2, "https://test.com/test.png", 0, 0, false,"20%"),
+                        PastriesModel("", 2, "https://test.com/test.png", 0, 0, false,"20%"),
+                        PastriesModel("", 2, "https://test.com/test.png", 0, 0, false,"20%")
                     )
                 )
             ),
             arrayListOf(
+                BannersModel("image", "http://test.com/test.png"),
                 BannersModel("image", "http://test.com/test.png")
             )
         )
-    )
-
-    fun getUrl() = arrayListOf(
-        SliderModel("https://www.daneshjooyar.com/wp-content/terand-1536x864.jpg"),
-        SliderModel("https://www.daneshjooyar.com/wp-content/terand-1536x864.jpg"),
-        SliderModel("https://www.daneshjooyar.com/wp-content/terand-1536x864.jpg"),
-        SliderModel("https://www.daneshjooyar.com/wp-content/terand-1536x864.jpg")
     )
 
     fun getContent(callbackRequest: CallbackRequest<RequestMain>) {

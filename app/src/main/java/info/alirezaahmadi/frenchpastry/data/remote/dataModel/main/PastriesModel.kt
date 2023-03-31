@@ -5,5 +5,7 @@ data class PastriesModel(
     val min_order: Int,
     val thumbnail: String,
     val price: Int,
-    val sale_price: Int
+    val sale_price: Int,
+    val has_discount: Boolean,
+    val discount: String
 )

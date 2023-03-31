@@ -35,11 +35,15 @@ class ViewHomeFragment(
 
     }
 
-    fun setViewPagerFaceData(data: ArrayList<SliderModel>) {
+    fun setFaceData(data: ArrayList<RequestMain>) {
 
         binding.sliderViewPager.layoutDirection = View.LAYOUT_DIRECTION_RTL
+        binding.newPastryRecycler.getRecycler().layoutManager =
+            LinearLayoutManager(context, RecyclerView.HORIZONTAL, true)
 
-        activityUtils.setViewPagerFragment(binding.sliderViewPager, data)
+        activityUtils.setViewPagerFragment(binding.sliderViewPager, data[0].sliders)
+        binding.newPastryRecycler.getRecycler().adapter =
+            NewPastryRecyclerAdapter(data[0].pastries[0].pastries)
 
     }
 

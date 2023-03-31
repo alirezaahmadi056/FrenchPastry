@@ -21,7 +21,7 @@ class PresenterHomeFragment(
 
     private fun createSlider() {
 
-        view.setViewPagerFaceData(model.getUrl())
+        view.setFaceData(model.faceData)
 
         if (NetworkInfo.internetInfo(context, this))
             sendRequest()
