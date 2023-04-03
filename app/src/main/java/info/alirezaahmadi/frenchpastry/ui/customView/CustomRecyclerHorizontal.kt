@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
+import info.alirezaahmadi.frenchpastry.R
 import info.alirezaahmadi.frenchpastry.databinding.CustomMainRecyclerHorizontalBinding
 
 class CustomRecyclerHorizontal(
@@ -21,8 +22,19 @@ class CustomRecyclerHorizontal(
 
         addView(binding.root)
 
+        initialized(attrs)
+
     }
 
     fun getRecycler() = binding.recyclerView
+
+    private fun initialized(attrs: AttributeSet){
+
+        val typeArray = context.obtainStyledAttributes(attrs, R.styleable.CustomRecyclerHorizontal)
+        val title = typeArray.getString(R.styleable.CustomRecyclerHorizontal_title)
+        binding.txtTitle.text = title
+        typeArray.recycle()
+
+    }
 
 }

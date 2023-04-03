@@ -14,4 +14,8 @@
         <attr name="buttonWhite" format="boolean"/>
     </declare-styleable>
 
+    <declare-styleable name="CustomRecyclerHorizontal">
+        <attr name="title" format="string"/>
+    </declare-styleable>
+
 </resources>

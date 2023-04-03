@@ -11,7 +11,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:background="@color/white_main"
-        android:layout_height="65dp"
+        android:layout_height="55dp"
         android:layoutDirection="rtl"
         android:theme="@style/ThemeOverlay.AppCompat.Dark"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,7 +21,7 @@
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="wrap_content"
-        android:layout_height="55dp"
+        android:layout_height="45dp"
         android:contentDescription="@string/logo_main_desc"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar"
         app:layout_constraintEnd_toEndOf="@+id/toolbar"
@@ -79,5 +79,13 @@
         android:layout_height="wrap_content"
         android:visibility="invisible"
         app:constraint_referenced_ids="view6,txtAlertCount"/>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="3dp"
+        android:background="@drawable/back_top_view_bottom_nav"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar"
+        app:layout_constraintStart_toStartOf="@+id/toolbar"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

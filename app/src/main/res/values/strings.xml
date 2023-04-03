@@ -41,4 +41,14 @@
     <string name="off_desc">off</string>
     <string name="shopping_desc">shopping</string>
     <string name="main_image_desc">main_image</string>
+    <string name="banner_desc">banner</string>
+    <string name="close_desc">close</string>
+    <string name="special_cake">کیک اختصاصی</string>
+    <string name="orders_desc">orders</string>
+    <string name="support_desc">support</string>
+    <string name="about_desc">about</string>
+    <string name="contact_desc">contact</string>
+    <string name="update_desc">update</string>
+    <string name="logout_desc">logout</string>
+    <string name="image_desc">image</string>
 </resources>

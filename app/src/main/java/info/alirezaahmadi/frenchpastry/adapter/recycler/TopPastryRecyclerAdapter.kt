@@ -12,9 +12,9 @@ import info.alirezaahmadi.frenchpastry.R
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.main.PastriesModel
 import info.alirezaahmadi.frenchpastry.databinding.RecyclerItemMainVerticalBinding
 
-class SpecialOfferPastryRecyclerAdapter(
+class TopPastryRecyclerAdapter(
     private val pastries: ArrayList<PastriesModel>
-) : RecyclerView.Adapter<SpecialOfferPastryRecyclerAdapter.SpecialOfferPastryViewHolder>() {
+) : RecyclerView.Adapter<TopPastryRecyclerAdapter.SpecialOfferPastryViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -39,36 +39,28 @@ class SpecialOfferPastryRecyclerAdapter(
 
         fun setData(data: PastriesModel, position: Int) {
 
-            if (position == 0) {
+            binding.root.visibility = View.VISIBLE
+            binding.txtPastryName.text = data.title
+            binding.txtMainPrice.text = data.price.toString()
 
-                binding.root.visibility = View.INVISIBLE
+            if (data.has_discount) {
 
-            } else {
+                binding.txtMainPrice.paintFlags =
+                    binding.txtMainPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                binding.txtMainPrice.setTextColor(Color.GRAY)
 
-                binding.root.visibility = View.VISIBLE
-                binding.txtPastryName.text = data.title
-                binding.txtMainPrice.text = data.price.toString()
+                binding.txtOffPrice.text = data.price.toString()
+                binding.txtOff.text = data.discount
 
-                if (data.has_discount) {
+            } else
+                binding.off.visibility = View.GONE
 
-                    binding.txtMainPrice.paintFlags =
-                        binding.txtMainPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
-                    binding.txtMainPrice.setTextColor(Color.GRAY)
-
-                    binding.txtOffPrice.text = data.price.toString()
-                    binding.txtOff.text = data.discount
-
-                } else
-                    binding.off.visibility = View.GONE
-
-                Picasso.get()
-                    .load(data.thumbnail)
-                    .fit()
-                    .placeholder(R.drawable.img_place_holder)
-                    .error(R.drawable.img_place_holder)
-                    .into(binding.imgPastry)
-
-            }
+            Picasso.get()
+                .load(data.thumbnail)
+                .fit()
+                .placeholder(R.drawable.img_place_holder)
+                .error(R.drawable.img_place_holder)
+                .into(binding.imgPastry)
 
         }
 

@@ -5,9 +5,14 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
+import info.alirezaahmadi.frenchpastry.R
 import info.alirezaahmadi.frenchpastry.adapter.recycler.NewPastryRecyclerAdapter
+import info.alirezaahmadi.frenchpastry.adapter.recycler.SpecialOfferPastryRecyclerAdapter
+import info.alirezaahmadi.frenchpastry.adapter.recycler.TopPastryRecyclerAdapter
 import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.main.RequestMain
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.main.SliderModel
@@ -25,25 +30,52 @@ class ViewHomeFragment(
 
     fun initialized(data: RequestMain) {
 
-        binding.sliderViewPager.layoutDirection = View.LAYOUT_DIRECTION_RTL
-        binding.newPastryRecycler.getRecycler().layoutManager =
-            LinearLayoutManager(context, RecyclerView.HORIZONTAL, true)
-
         activityUtils.setViewPagerFragment(binding.sliderViewPager, data.sliders)
+
         binding.newPastryRecycler.getRecycler().adapter =
             NewPastryRecyclerAdapter(data.pastries[0].pastries)
 
+        binding.specialOfferPastryRecycler.getRecycler().adapter =
+            SpecialOfferPastryRecyclerAdapter(data.pastries[1].pastries)
+
+        binding.topPastryRecycler.getRecycler().adapter =
+            TopPastryRecyclerAdapter(data.pastries[2].pastries)
+
+        Picasso.get()
+            .load(data.banners[0].large)
+            .fit()
+            .placeholder(R.drawable.img_place_holder)
+            .error(R.drawable.img_place_holder)
+            .into(binding.imgBanner)
+
     }
 
-    fun setFaceData(data: ArrayList<RequestMain>) {
+    fun setFaceData(data: RequestMain) {
 
         binding.sliderViewPager.layoutDirection = View.LAYOUT_DIRECTION_RTL
+        activityUtils.setViewPagerFragment(binding.sliderViewPager, data.sliders)
+
         binding.newPastryRecycler.getRecycler().layoutManager =
             LinearLayoutManager(context, RecyclerView.HORIZONTAL, true)
-
-        activityUtils.setViewPagerFragment(binding.sliderViewPager, data[0].sliders)
         binding.newPastryRecycler.getRecycler().adapter =
-            NewPastryRecyclerAdapter(data[0].pastries[0].pastries)
+            NewPastryRecyclerAdapter(data.pastries[0].pastries)
+
+        binding.specialOfferPastryRecycler.getRecycler().layoutManager =
+            LinearLayoutManager(context, RecyclerView.HORIZONTAL, true)
+        binding.specialOfferPastryRecycler.getRecycler().adapter =
+            SpecialOfferPastryRecyclerAdapter(data.pastries[1].pastries)
+
+        binding.topPastryRecycler.getRecycler().layoutManager =
+            GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
+        binding.topPastryRecycler.getRecycler().adapter =
+            TopPastryRecyclerAdapter(data.pastries[2].pastries)
+
+        Picasso.get()
+            .load(data.banners[0].large)
+            .fit()
+            .placeholder(R.drawable.img_place_holder)
+            .error(R.drawable.img_place_holder)
+            .into(binding.imgBanner)
 
     }
 
