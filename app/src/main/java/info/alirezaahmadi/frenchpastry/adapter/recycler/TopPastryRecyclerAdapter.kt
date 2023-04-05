@@ -11,6 +11,7 @@ import com.squareup.picasso.Picasso
 import info.alirezaahmadi.frenchpastry.R
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.main.PastriesModel
 import info.alirezaahmadi.frenchpastry.databinding.RecyclerItemMainVerticalBinding
+import info.alirezaahmadi.frenchpastry.mvp.ext.PriceHandler
 
 class TopPastryRecyclerAdapter(
     private val pastries: ArrayList<PastriesModel>
@@ -30,18 +31,18 @@ class TopPastryRecyclerAdapter(
     override fun getItemCount() = pastries.size
 
     override fun onBindViewHolder(holder: SpecialOfferPastryViewHolder, position: Int) {
-        holder.setData(pastries[position], position)
+        holder.setData(pastries[position])
     }
 
     inner class SpecialOfferPastryViewHolder(
         private val binding: RecyclerItemMainVerticalBinding
     ) : ViewHolder(binding.root) {
 
-        fun setData(data: PastriesModel, position: Int) {
+        fun setData(data: PastriesModel) {
 
             binding.root.visibility = View.VISIBLE
             binding.txtPastryName.text = data.title
-            binding.txtMainPrice.text = data.price.toString()
+            binding.txtMainPrice.text = PriceHandler.changePrice(data.price).toString()
 
             if (data.has_discount) {
 
@@ -49,7 +50,7 @@ class TopPastryRecyclerAdapter(
                     binding.txtMainPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
                 binding.txtMainPrice.setTextColor(Color.GRAY)
 
-                binding.txtOffPrice.text = data.price.toString()
+                binding.txtOffPrice.text = PriceHandler.changePrice(data.sale_price).toString()
                 binding.txtOff.text = data.discount
 
             } else

@@ -11,6 +11,7 @@ import com.squareup.picasso.Picasso
 import info.alirezaahmadi.frenchpastry.R
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.main.PastriesModel
 import info.alirezaahmadi.frenchpastry.databinding.RecyclerItemMainVerticalBinding
+import info.alirezaahmadi.frenchpastry.mvp.ext.PriceHandler
 
 class SpecialOfferPastryRecyclerAdapter(
     private val pastries: ArrayList<PastriesModel>
@@ -47,7 +48,7 @@ class SpecialOfferPastryRecyclerAdapter(
 
                 binding.root.visibility = View.VISIBLE
                 binding.txtPastryName.text = data.title
-                binding.txtMainPrice.text = data.price.toString()
+                binding.txtMainPrice.text = PriceHandler.changePrice(data.price).toString()
 
                 if (data.has_discount) {
 
@@ -55,7 +56,7 @@ class SpecialOfferPastryRecyclerAdapter(
                         binding.txtMainPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
                     binding.txtMainPrice.setTextColor(Color.GRAY)
 
-                    binding.txtOffPrice.text = data.price.toString()
+                    binding.txtOffPrice.text = PriceHandler.changePrice(data.sale_price).toString()
                     binding.txtOff.text = data.discount
 
                 } else

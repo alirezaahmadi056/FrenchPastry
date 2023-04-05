@@ -14,4 +14,6 @@
     <dimen name="button_normal_size">16sp</dimen>
     <dimen name="button_large_size">18sp</dimen>
 
+    <dimen name="circle_main_slider_size">10dp</dimen>
+
 </resources>

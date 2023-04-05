@@ -14,7 +14,7 @@
             android:id="@+id/sliderViewPager"
             android:layout_margin="8dp"
             android:layout_width="match_parent"
-            android:layout_height="210dp"/>
+            android:layout_height="230dp"/>
 
         <info.alirezaahmadi.frenchpastry.ui.customView.CustomRecyclerHorizontal
             android:id="@+id/newPastryRecycler"

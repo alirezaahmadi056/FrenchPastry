@@ -3,6 +3,7 @@ package info.alirezaahmadi.frenchpastry.ui.activity
 import android.os.Bundle
 import android.view.View
 import android.view.View.OnClickListener
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import info.alirezaahmadi.frenchpastry.R
 import info.alirezaahmadi.frenchpastry.databinding.ActivityNavDrawerBinding
@@ -24,6 +25,22 @@ class NavDrawerActivity : AppCompatActivity(), OnClickListener {
         binding.txtUpgrade.setOnClickListener(this)
         binding.txtLogout.setOnClickListener(this)
         binding.imgCloseNav.setOnClickListener(this)
+
+        onBack()
+
+    }
+
+    private fun onBack(){
+
+        onBackPressedDispatcher.addCallback(
+            this /* lifecycle owner */,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    // Back is pressed... Finishing the activity
+                    finish()
+                    overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out)
+                }
+            })
 
     }
 
