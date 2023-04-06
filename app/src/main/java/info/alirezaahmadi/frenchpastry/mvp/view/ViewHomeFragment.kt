@@ -8,7 +8,6 @@ import android.widget.FrameLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
 import com.squareup.picasso.Picasso
 import info.alirezaahmadi.frenchpastry.R
 import info.alirezaahmadi.frenchpastry.adapter.recycler.NewPastryRecyclerAdapter
@@ -16,7 +15,6 @@ import info.alirezaahmadi.frenchpastry.adapter.recycler.SpecialOfferPastryRecycl
 import info.alirezaahmadi.frenchpastry.adapter.recycler.TopPastryRecyclerAdapter
 import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.main.RequestMain
-import info.alirezaahmadi.frenchpastry.data.remote.dataModel.main.SliderModel
 import info.alirezaahmadi.frenchpastry.databinding.FragmentHomeBinding
 import info.alirezaahmadi.frenchpastry.mvp.ext.ToastUtils
 

@@ -1,8 +1,6 @@
 package info.alirezaahmadi.frenchpastry.ui.fragment
 
-import android.content.res.Resources
 import android.os.Bundle
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
 import info.alirezaahmadi.frenchpastry.R
 import info.alirezaahmadi.frenchpastry.databinding.FragmentMainImageSliderBinding
+import info.alirezaahmadi.frenchpastry.mvp.ext.OthersUtilities
 
 class MainSliderFragment(
     private val url: String,
@@ -28,8 +27,9 @@ class MainSliderFragment(
         count.forEach {
 
             val view = View(context)
-            val param = ViewGroup.MarginLayoutParams(test(10f), test(10f))
-            param.marginEnd = test(8f)
+            val size = OthersUtilities.getPixel(10f, resources)
+            val param = ViewGroup.MarginLayoutParams(size, size)
+            param.marginEnd = OthersUtilities.getPixel(8f, resources)
             view.layoutParams = param
 
             if (it == position)
@@ -50,17 +50,6 @@ class MainSliderFragment(
             .into(binding.imgSlider)
 
         return binding.root
-
-    }
-
-    fun test(dip: Float): Int {
-
-        val r: Resources = resources
-        return TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP,
-            dip,
-            r.displayMetrics
-        ).toInt()
 
     }
 
