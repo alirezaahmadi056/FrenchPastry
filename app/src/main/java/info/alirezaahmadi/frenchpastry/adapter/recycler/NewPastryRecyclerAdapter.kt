@@ -54,12 +54,13 @@ class NewPastryRecyclerAdapter(
             } else
                 binding.off.visibility = View.GONE
 
-            Picasso.get()
-                .load(data.thumbnail)
-                .fit()
-                .placeholder(R.drawable.img_place_holder)
-                .error(R.drawable.img_place_holder)
-                .into(binding.imgPastry)
+            if (data.thumbnail.isNotEmpty())
+                Picasso.get()
+                    .load(data.thumbnail)
+                    .fit()
+                    .placeholder(R.drawable.img_place_holder)
+                    .error(R.drawable.img_place_holder)
+                    .into(binding.imgPastry)
 
         }
     }

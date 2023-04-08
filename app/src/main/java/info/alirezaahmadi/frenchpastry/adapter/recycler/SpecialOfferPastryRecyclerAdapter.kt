@@ -56,18 +56,20 @@ class SpecialOfferPastryRecyclerAdapter(
                         binding.txtMainPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
                     binding.txtMainPrice.setTextColor(Color.GRAY)
 
-                    binding.txtOffPrice.text = OthersUtilities.changePrice(data.sale_price).toString()
+                    binding.txtOffPrice.text =
+                        OthersUtilities.changePrice(data.sale_price).toString()
                     binding.txtOff.text = data.discount
 
                 } else
                     binding.off.visibility = View.GONE
 
-                Picasso.get()
-                    .load(data.thumbnail)
-                    .fit()
-                    .placeholder(R.drawable.img_place_holder)
-                    .error(R.drawable.img_place_holder)
-                    .into(binding.imgPastry)
+                if (data.thumbnail.isNotEmpty())
+                    Picasso.get()
+                        .load(data.thumbnail)
+                        .fit()
+                        .placeholder(R.drawable.img_place_holder)
+                        .error(R.drawable.img_place_holder)
+                        .into(binding.imgPastry)
 
             }
 

@@ -17,6 +17,8 @@ class PresenterPastryCatsFragment(
 
     override fun onCreate() {
 
+        view.setFakeData(model.fakeData)
+
         if (NetworkInfo.internetInfo(context, this))
             getCats()
 
@@ -33,7 +35,7 @@ class PresenterPastryCatsFragment(
             object : CallbackRequest<PastryCategoryModel> {
 
                 override fun onSuccess(code: Int, data: PastryCategoryModel) {
-                    view.setDataRecycler(data.categories)
+                    view.setDataRecycler(data)
                 }
 
                 override fun onNotSuccess(code: Int, error: String, message: String) {

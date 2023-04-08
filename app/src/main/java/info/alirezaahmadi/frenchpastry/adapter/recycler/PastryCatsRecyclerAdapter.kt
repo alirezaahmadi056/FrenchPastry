@@ -38,12 +38,13 @@ class PastryCatsRecyclerAdapter(
 
             binding.txtCategory.text = data.title
 
-            Picasso.get()
-                .load(data.thumbnail)
-                .fit()
-                .placeholder(R.drawable.ic_pastry_place_holder)
-                .error(R.drawable.ic_pastry_place_holder)
-                .into(binding.imgCategory)
+            if (data.thumbnail.isNotEmpty())
+                Picasso.get()
+                    .load(data.thumbnail)
+                    .fit()
+                    .placeholder(R.drawable.ic_pastry_place_holder)
+                    .error(R.drawable.ic_pastry_place_holder)
+                    .into(binding.imgCategory)
 
         }
 

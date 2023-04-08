@@ -31,6 +31,7 @@ class ViewHomeFragment(
 
         activityUtils.setViewPagerFragment(binding.sliderViewPager, data.sliders)
 
+        //todo change to recycler.addAll(pastry)
         binding.newPastryRecycler.getRecycler().adapter =
             NewPastryRecyclerAdapter(data.pastries[0].pastries)
 
@@ -40,16 +41,17 @@ class ViewHomeFragment(
         binding.topPastryRecycler.getRecycler().adapter =
             TopPastryRecyclerAdapter(data.pastries[2].pastries)
 
-        Picasso.get()
-            .load(data.banners[0].large)
-            .fit()
-            .placeholder(R.drawable.img_place_holder)
-            .error(R.drawable.img_place_holder)
-            .into(binding.imgBanner)
+        if (data.banners.isNotEmpty() && data.banners[0].large.isNotEmpty())
+            Picasso.get()
+                .load(data.banners[0].large)
+                .fit()
+                .placeholder(R.drawable.img_place_holder)
+                .error(R.drawable.img_place_holder)
+                .into(binding.imgBanner)
 
     }
 
-    fun setFaceData(data: RequestMain) {
+    fun setFakeData(data: RequestMain) {
 
         binding.sliderViewPager.layoutDirection = View.LAYOUT_DIRECTION_RTL
         activityUtils.setViewPagerFragment(binding.sliderViewPager, data.sliders)
