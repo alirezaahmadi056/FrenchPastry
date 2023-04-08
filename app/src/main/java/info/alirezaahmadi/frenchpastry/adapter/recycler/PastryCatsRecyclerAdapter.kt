@@ -41,8 +41,8 @@ class PastryCatsRecyclerAdapter(
             Picasso.get()
                 .load(data.thumbnail)
                 .fit()
-                .placeholder(R.drawable.img_place_holder)
-                .error(R.drawable.img_place_holder)
+                .placeholder(R.drawable.ic_pastry_place_holder)
+                .error(R.drawable.ic_pastry_place_holder)
                 .into(binding.imgCategory)
 
         }

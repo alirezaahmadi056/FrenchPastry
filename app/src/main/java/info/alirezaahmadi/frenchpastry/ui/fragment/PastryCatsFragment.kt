@@ -21,7 +21,7 @@ class PastryCatsFragment(
     ): View {
 
         val view = ViewPastryCatsFragment(mContext)
-        val presenter = PresenterPastryCatsFragment(view, ModelPastryCatsFragment())
+        val presenter = PresenterPastryCatsFragment(view, ModelPastryCatsFragment(), mContext)
         presenter.onCreate()
         return view.binding.root
 

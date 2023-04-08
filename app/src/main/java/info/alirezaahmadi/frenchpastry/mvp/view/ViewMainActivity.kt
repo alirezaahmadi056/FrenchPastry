@@ -10,6 +10,7 @@ import info.alirezaahmadi.frenchpastry.databinding.ActivityMainBinding
 import info.alirezaahmadi.frenchpastry.ui.customView.bottomNav.ActiveFragment
 import info.alirezaahmadi.frenchpastry.ui.customView.bottomNav.FragmentType
 import info.alirezaahmadi.frenchpastry.ui.fragment.HomeFragment
+import info.alirezaahmadi.frenchpastry.ui.fragment.PastryCatsFragment
 
 @SuppressLint("ViewConstructor")
 class ViewMainActivity(
@@ -37,7 +38,7 @@ class ViewMainActivity(
         val fragment = when(type){
             FragmentType.HOME -> HomeFragment(context, activityUtils)
             FragmentType.CAKE -> Fragment()
-            FragmentType.PASTRY -> Fragment()
+            FragmentType.PASTRY -> PastryCatsFragment(context)
             FragmentType.PROFILE -> Fragment()
         }
 
