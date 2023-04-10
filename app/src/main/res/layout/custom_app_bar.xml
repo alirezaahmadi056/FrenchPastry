@@ -7,7 +7,7 @@
     android:layoutDirection="ltr"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.appcompat.widget.Toolbar
+    <View
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:background="@color/white_main"
@@ -33,10 +33,10 @@
         android:id="@+id/imgAlert"
         android:layout_width="26dp"
         android:layout_height="26dp"
+        android:layout_marginStart="12dp"
         android:contentDescription="@string/alert_icon_desc"
-        android:layout_marginStart="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar"
-        app:layout_constraintStart_toStartOf="@+id/toolbar"
+        app:layout_constraintStart_toEndOf="@+id/imgBack"
         app:layout_constraintTop_toTopOf="@+id/toolbar"
         app:srcCompat="@drawable/ic_alert" />
 
@@ -81,11 +81,24 @@
         app:constraint_referenced_ids="view6,txtAlertCount"/>
 
     <View
+        android:id="@+id/view"
         android:layout_width="0dp"
         android:layout_height="3dp"
         android:background="@drawable/back_top_view_bottom_nav"
         app:layout_constraintEnd_toEndOf="@+id/toolbar"
         app:layout_constraintStart_toStartOf="@+id/toolbar"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <ImageView
+        android:id="@+id/imgBack"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:visibility="gone"
+        android:contentDescription="@string/arrow_desc"
+        android:layout_marginStart="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_left" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

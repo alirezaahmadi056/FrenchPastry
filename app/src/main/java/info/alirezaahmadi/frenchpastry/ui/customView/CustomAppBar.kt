@@ -4,7 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.FrameLayout
+import info.alirezaahmadi.frenchpastry.R
 import info.alirezaahmadi.frenchpastry.databinding.CustomAppBarBinding
 import info.alirezaahmadi.frenchpastry.ui.activity.NavDrawerActivity
 
@@ -19,6 +21,21 @@ class CustomAppBar(
     init {
 
         addView(binding.root)
+
+        initialize(attrs)
+
+    }
+
+    private fun initialize(attrs: AttributeSet) {
+
+        val typeArray = context.obtainStyledAttributes(attrs, R.styleable.CustomAppBar)
+
+        val isBack = typeArray.getBoolean(R.styleable.CustomAppBar_backIcon, false)
+
+        if (isBack)
+            binding.imgBack.visibility = View.VISIBLE
+
+        typeArray.recycle()
 
     }
 

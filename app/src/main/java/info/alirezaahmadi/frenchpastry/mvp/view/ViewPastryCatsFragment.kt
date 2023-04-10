@@ -25,7 +25,6 @@ class ViewPastryCatsFragment(
         //todo change to recycler.addAll(cats)
         binding.recyclerPastryCats.adapter = PastryCatsRecyclerAdapter(cats.categories)
 
-        //todo change place holder radius
         if (cats.banner.isNotEmpty())
             Picasso.get()
                 .load(cats.banner)

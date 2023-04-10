@@ -45,8 +45,8 @@ class ViewHomeFragment(
             Picasso.get()
                 .load(data.banners[0].large)
                 .fit()
-                .placeholder(R.drawable.img_place_holder)
-                .error(R.drawable.img_place_holder)
+                .placeholder(R.drawable.img_banner_place_holder)
+                .error(R.drawable.img_banner_place_holder)
                 .into(binding.imgBanner)
 
     }

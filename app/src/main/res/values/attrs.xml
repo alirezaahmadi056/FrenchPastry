@@ -18,4 +18,8 @@
         <attr name="title" format="string"/>
     </declare-styleable>
 
+    <declare-styleable name="CustomAppBar">
+        <attr name="backIcon" format="boolean"/>
+    </declare-styleable>
+
 </resources>

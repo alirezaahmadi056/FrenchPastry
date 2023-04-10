@@ -16,6 +16,9 @@
         android:theme="@style/Theme.FrenchPastry"
         tools:targetApi="32">
         <activity
+            android:name=".DetailPastryActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.NavDrawerActivity"
             android:exported="false" />
         <activity
@@ -32,7 +35,7 @@
         </activity>
         <activity
             android:name=".ui.activity.MainActivity"
-            android:exported="false"/>
+            android:exported="false" />
     </application>
 
 </manifest>
