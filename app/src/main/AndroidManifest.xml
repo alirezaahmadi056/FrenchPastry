@@ -16,7 +16,10 @@
         android:theme="@style/Theme.FrenchPastry"
         tools:targetApi="32">
         <activity
-            android:name=".DetailPastryActivity"
+            android:name=".ui.activity.ListCategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.DetailPastryActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activity.NavDrawerActivity"

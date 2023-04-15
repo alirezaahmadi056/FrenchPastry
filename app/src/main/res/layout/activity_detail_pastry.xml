@@ -22,8 +22,150 @@
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:contentDescription="@string/f_logo_desc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/customAppBar2"
         app:srcCompat="@drawable/ic_f" />
+
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:textColor="@color/color_text_black"
+        android:textSize="@dimen/heading_large_size"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView8"
+        app:layout_constraintEnd_toStartOf="@+id/imageView8"
+        app:layout_constraintTop_toTopOf="@+id/imageView8"
+        tools:text="کیک پروانه ای (1 کیلو)" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPagerSlider"
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgComment" />
+
+    <ImageView
+        android:id="@+id/imgComment"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/comment_desc"
+        app:layout_constraintStart_toStartOf="@+id/viewPagerSlider"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitle"
+        app:srcCompat="@drawable/ic_messages" />
+
+    <View
+        android:id="@+id/view11"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:background="@drawable/back_circle_comment_count"
+        app:layout_constraintBottom_toBottomOf="@+id/imgComment"
+        app:layout_constraintEnd_toEndOf="@+id/imgComment"
+        app:layout_constraintStart_toEndOf="@+id/imgComment"
+        app:layout_constraintTop_toTopOf="@+id/imgComment"
+        app:layout_constraintVertical_bias="0.8" />
+
+    <TextView
+        android:id="@+id/txtCommentCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white_main"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@+id/view11"
+        app:layout_constraintEnd_toEndOf="@+id/view11"
+        app:layout_constraintStart_toStartOf="@+id/view11"
+        app:layout_constraintTop_toTopOf="@+id/view11"
+        tools:text="55" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/commentCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="view11,txtCommentCount" />
+
+    <View
+        android:id="@+id/view12"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_marginVertical="3dp"
+        android:layout_marginStart="10dp"
+        android:background="@color/gray_main"
+        app:layout_constraintBottom_toBottomOf="@+id/imgComment"
+        app:layout_constraintStart_toEndOf="@+id/view11"
+        app:layout_constraintTop_toTopOf="@+id/imgComment" />
+
+    <ImageView
+        android:id="@+id/imgShare"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        android:contentDescription="@string/share_desc"
+        app:layout_constraintBottom_toBottomOf="@+id/imgComment"
+        app:layout_constraintStart_toEndOf="@+id/view12"
+        app:layout_constraintTop_toTopOf="@+id/imgComment"
+        app:srcCompat="@drawable/ic_share" />
+
+    <View
+        android:id="@+id/view13"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_marginVertical="3dp"
+        android:layout_marginStart="8dp"
+        android:background="@color/gray_main"
+        app:layout_constraintBottom_toBottomOf="@+id/imgShare"
+        app:layout_constraintStart_toEndOf="@+id/imgShare"
+        app:layout_constraintTop_toTopOf="@+id/imgShare" />
+
+    <ImageView
+        android:id="@+id/imgFavorite"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="8dp"
+        android:contentDescription="@string/favorite_desc"
+        app:layout_constraintBottom_toBottomOf="@+id/imgShare"
+        app:layout_constraintStart_toEndOf="@+id/view13"
+        app:layout_constraintTop_toTopOf="@+id/imgShare"
+        app:srcCompat="@drawable/ic_favorite" />
+
+    <View
+        android:id="@+id/view14"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_marginVertical="3dp"
+        android:layout_marginStart="8dp"
+        android:background="@color/gray_main"
+        app:layout_constraintBottom_toBottomOf="@+id/imgShare"
+        app:layout_constraintStart_toEndOf="@+id/imgFavorite"
+        app:layout_constraintTop_toTopOf="@+id/imgShare" />
+
+    <ImageView
+        android:id="@+id/imgStar"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:contentDescription="@string/star_desc"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgShare"
+        app:layout_constraintStart_toEndOf="@+id/view14"
+        app:layout_constraintTop_toTopOf="@+id/imgShare"
+        app:srcCompat="@drawable/ic_star" />
+
+    <TextView
+        android:id="@+id/txtRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/color_text_black"
+        android:textSize="@dimen/text_small_size"
+        tools:text="4.5"
+        app:layout_constraintBottom_toBottomOf="@+id/imgStar"
+        app:layout_constraintStart_toEndOf="@+id/imgStar"
+        app:layout_constraintTop_toTopOf="@+id/imgStar"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -52,4 +52,8 @@
     <string name="logout_desc">logout</string>
     <string name="image_desc">image</string>
     <string name="category_desc">category</string>
+    <string name="comment_desc">comment</string>
+    <string name="share_desc">share</string>
+    <string name="favorite_desc">imgFavorite</string>
+    <string name="star_desc">star</string>
 </resources>

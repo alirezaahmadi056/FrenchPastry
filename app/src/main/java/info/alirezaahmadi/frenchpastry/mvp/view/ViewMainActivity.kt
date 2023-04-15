@@ -1,6 +1,5 @@
 package info.alirezaahmadi.frenchpastry.mvp.view
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.widget.FrameLayout
@@ -12,11 +11,18 @@ import info.alirezaahmadi.frenchpastry.ui.customView.bottomNav.FragmentType
 import info.alirezaahmadi.frenchpastry.ui.fragment.HomeFragment
 import info.alirezaahmadi.frenchpastry.ui.fragment.PastryCatsFragment
 
-@SuppressLint("ViewConstructor")
-class ViewMainActivity(
-    contextInstance: Context,
-    private val activityUtils: ActivityUtils
-) : FrameLayout(contextInstance), ActiveFragment {
+class ViewMainActivity : FrameLayout, ActiveFragment {
+
+    private lateinit var activityUtils: ActivityUtils
+
+    constructor(contextInstance: Context) : super(contextInstance)
+
+    constructor(
+        contextInstance: Context,
+        actUtils: ActivityUtils
+    ) : super(contextInstance) {
+        activityUtils = actUtils
+    }
 
     private val inflater = LayoutInflater.from(context)
     val binding = ActivityMainBinding.inflate(inflater)

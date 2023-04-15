@@ -1,6 +1,5 @@
 package info.alirezaahmadi.frenchpastry.mvp.view
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -18,11 +17,18 @@ import info.alirezaahmadi.frenchpastry.data.remote.dataModel.main.RequestMain
 import info.alirezaahmadi.frenchpastry.databinding.FragmentHomeBinding
 import info.alirezaahmadi.frenchpastry.mvp.ext.ToastUtils
 
-@SuppressLint("ViewConstructor")
-class ViewHomeFragment(
-    contextInstance: Context,
-    private val activityUtils: ActivityUtils
-) : FrameLayout(contextInstance) {
+class ViewHomeFragment : FrameLayout {
+
+    private lateinit var activityUtils: ActivityUtils
+
+    constructor(contextInstance: Context) : super(contextInstance)
+
+    constructor(
+        contextInstance: Context,
+        actUtils: ActivityUtils
+    ) : super(contextInstance) {
+        activityUtils = actUtils
+    }
 
     val binding =
         FragmentHomeBinding.inflate(LayoutInflater.from(context))

@@ -23,7 +23,7 @@ class ViewPastryCatsFragment(
     fun setDataRecycler(cats: PastryCategoryModel) {
 
         //todo change to recycler.addAll(cats)
-        binding.recyclerPastryCats.adapter = PastryCatsRecyclerAdapter(cats.categories)
+        binding.recyclerPastryCats.adapter = PastryCatsRecyclerAdapter(cats.categories, context)
 
         if (cats.banner.isNotEmpty())
             Picasso.get()
@@ -40,7 +40,7 @@ class ViewPastryCatsFragment(
         binding.recyclerPastryCats.layoutManager =
             GridLayoutManager(context, 3, RecyclerView.VERTICAL, false)
 
-        binding.recyclerPastryCats.adapter = PastryCatsRecyclerAdapter(cats.categories)
+        binding.recyclerPastryCats.adapter = PastryCatsRecyclerAdapter(cats.categories, context)
 
         Picasso.get()
             .load(cats.banner)
