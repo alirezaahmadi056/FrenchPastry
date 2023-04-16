@@ -3,53 +3,55 @@ package info.alirezaahmadi.frenchpastry.mvp.presenter
 import android.content.Context
 import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
 import info.alirezaahmadi.frenchpastry.androidWrapper.NetworkInfo
-import info.alirezaahmadi.frenchpastry.data.remote.dataModel.RequestMain
+import info.alirezaahmadi.frenchpastry.data.remote.dataModel.ListPastriesModel
 import info.alirezaahmadi.frenchpastry.data.remote.ext.CallbackRequest
 import info.alirezaahmadi.frenchpastry.mvp.ext.BaseLifeCycle
-import info.alirezaahmadi.frenchpastry.mvp.model.ModelHomeFragment
-import info.alirezaahmadi.frenchpastry.mvp.view.ViewHomeFragment
+import info.alirezaahmadi.frenchpastry.mvp.model.ModelListPastryActivity
+import info.alirezaahmadi.frenchpastry.mvp.view.ViewListPastryActivity
 
-class PresenterHomeFragment(
-    private val view: ViewHomeFragment,
-    private val model: ModelHomeFragment,
+class PresenterListPastryActivity(
+    private val view: ViewListPastryActivity,
+    private val model: ModelListPastryActivity,
     private val context: Context
 ) : BaseLifeCycle, ActivityUtils {
 
     override fun onCreate() {
-        createSlider()
-    }
 
-    private fun createSlider() {
-
-        view.setFakeData(model.fakeData[0])
+        onBackClick()
 
         if (NetworkInfo.internetInfo(context, this))
-            sendRequest()
+            getPastries()
 
     }
 
     override fun activeNetwork() {
-        sendRequest()
+        getPastries()
     }
 
-    private fun sendRequest() {
+    private fun onBackClick() {
+        view.onBack()
+    }
 
-        model.getContent(
-            object : CallbackRequest<RequestMain> {
+    private fun getPastries() {
 
-                override fun onSuccess(code: Int, data: RequestMain) {
-                    view.initialized(data)
+        model.getPastries(
+
+            object : CallbackRequest<ListPastriesModel> {
+
+                override fun onSuccess(code: Int, data: ListPastriesModel) {
+                    view.setData(data.pastries)
                 }
 
                 override fun onNotSuccess(code: Int, error: String, message: String) {
-                    view.toast(message, false)
+
                 }
 
                 override fun onError(error: String) {
-                    view.toast("", true)
+
                 }
 
             }
+
         )
 
     }

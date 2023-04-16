@@ -7,7 +7,7 @@ import androidx.viewpager2.widget.ViewPager2
 import info.alirezaahmadi.frenchpastry.R
 import info.alirezaahmadi.frenchpastry.adapter.viewPager.CustomSliderPagerAdapter
 import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
-import info.alirezaahmadi.frenchpastry.data.remote.dataModel.main.SliderModel
+import info.alirezaahmadi.frenchpastry.data.remote.dataModel.SliderModel
 import info.alirezaahmadi.frenchpastry.mvp.model.ModelMainActivity
 import info.alirezaahmadi.frenchpastry.mvp.presenter.PresenterMainActivity
 import info.alirezaahmadi.frenchpastry.mvp.view.ViewMainActivity

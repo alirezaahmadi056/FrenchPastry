@@ -15,8 +15,8 @@ import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
 import info.alirezaahmadi.frenchpastry.androidWrapper.DeviceInfo
 import info.alirezaahmadi.frenchpastry.androidWrapper.NetworkInfo
 import info.alirezaahmadi.frenchpastry.data.remote.apiRepository.LoginApiRepository
-import info.alirezaahmadi.frenchpastry.data.remote.dataModel.login.RequestSendPhone
-import info.alirezaahmadi.frenchpastry.data.remote.dataModel.login.RequestVerifyCode
+import info.alirezaahmadi.frenchpastry.data.remote.dataModel.RequestSendPhone
+import info.alirezaahmadi.frenchpastry.data.remote.dataModel.RequestVerifyCode
 import info.alirezaahmadi.frenchpastry.data.remote.ext.CallbackRequest
 import info.alirezaahmadi.frenchpastry.databinding.ActivityLoginBinding
 import info.alirezaahmadi.frenchpastry.databinding.CustomDialogLoginBinding

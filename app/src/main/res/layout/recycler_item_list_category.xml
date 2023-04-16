@@ -105,6 +105,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageView17" />
 
     <androidx.constraintlayout.widget.Group
+        android:id="@+id/off"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:constraint_referenced_ids="imageView17,txtOff"

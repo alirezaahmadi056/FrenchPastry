@@ -3,7 +3,7 @@ package info.alirezaahmadi.frenchpastry.mvp.presenter
 import android.content.Context
 import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
 import info.alirezaahmadi.frenchpastry.androidWrapper.NetworkInfo
-import info.alirezaahmadi.frenchpastry.data.remote.dataModel.pastryCat.PastryCategoryModel
+import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastryCategoryModel
 import info.alirezaahmadi.frenchpastry.data.remote.ext.CallbackRequest
 import info.alirezaahmadi.frenchpastry.mvp.ext.BaseLifeCycle
 import info.alirezaahmadi.frenchpastry.mvp.model.ModelPastryCatsFragment

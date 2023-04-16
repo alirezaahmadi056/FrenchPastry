@@ -13,7 +13,7 @@ import info.alirezaahmadi.frenchpastry.adapter.recycler.NewPastryRecyclerAdapter
 import info.alirezaahmadi.frenchpastry.adapter.recycler.SpecialOfferPastryRecyclerAdapter
 import info.alirezaahmadi.frenchpastry.adapter.recycler.TopPastryRecyclerAdapter
 import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
-import info.alirezaahmadi.frenchpastry.data.remote.dataModel.main.RequestMain
+import info.alirezaahmadi.frenchpastry.data.remote.dataModel.RequestMain
 import info.alirezaahmadi.frenchpastry.databinding.FragmentHomeBinding
 import info.alirezaahmadi.frenchpastry.mvp.ext.ToastUtils
 

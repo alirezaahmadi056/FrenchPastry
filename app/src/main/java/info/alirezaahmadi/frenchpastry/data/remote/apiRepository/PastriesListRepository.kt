@@ -1,6 +1,6 @@
 package info.alirezaahmadi.frenchpastry.data.remote.apiRepository
 
-import info.alirezaahmadi.frenchpastry.data.remote.dataModel.RequestMain
+import info.alirezaahmadi.frenchpastry.data.remote.dataModel.ListPastriesModel
 import info.alirezaahmadi.frenchpastry.data.remote.ext.CallbackRequest
 import info.alirezaahmadi.frenchpastry.data.remote.mainService.RetrofitService
 import retrofit2.Call
@@ -8,31 +8,34 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.http.GET
 
-class MainApiRepository private constructor() {
+class PastryListApiRepository private constructor() {
 
     companion object {
 
-        private var apiRepository: MainApiRepository? = null
+        private var apiRepository: PastryListApiRepository? = null
 
-        val instance: MainApiRepository
+        val instance: PastryListApiRepository
             get() {
-                if (apiRepository == null) apiRepository = MainApiRepository()
+                if (apiRepository == null) apiRepository = PastryListApiRepository()
                 return apiRepository!!
             }
 
     }
 
     fun getMainContent(
-        callbackRequest: CallbackRequest<RequestMain>
+        callbackRequest: CallbackRequest<ListPastriesModel>
     ) {
 
-        RetrofitService.mainApiService.getContent().enqueue(
+        RetrofitService.pastriesListApiService.getPastries().enqueue(
 
-            object : Callback<RequestMain> {
+            object : Callback<ListPastriesModel> {
 
-                override fun onResponse(call: Call<RequestMain>, response: Response<RequestMain>) {
+                override fun onResponse(
+                    call: Call<ListPastriesModel>,
+                    response: Response<ListPastriesModel>
+                ) {
 
-                    val data = response.body() as RequestMain
+                    val data = response.body() as ListPastriesModel
 
                     if (response.isSuccessful)
                         callbackRequest.onSuccess(
@@ -48,7 +51,7 @@ class MainApiRepository private constructor() {
 
                 }
 
-                override fun onFailure(call: Call<RequestMain>, t: Throwable) {
+                override fun onFailure(call: Call<ListPastriesModel>, t: Throwable) {
 
                     callbackRequest.onError(t.message.toString())
 
@@ -62,9 +65,9 @@ class MainApiRepository private constructor() {
 
 }
 
-interface MainApiService {
+interface PastryListApiService {
 
     @GET("main")
-    fun getContent(): Call<RequestMain>
+    fun getPastries(): Call<ListPastriesModel>
 
 }

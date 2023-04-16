@@ -7,7 +7,7 @@
     android:layoutDirection="ltr"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.ListCategoryActivity">
+    tools:context=".ui.activity.ListPastryActivity">
 
     <info.alirezaahmadi.frenchpastry.ui.customView.CustomAppBar
         android:id="@+id/customAppBar3"
@@ -30,7 +30,7 @@
         app:srcCompat="@drawable/ic_f" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/txtTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="شیرینی خامه ای"
@@ -43,6 +43,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageView9" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewPastry"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"

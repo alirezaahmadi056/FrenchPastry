@@ -8,10 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.squareup.picasso.Picasso
 import info.alirezaahmadi.frenchpastry.R
-import info.alirezaahmadi.frenchpastry.data.remote.dataModel.pastryCat.CategoriesModel
+import info.alirezaahmadi.frenchpastry.data.remote.dataModel.CategoriesModel
 import info.alirezaahmadi.frenchpastry.databinding.RecyclerItemMainPastryCategoriesBinding
-import info.alirezaahmadi.frenchpastry.mvp.ext.ToastUtils
-import info.alirezaahmadi.frenchpastry.ui.activity.ListCategoryActivity
+import info.alirezaahmadi.frenchpastry.ui.activity.ListPastryActivity
 
 class PastryCatsRecyclerAdapter(
     private val cats: ArrayList<CategoriesModel>,
@@ -52,7 +51,7 @@ class PastryCatsRecyclerAdapter(
                     .into(binding.imgCategory)
 
             binding.root.setOnClickListener {
-                context.startActivity(Intent(context, ListCategoryActivity::class.java))
+                context.startActivity(Intent(context, ListPastryActivity::class.java))
             }
 
         }

@@ -2,7 +2,7 @@ package info.alirezaahmadi.frenchpastry.androidWrapper
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
-import info.alirezaahmadi.frenchpastry.data.remote.dataModel.main.SliderModel
+import info.alirezaahmadi.frenchpastry.data.remote.dataModel.SliderModel
 
 interface ActivityUtils {
 

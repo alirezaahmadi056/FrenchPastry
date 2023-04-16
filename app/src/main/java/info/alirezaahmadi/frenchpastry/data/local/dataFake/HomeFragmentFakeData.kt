@@ -1,6 +1,6 @@
 package info.alirezaahmadi.frenchpastry.data.local.dataFake
 
-import info.alirezaahmadi.frenchpastry.data.remote.dataModel.main.*
+import info.alirezaahmadi.frenchpastry.data.remote.dataModel.*
 
 object HomeFragmentFakeData {
 

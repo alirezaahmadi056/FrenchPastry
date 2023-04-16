@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import info.alirezaahmadi.frenchpastry.data.remote.dataModel.main.SliderModel
+import info.alirezaahmadi.frenchpastry.data.remote.dataModel.SliderModel
 import info.alirezaahmadi.frenchpastry.ui.fragment.MainSliderFragment
 
 class CustomSliderPagerAdapter(

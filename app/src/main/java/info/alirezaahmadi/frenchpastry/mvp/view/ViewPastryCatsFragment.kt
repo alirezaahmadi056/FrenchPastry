@@ -8,8 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import info.alirezaahmadi.frenchpastry.R
 import info.alirezaahmadi.frenchpastry.adapter.recycler.PastryCatsRecyclerAdapter
-import info.alirezaahmadi.frenchpastry.data.remote.dataModel.pastryCat.CategoriesModel
-import info.alirezaahmadi.frenchpastry.data.remote.dataModel.pastryCat.PastryCategoryModel
+import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastryCategoryModel
 import info.alirezaahmadi.frenchpastry.databinding.FragmentPastryCatsBinding
 import info.alirezaahmadi.frenchpastry.mvp.ext.ToastUtils
 

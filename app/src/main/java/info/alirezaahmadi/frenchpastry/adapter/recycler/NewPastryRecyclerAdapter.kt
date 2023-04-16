@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.squareup.picasso.Picasso
 import info.alirezaahmadi.frenchpastry.R
-import info.alirezaahmadi.frenchpastry.data.remote.dataModel.main.PastriesModel
+import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastriesModel
 import info.alirezaahmadi.frenchpastry.databinding.RecyclerItemMainHorizontalBinding
 import info.alirezaahmadi.frenchpastry.mvp.ext.OthersUtilities
 
