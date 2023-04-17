@@ -16,8 +16,18 @@ class PresenterListPastryActivity(
 ) : BaseLifeCycle, ActivityUtils {
 
     override fun onCreate() {
-
+        showNavigationDrawer()
         onBackClick()
+        getData()
+    }
+
+    private fun showNavigationDrawer() {
+        view.showNavDrawer()
+    }
+
+    private fun getData() {
+
+        view.startGetData()
 
         if (NetworkInfo.internetInfo(context, this))
             getPastries()
@@ -39,15 +49,16 @@ class PresenterListPastryActivity(
             object : CallbackRequest<ListPastriesModel> {
 
                 override fun onSuccess(code: Int, data: ListPastriesModel) {
+                    view.endGetData()
                     view.setData(data.pastries)
                 }
 
                 override fun onNotSuccess(code: Int, error: String, message: String) {
-
+                    view.toast(message, false)
                 }
 
                 override fun onError(error: String) {
-
+                    view.toast("", true)
                 }
 
             }

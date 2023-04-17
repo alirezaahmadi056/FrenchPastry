@@ -14,27 +14,20 @@ import info.alirezaahmadi.frenchpastry.databinding.RecyclerItemListCategoryBindi
 import info.alirezaahmadi.frenchpastry.mvp.ext.OthersUtilities
 
 class PastryListRecyclerAdapter(
-    private val pastries: ArrayList<PastryListModel>
+    private val pastries: ArrayList<PastryListModel>,
+    private val context: Context
 ) : RecyclerView.Adapter<PastryListRecyclerAdapter.PastryListViewHolder>() {
-
-    private lateinit var context: Context
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ) :PastryListViewHolder{
-
-        context = parent.context
-
-        return PastryListViewHolder(
-            RecyclerItemListCategoryBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
+    ) = PastryListViewHolder(
+        RecyclerItemListCategoryBinding.inflate(
+            LayoutInflater.from(context),
+            parent,
+            false
         )
-
-    }
+    )
 
     override fun getItemCount() = pastries.size
 
@@ -59,17 +52,21 @@ class PastryListRecyclerAdapter(
                     .error(R.drawable.img_place_holder)
                     .into(binding.imgPastry)
 
-            if (data.has_discount){
+            if (data.has_discount) {
 
                 binding.txtPriceMain.paintFlags =
                     binding.txtPriceMain.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
                 binding.txtPriceMain.setTextColor(Color.GRAY)
 
+                binding.txtPriceOff.visibility = View.VISIBLE
+
                 binding.txtPriceOff.text = OthersUtilities.changePrice(data.sale_price).toString()
                 binding.txtOff.text = data.discount
 
-            }else
+            } else {
                 binding.off.visibility = View.GONE
+                binding.txtPriceOff.visibility = View.GONE
+            }
 
         }
 

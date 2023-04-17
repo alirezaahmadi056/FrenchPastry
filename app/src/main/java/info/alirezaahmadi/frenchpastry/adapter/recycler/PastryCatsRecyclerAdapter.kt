@@ -10,6 +10,7 @@ import com.squareup.picasso.Picasso
 import info.alirezaahmadi.frenchpastry.R
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.CategoriesModel
 import info.alirezaahmadi.frenchpastry.databinding.RecyclerItemMainPastryCategoriesBinding
+import info.alirezaahmadi.frenchpastry.mvp.ext.ToastUtils
 import info.alirezaahmadi.frenchpastry.ui.activity.ListPastryActivity
 
 class PastryCatsRecyclerAdapter(
@@ -51,7 +52,9 @@ class PastryCatsRecyclerAdapter(
                     .into(binding.imgCategory)
 
             binding.root.setOnClickListener {
-                context.startActivity(Intent(context, ListPastryActivity::class.java))
+                val intent = Intent(context, ListPastryActivity::class.java)
+                intent.putExtra("ID", data.ID)
+                context.startActivity(intent)
             }
 
         }

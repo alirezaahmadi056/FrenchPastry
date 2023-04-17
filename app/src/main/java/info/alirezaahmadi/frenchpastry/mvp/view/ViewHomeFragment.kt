@@ -33,31 +33,17 @@ class ViewHomeFragment : FrameLayout {
     val binding =
         FragmentHomeBinding.inflate(LayoutInflater.from(context))
 
-    fun initialized(data: RequestMain) {
-
-        activityUtils.setViewPagerFragment(binding.sliderViewPager, data.sliders)
-
-        //todo change to recycler.addAll(pastry)
-        binding.newPastryRecycler.getRecycler().adapter =
-            NewPastryRecyclerAdapter(data.pastries[0].pastries)
-
-        binding.specialOfferPastryRecycler.getRecycler().adapter =
-            SpecialOfferPastryRecyclerAdapter(data.pastries[1].pastries)
-
-        binding.topPastryRecycler.getRecycler().adapter =
-            TopPastryRecyclerAdapter(data.pastries[2].pastries)
-
-        if (data.banners.isNotEmpty() && data.banners[0].large.isNotEmpty())
-            Picasso.get()
-                .load(data.banners[0].large)
-                .fit()
-                .placeholder(R.drawable.img_banner_place_holder)
-                .error(R.drawable.img_banner_place_holder)
-                .into(binding.imgBanner)
-
+    fun startGetData() {
+        binding.content.visibility = View.INVISIBLE
+        binding.progressBar.visibility = View.VISIBLE
     }
 
-    fun setFakeData(data: RequestMain) {
+    fun endGetData() {
+        binding.content.visibility = View.VISIBLE
+        binding.progressBar.visibility = View.INVISIBLE
+    }
+
+    fun initialized(data: RequestMain) {
 
         binding.sliderViewPager.layoutDirection = View.LAYOUT_DIRECTION_RTL
         activityUtils.setViewPagerFragment(binding.sliderViewPager, data.sliders)
@@ -77,12 +63,13 @@ class ViewHomeFragment : FrameLayout {
         binding.topPastryRecycler.getRecycler().adapter =
             TopPastryRecyclerAdapter(data.pastries[2].pastries)
 
-        Picasso.get()
-            .load(data.banners[0].large)
-            .fit()
-            .placeholder(R.drawable.img_place_holder)
-            .error(R.drawable.img_place_holder)
-            .into(binding.imgBanner)
+        if (data.banners.isNotEmpty() && data.banners[0].large.isNotEmpty())
+            Picasso.get()
+                .load(data.banners[0].large)
+                .fit()
+                .placeholder(R.drawable.img_banner_place_holder)
+                .error(R.drawable.img_banner_place_holder)
+                .into(binding.imgBanner)
 
     }
 

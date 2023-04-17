@@ -21,7 +21,7 @@ class PresenterHomeFragment(
 
     private fun createSlider() {
 
-        view.setFakeData(model.fakeData[0])
+        view.startGetData()
 
         if (NetworkInfo.internetInfo(context, this))
             sendRequest()
@@ -38,6 +38,7 @@ class PresenterHomeFragment(
             object : CallbackRequest<RequestMain> {
 
                 override fun onSuccess(code: Int, data: RequestMain) {
+                    view.endGetData()
                     view.initialized(data)
                 }
 

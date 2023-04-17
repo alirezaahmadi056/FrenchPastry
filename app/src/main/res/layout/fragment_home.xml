@@ -1,52 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.48" />
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/sliderViewPager"
-            android:layout_margin="8dp"
+        <LinearLayout
+            android:id="@+id/content"
             android:layout_width="match_parent"
-            android:layout_height="230dp"/>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-        <info.alirezaahmadi.frenchpastry.ui.customView.CustomRecyclerHorizontal
-            android:id="@+id/newPastryRecycler"
-            app:title="تازه ترین ها"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <info.alirezaahmadi.frenchpastry.ui.customView.CustomRecyclerVertical
-            android:id="@+id/specialOfferPastryRecycler"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <info.alirezaahmadi.frenchpastry.ui.customView.CustomRecyclerHorizontal
-            android:id="@+id/topPastryRecycler"
-            app:title="پرطرفدار ترین ها"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_margin="16dp"
-            app:cardCornerRadius="15dp"
-            android:layout_height="120dp">
-
-            <ImageView
-                android:id="@+id/imgBanner"
-                android:contentDescription="@string/banner_desc"
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/sliderViewPager"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="230dp"
+                android:layout_margin="8dp" />
 
-        </androidx.cardview.widget.CardView>
+            <info.alirezaahmadi.frenchpastry.ui.customView.CustomRecyclerHorizontal
+                android:id="@+id/newPastryRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="تازه ترین ها" />
 
-    </LinearLayout>
+            <info.alirezaahmadi.frenchpastry.ui.customView.CustomRecyclerVertical
+                android:id="@+id/specialOfferPastryRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-</androidx.core.widget.NestedScrollView>
+            <info.alirezaahmadi.frenchpastry.ui.customView.CustomRecyclerHorizontal
+                android:id="@+id/topPastryRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="پرطرفدار ترین ها" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="15dp">
+
+                <ImageView
+                    android:id="@+id/imgBanner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/banner_desc" />
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

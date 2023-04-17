@@ -14,9 +14,11 @@ class ListPastryActivity : AppCompatActivity(), ActivityUtils {
         val view = ViewListPastryActivity(this, this)
         setContentView(view.binding.root)
 
+        val id = intent.getIntExtra("ID", 0)
+
         val presenter = PresenterListPastryActivity(
             view,
-            ModelListPastryActivity(),
+            ModelListPastryActivity(id),
             this
         )
         presenter.onCreate()

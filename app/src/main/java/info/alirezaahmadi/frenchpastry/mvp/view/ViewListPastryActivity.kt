@@ -2,6 +2,7 @@ package info.alirezaahmadi.frenchpastry.mvp.view
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.FrameLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -9,6 +10,7 @@ import info.alirezaahmadi.frenchpastry.adapter.recycler.PastryListRecyclerAdapte
 import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastryListModel
 import info.alirezaahmadi.frenchpastry.databinding.ActivityListPastryBinding
+import info.alirezaahmadi.frenchpastry.mvp.ext.ToastUtils
 
 class ViewListPastryActivity : FrameLayout {
 
@@ -27,8 +29,14 @@ class ViewListPastryActivity : FrameLayout {
         LayoutInflater.from(context)
     )
 
+    fun showNavDrawer() {
+        binding.customAppBar.showNavDrawer(context)
+    }
+
     fun onBack() {
-        actUtils.finished()
+        binding.customAppBar.getBackIcon().setOnClickListener {
+            actUtils.finished()
+        }
     }
 
     fun setData(pastries: ArrayList<PastryListModel>) {
@@ -36,7 +44,26 @@ class ViewListPastryActivity : FrameLayout {
         binding.recyclerViewPastry.layoutManager =
             LinearLayoutManager(context, RecyclerView.VERTICAL, false)
 
-        binding.recyclerViewPastry.adapter = PastryListRecyclerAdapter(pastries)
+        binding.recyclerViewPastry.adapter = PastryListRecyclerAdapter(pastries, context)
+
+    }
+
+    fun startGetData() {
+        binding.allViews.visibility = View.INVISIBLE
+        binding.progressBar.visibility = View.VISIBLE
+    }
+
+    fun endGetData() {
+        binding.allViews.visibility = View.VISIBLE
+        binding.progressBar.visibility = View.INVISIBLE
+    }
+
+    fun toast(text: String, errorState: Boolean) {
+
+        if (errorState)
+            ToastUtils.toastServerError(context)
+        else
+            ToastUtils.toast(context, text)
 
     }
 

@@ -4,11 +4,14 @@ import info.alirezaahmadi.frenchpastry.data.remote.apiRepository.PastryListApiRe
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.ListPastriesModel
 import info.alirezaahmadi.frenchpastry.data.remote.ext.CallbackRequest
 
-class ModelListPastryActivity {
+class ModelListPastryActivity(
+    private val id: Int
+) {
 
     fun getPastries(callbackRequest: CallbackRequest<ListPastriesModel>) {
 
-        PastryListApiRepository.instance.getMainContent(callbackRequest)
+        if (id != 0)
+            PastryListApiRepository.instance.getMainContent(callbackRequest, id)
 
     }
 

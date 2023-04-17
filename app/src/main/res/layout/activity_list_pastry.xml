@@ -10,7 +10,7 @@
     tools:context=".ui.activity.ListPastryActivity">
 
     <info.alirezaahmadi.frenchpastry.ui.customView.CustomAppBar
-        android:id="@+id/customAppBar3"
+        android:id="@+id/customAppBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:backIcon="true"
@@ -26,7 +26,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/customAppBar3"
+        app:layout_constraintTop_toBottomOf="@+id/customAppBar"
         app:srcCompat="@drawable/ic_f" />
 
     <TextView
@@ -55,5 +55,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/allViews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="recyclerViewPastry,txtTitle,imageView9"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.48" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

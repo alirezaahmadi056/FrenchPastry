@@ -39,6 +39,8 @@ class CustomAppBar(
 
     }
 
+    fun getBackIcon() = binding.imgBack
+
     fun alertShow() {
         binding.alertGroup.visibility = VISIBLE
     }

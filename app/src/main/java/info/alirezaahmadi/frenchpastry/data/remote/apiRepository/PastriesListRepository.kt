@@ -6,7 +6,9 @@ import info.alirezaahmadi.frenchpastry.data.remote.mainService.RetrofitService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.http.Field
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 class PastryListApiRepository private constructor() {
 
@@ -23,10 +25,11 @@ class PastryListApiRepository private constructor() {
     }
 
     fun getMainContent(
-        callbackRequest: CallbackRequest<ListPastriesModel>
+        callbackRequest: CallbackRequest<ListPastriesModel>,
+        id: Int
     ) {
 
-        RetrofitService.pastriesListApiService.getPastries().enqueue(
+        RetrofitService.pastriesListApiService.getPastries(id).enqueue(
 
             object : Callback<ListPastriesModel> {
 
@@ -67,7 +70,7 @@ class PastryListApiRepository private constructor() {
 
 interface PastryListApiService {
 
-    @GET("main")
-    fun getPastries(): Call<ListPastriesModel>
+    @GET("pastries")
+    fun getPastries(@Query("category") ID: Int): Call<ListPastriesModel>
 
 }

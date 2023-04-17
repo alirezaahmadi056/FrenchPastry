@@ -41,7 +41,6 @@ class MainSliderFragment(
 
         }
 
-        //TODO place holder image low quality (change place holder image)
         Picasso.get()
             .load(url)
             .placeholder(R.drawable.img_place_holder)
