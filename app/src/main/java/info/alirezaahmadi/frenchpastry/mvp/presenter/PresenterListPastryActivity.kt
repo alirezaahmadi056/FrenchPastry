@@ -50,14 +50,16 @@ class PresenterListPastryActivity(
 
                 override fun onSuccess(code: Int, data: ListPastriesModel) {
                     view.endGetData()
-                    view.setData(data.pastries)
+                    view.setData(data)
                 }
 
                 override fun onNotSuccess(code: Int, error: String, message: String) {
+                    view.endProgress()
                     view.toast(message, false)
                 }
 
                 override fun onError(error: String) {
+                    view.endProgress()
                     view.toast("", true)
                 }
 

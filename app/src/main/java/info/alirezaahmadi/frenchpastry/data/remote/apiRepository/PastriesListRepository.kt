@@ -8,6 +8,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 class PastryListApiRepository private constructor() {
@@ -29,7 +30,7 @@ class PastryListApiRepository private constructor() {
         id: Int
     ) {
 
-        RetrofitService.pastriesListApiService.getPastries(id).enqueue(
+        RetrofitService.pastriesListApiService.getPastries(id, true).enqueue(
 
             object : Callback<ListPastriesModel> {
 
@@ -70,7 +71,10 @@ class PastryListApiRepository private constructor() {
 
 interface PastryListApiService {
 
-    @GET("pastries")
-    fun getPastries(@Query("category") ID: Int): Call<ListPastriesModel>
+    @GET("cat/{id}")
+    fun getPastries(
+        @Path(value = "id", encoded = false) ID: Int,
+        @Query("has_pastries") hasPastries: Boolean
+    ): Call<ListPastriesModel>
 
 }

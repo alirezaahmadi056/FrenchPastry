@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import info.alirezaahmadi.frenchpastry.adapter.recycler.PastryListRecyclerAdapter
 import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
-import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastryListModel
+import info.alirezaahmadi.frenchpastry.data.remote.dataModel.ListPastriesModel
 import info.alirezaahmadi.frenchpastry.databinding.ActivityListPastryBinding
 import info.alirezaahmadi.frenchpastry.mvp.ext.ToastUtils
 
@@ -39,12 +39,15 @@ class ViewListPastryActivity : FrameLayout {
         }
     }
 
-    fun setData(pastries: ArrayList<PastryListModel>) {
+    fun setData(data: ListPastriesModel) {
 
         binding.recyclerViewPastry.layoutManager =
             LinearLayoutManager(context, RecyclerView.VERTICAL, false)
 
-        binding.recyclerViewPastry.adapter = PastryListRecyclerAdapter(pastries, context)
+        binding.recyclerViewPastry.adapter =
+            PastryListRecyclerAdapter(data.category.pastries, context)
+
+        binding.txtTitle.text = data.category.title
 
     }
 
@@ -55,6 +58,10 @@ class ViewListPastryActivity : FrameLayout {
 
     fun endGetData() {
         binding.allViews.visibility = View.VISIBLE
+        binding.progressBar.visibility = View.INVISIBLE
+    }
+
+    fun endProgress() {
         binding.progressBar.visibility = View.INVISIBLE
     }
 

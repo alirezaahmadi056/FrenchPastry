@@ -43,6 +43,10 @@ class ViewHomeFragment : FrameLayout {
         binding.progressBar.visibility = View.INVISIBLE
     }
 
+    fun endProgress() {
+        binding.progressBar.visibility = View.INVISIBLE
+    }
+
     fun initialized(data: RequestMain) {
 
         binding.sliderViewPager.layoutDirection = View.LAYOUT_DIRECTION_RTL

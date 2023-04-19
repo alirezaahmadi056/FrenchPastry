@@ -49,6 +49,10 @@ class ViewPastryCatsFragment(
         binding.progressBar.visibility = View.INVISIBLE
     }
 
+    fun endProgress() {
+        binding.progressBar.visibility = View.INVISIBLE
+    }
+
     fun toast(text: String, errorState: Boolean) {
 
         if (errorState)

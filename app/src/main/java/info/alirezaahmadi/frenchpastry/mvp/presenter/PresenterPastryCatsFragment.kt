@@ -40,10 +40,12 @@ class PresenterPastryCatsFragment(
                 }
 
                 override fun onNotSuccess(code: Int, error: String, message: String) {
+                    view.endProgress()
                     view.toast(message, false)
                 }
 
                 override fun onError(error: String) {
+                    view.endProgress()
                     view.toast("", true)
                 }
 
