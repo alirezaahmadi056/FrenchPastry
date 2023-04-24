@@ -24,7 +24,7 @@
             app:cardElevation="0dp">
 
             <ImageView
-                android:id="@+id/imgPastry"
+                android:id="@+id/imgProduct"
                 android:layout_width="match_parent"
                 android:layout_height="105dp"
                 android:contentDescription="@string/main_image_desc"

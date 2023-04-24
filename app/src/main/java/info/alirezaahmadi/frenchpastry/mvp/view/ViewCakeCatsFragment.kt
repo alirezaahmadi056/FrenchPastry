@@ -13,7 +13,7 @@ import info.alirezaahmadi.frenchpastry.data.remote.dataModel.ParentCategoryModel
 import info.alirezaahmadi.frenchpastry.databinding.FragmentPastryCatsBinding
 import info.alirezaahmadi.frenchpastry.mvp.ext.ToastUtils
 
-class ViewPastryCatsFragment(
+class ViewCakeCatsFragment(
     contextInstance: Context
 ) : FrameLayout(contextInstance) {
 

@@ -10,19 +10,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import info.alirezaahmadi.frenchpastry.R
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastryListModel
-import info.alirezaahmadi.frenchpastry.databinding.RecyclerItemListCategoryBinding
+import info.alirezaahmadi.frenchpastry.databinding.RecyclerItemListProductsBinding
 import info.alirezaahmadi.frenchpastry.mvp.ext.OthersUtilities
 
-class PastryListRecyclerAdapter(
+class ProductListRecyclerAdapter(
     private val pastries: ArrayList<PastryListModel>,
     private val context: Context
-) : RecyclerView.Adapter<PastryListRecyclerAdapter.PastryListViewHolder>() {
+) : RecyclerView.Adapter<ProductListRecyclerAdapter.PastryListViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ) = PastryListViewHolder(
-        RecyclerItemListCategoryBinding.inflate(
+        RecyclerItemListProductsBinding.inflate(
             LayoutInflater.from(context),
             parent,
             false
@@ -36,7 +36,7 @@ class PastryListRecyclerAdapter(
     }
 
     inner class PastryListViewHolder(
-        private val binding: RecyclerItemListCategoryBinding
+        private val binding: RecyclerItemListProductsBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun setData(data: PastryListModel) {
@@ -50,7 +50,7 @@ class PastryListRecyclerAdapter(
                     .fit()
                     .placeholder(R.drawable.img_place_holder)
                     .error(R.drawable.img_place_holder)
-                    .into(binding.imgPastry)
+                    .into(binding.imgProduct)
 
             if (data.has_discount) {
 

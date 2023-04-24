@@ -9,20 +9,19 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.squareup.picasso.Picasso
 import info.alirezaahmadi.frenchpastry.R
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.CategoriesModel
-import info.alirezaahmadi.frenchpastry.databinding.RecyclerItemMainPastryCategoriesBinding
-import info.alirezaahmadi.frenchpastry.mvp.ext.ToastUtils
+import info.alirezaahmadi.frenchpastry.databinding.RecyclerItemMainCategoriesBinding
 import info.alirezaahmadi.frenchpastry.ui.activity.ListPastryActivity
 
-class PastryCatsRecyclerAdapter(
+class CatsRecyclerAdapter(
     private val cats: ArrayList<CategoriesModel>,
     private val context: Context
-) : RecyclerView.Adapter<PastryCatsRecyclerAdapter.PastryCatsViewHolder>() {
+) : RecyclerView.Adapter<CatsRecyclerAdapter.PastryCatsViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ) = PastryCatsViewHolder(
-        RecyclerItemMainPastryCategoriesBinding.inflate(
+        RecyclerItemMainCategoriesBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
@@ -36,7 +35,7 @@ class PastryCatsRecyclerAdapter(
     }
 
     inner class PastryCatsViewHolder(
-        private val binding: RecyclerItemMainPastryCategoriesBinding
+        private val binding: RecyclerItemMainCategoriesBinding
     ) : ViewHolder(binding.root) {
 
         fun setData(data: CategoriesModel) {

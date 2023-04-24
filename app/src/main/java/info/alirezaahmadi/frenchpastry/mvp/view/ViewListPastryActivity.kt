@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.FrameLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import info.alirezaahmadi.frenchpastry.adapter.recycler.PastryListRecyclerAdapter
+import info.alirezaahmadi.frenchpastry.adapter.recycler.ProductListRecyclerAdapter
 import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.ListPastriesModel
 import info.alirezaahmadi.frenchpastry.databinding.ActivityListPastryBinding
@@ -45,7 +45,7 @@ class ViewListPastryActivity : FrameLayout {
             LinearLayoutManager(context, RecyclerView.VERTICAL, false)
 
         binding.recyclerViewPastry.adapter =
-            PastryListRecyclerAdapter(data.category.pastries, context)
+            ProductListRecyclerAdapter(data.category.pastries, context)
 
         binding.txtTitle.text = data.category.title
 

@@ -6,12 +6,12 @@ import info.alirezaahmadi.frenchpastry.androidWrapper.NetworkInfo
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.ParentCategoryModel
 import info.alirezaahmadi.frenchpastry.data.remote.ext.CallbackRequest
 import info.alirezaahmadi.frenchpastry.mvp.ext.BaseLifeCycle
-import info.alirezaahmadi.frenchpastry.mvp.model.ModelPastryCatsFragment
-import info.alirezaahmadi.frenchpastry.mvp.view.ViewPastryCatsFragment
+import info.alirezaahmadi.frenchpastry.mvp.model.ModelCakeCatsFragment
+import info.alirezaahmadi.frenchpastry.mvp.view.ViewCakeCatsFragment
 
-class PresenterPastryCatsFragment(
-    private val view: ViewPastryCatsFragment,
-    val model: ModelPastryCatsFragment,
+class PresenterCakeCatsFragment(
+    private val view: ViewCakeCatsFragment,
+    val model: ModelCakeCatsFragment,
     private val context: Context
 ) : BaseLifeCycle, ActivityUtils {
 

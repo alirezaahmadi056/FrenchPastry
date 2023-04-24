@@ -1,6 +1,6 @@
 package info.alirezaahmadi.frenchpastry.data.remote.dataModel
 
-data class PastryCategoryModel(
+data class ParentCategoryModel(
     val message: String,
     val total: Int,
     val banner: String,

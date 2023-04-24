@@ -4,10 +4,10 @@ import info.alirezaahmadi.frenchpastry.data.remote.apiRepository.CatsApiReposito
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.ParentCategoryModel
 import info.alirezaahmadi.frenchpastry.data.remote.ext.CallbackRequest
 
-class ModelPastryCatsFragment {
+class ModelCakeCatsFragment {
 
     fun getCats(callbackRequest: CallbackRequest<ParentCategoryModel>) {
-        CatsApiRepository.instance.getCategories(callbackRequest, CatsApiRepository.PASTRY_TYPE)
+        CatsApiRepository.instance.getCategories(callbackRequest, CatsApiRepository.CAKE_TYPE)
     }
 
 }

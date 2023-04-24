@@ -8,6 +8,7 @@ import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
 import info.alirezaahmadi.frenchpastry.databinding.ActivityMainBinding
 import info.alirezaahmadi.frenchpastry.ui.customView.bottomNav.ActiveFragment
 import info.alirezaahmadi.frenchpastry.ui.customView.bottomNav.FragmentType
+import info.alirezaahmadi.frenchpastry.ui.fragment.CakeCatsFragment
 import info.alirezaahmadi.frenchpastry.ui.fragment.HomeFragment
 import info.alirezaahmadi.frenchpastry.ui.fragment.PastryCatsFragment
 
@@ -27,7 +28,7 @@ class ViewMainActivity : FrameLayout, ActiveFragment {
     private val inflater = LayoutInflater.from(context)
     val binding = ActivityMainBinding.inflate(inflater)
 
-    fun initialize(){
+    fun initialize() {
         activityUtils.setFragment(HomeFragment(context, activityUtils))
     }
 
@@ -41,9 +42,9 @@ class ViewMainActivity : FrameLayout, ActiveFragment {
 
     override fun setFragment(type: FragmentType) {
 
-        val fragment = when(type){
+        val fragment = when (type) {
             FragmentType.HOME -> HomeFragment(context, activityUtils)
-            FragmentType.CAKE -> Fragment()
+            FragmentType.CAKE -> CakeCatsFragment(context)
             FragmentType.PASTRY -> PastryCatsFragment(context)
             FragmentType.PROFILE -> Fragment()
         }

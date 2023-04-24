@@ -1,6 +1,6 @@
 package info.alirezaahmadi.frenchpastry.data.remote.apiRepository
 
-import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastryCategoryModel
+import info.alirezaahmadi.frenchpastry.data.remote.dataModel.ParentCategoryModel
 import info.alirezaahmadi.frenchpastry.data.remote.ext.CallbackRequest
 import info.alirezaahmadi.frenchpastry.data.remote.mainService.RetrofitService
 import retrofit2.Call
@@ -8,37 +8,42 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.http.*
 
-class PastryCatApiRepository private constructor() {
+class CatsApiRepository private constructor() {
 
     companion object {
 
-        private var apiRepository: PastryCatApiRepository? = null
+        private var apiRepository: CatsApiRepository? = null
+        const val PASTRY_TYPE = "pastry"
+        const val CAKE_TYPE = "cake"
 
-        val instance: PastryCatApiRepository
+        val instance: CatsApiRepository
             get() {
-                if (apiRepository == null) apiRepository = PastryCatApiRepository()
+                if (apiRepository == null) apiRepository = CatsApiRepository()
                 return apiRepository!!
             }
 
     }
 
-    fun getCategories(callbackRequest: CallbackRequest<PastryCategoryModel>) {
+    fun getCategories(
+        callbackRequest: CallbackRequest<ParentCategoryModel>,
+        type: String
+    ) {
 
-        RetrofitService.catsApiService.getCats().enqueue(
+        RetrofitService.catsApiService.getCats(type).enqueue(
 
-            object : Callback<PastryCategoryModel> {
+            object : Callback<ParentCategoryModel> {
 
                 override fun onResponse(
-                    call: Call<PastryCategoryModel>,
-                    response: Response<PastryCategoryModel>
+                    call: Call<ParentCategoryModel>,
+                    response: Response<ParentCategoryModel>
                 ) {
                     if (response.isSuccessful)
                         callbackRequest.onSuccess(
                             response.code(),
-                            response.body() as PastryCategoryModel
+                            response.body() as ParentCategoryModel
                         )
                     else {
-                        val data = response.body() as PastryCategoryModel
+                        val data = response.body() as ParentCategoryModel
                         callbackRequest.onNotSuccess(
                             response.code(),
                             response.errorBody().toString(),
@@ -47,7 +52,7 @@ class PastryCatApiRepository private constructor() {
                     }
                 }
 
-                override fun onFailure(call: Call<PastryCategoryModel>, t: Throwable) {
+                override fun onFailure(call: Call<ParentCategoryModel>, t: Throwable) {
                     callbackRequest.onError(t.message.toString())
                 }
 
@@ -59,9 +64,9 @@ class PastryCatApiRepository private constructor() {
 
 }
 
-interface PastryCatApiService {
+interface CatsApiService {
 
     @GET("cats")
-    fun getCats(): Call<PastryCategoryModel>
+    fun getCats(@Query("pastry_type") type: String): Call<ParentCategoryModel>
 
 }
