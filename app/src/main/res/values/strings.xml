@@ -56,4 +56,6 @@
     <string name="share_desc">share</string>
     <string name="favorite_desc">imgFavorite</string>
     <string name="star_desc">star</string>
+    <string name="state_sell">وضعیت سفارشات</string>
+    <string name="img_sell_desc">img_sell</string>
 </resources>
