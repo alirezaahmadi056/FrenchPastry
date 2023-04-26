@@ -11,6 +11,7 @@ import info.alirezaahmadi.frenchpastry.ui.customView.bottomNav.FragmentType
 import info.alirezaahmadi.frenchpastry.ui.fragment.CakeCatsFragment
 import info.alirezaahmadi.frenchpastry.ui.fragment.HomeFragment
 import info.alirezaahmadi.frenchpastry.ui.fragment.PastryCatsFragment
+import info.alirezaahmadi.frenchpastry.ui.fragment.ProfileFragment
 
 class ViewMainActivity : FrameLayout, ActiveFragment {
 
@@ -46,7 +47,7 @@ class ViewMainActivity : FrameLayout, ActiveFragment {
             FragmentType.HOME -> HomeFragment(context, activityUtils)
             FragmentType.CAKE -> CakeCatsFragment(context)
             FragmentType.PASTRY -> PastryCatsFragment(context)
-            FragmentType.PROFILE -> Fragment()
+            FragmentType.PROFILE -> ProfileFragment(context)
         }
 
         activityUtils.setFragment(fragment)
