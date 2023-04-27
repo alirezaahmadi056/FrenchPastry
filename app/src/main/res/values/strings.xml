@@ -58,4 +58,5 @@
     <string name="star_desc">star</string>
     <string name="state_sell">وضعیت سفارشات</string>
     <string name="img_sell_desc">img_sell</string>
+    <string name="user_info">اطلاعات کاربری</string>
 </resources>
