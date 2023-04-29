@@ -59,4 +59,8 @@
     <string name="state_sell">وضعیت سفارشات</string>
     <string name="img_sell_desc">img_sell</string>
     <string name="user_info">اطلاعات کاربری</string>
+    <string name="men">مرد</string>
+    <string name="sex">جنسیت :</string>
+    <string name="women">زن</string>
+    <string name="save_info">ثبت اطلاعات</string>
 </resources>

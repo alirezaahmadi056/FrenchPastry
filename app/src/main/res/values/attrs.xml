@@ -2,24 +2,30 @@
 <resources>
 
     <declare-styleable name="CustomEditText">
-        <attr name="hintText" format="string"/>
-        <attr name="type" format="integer"/>
-        <attr name="rtlSupport" format="boolean"/>
-        <attr name="max" format="integer"/>
-        <attr name="centerGravity" format="boolean"/>
+        <attr name="hintText" format="string" />
+        <attr name="type" format="integer" />
+        <attr name="rtlSupport" format="boolean" />
+        <attr name="max" format="integer" />
+        <attr name="centerGravity" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="CustomButton">
-        <attr name="buttonText" format="string"/>
-        <attr name="buttonWhite" format="boolean"/>
+        <attr name="buttonText" format="string" />
+        <attr name="buttonWhite" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="CustomRecyclerHorizontal">
-        <attr name="title" format="string"/>
+        <attr name="title" format="string" />
     </declare-styleable>
 
     <declare-styleable name="CustomAppBar">
-        <attr name="backIcon" format="boolean"/>
+        <attr name="backIcon" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomTextView">
+        <attr name="customText" format="string" />
+        <attr name="customSize" format="float" />
+        <attr name="iconState" format="boolean" />
     </declare-styleable>
 
 </resources>

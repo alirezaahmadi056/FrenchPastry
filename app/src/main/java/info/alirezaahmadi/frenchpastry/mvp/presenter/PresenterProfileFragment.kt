@@ -15,6 +15,7 @@ class PresenterProfileFragment(
 
     override fun onCreate() {
 
+        onClickHandler()
         view.startGetData()
 
         if (NetworkInfo.internetInfo(context, this))
@@ -24,6 +25,10 @@ class PresenterProfileFragment(
 
     override fun activeNetwork() {
         getCats()
+    }
+
+    private fun onClickHandler() {
+        view.onClick()
     }
 
     private fun getCats() {

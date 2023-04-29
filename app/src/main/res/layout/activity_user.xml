@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white_color200"
+    android:layoutDirection="ltr"
     tools:context=".ui.activity.UserActivity">
 
     <info.alirezaahmadi.frenchpastry.ui.customView.CustomAppBar
-        android:id="@+id/customAppBar3"
+        android:id="@+id/customAppBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,8 +23,9 @@
         android:layout_height="55dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:contentDescription="@string/f_logo_desc"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/customAppBar3"
+        app:layout_constraintTop_toBottomOf="@+id/customAppBar"
         app:srcCompat="@drawable/ic_f" />
 
     <TextView
@@ -30,11 +34,123 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:text="@string/user_info"
-        android:textSize="@dimen/heading_large_size"
         android:textColor="@color/color_text_black"
+        android:textSize="@dimen/heading_large_size"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView22"
         app:layout_constraintEnd_toStartOf="@+id/imageView22"
         app:layout_constraintTop_toTopOf="@+id/imageView22" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/view20"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/back_item_white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView22">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <info.alirezaahmadi.frenchpastry.ui.customView.CustomTextView
+                android:id="@+id/txtName"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="12dp"
+                app:iconState="true"
+                app:customText="علیرضا احمدی"
+                android:layout_height="50dp"/>
+
+            <info.alirezaahmadi.frenchpastry.ui.customView.CustomTextView
+                android:id="@+id/txtNum"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="12dp"
+                app:iconState="true"
+                app:customText="09035802464"
+                android:layout_height="50dp"/>
+
+            <info.alirezaahmadi.frenchpastry.ui.customView.CustomTextView
+                android:id="@+id/txtPass"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="12dp"
+                app:iconState="true"
+                app:customText="تغییر رمز عبور"
+                android:layout_height="50dp"/>
+
+            <info.alirezaahmadi.frenchpastry.ui.customView.CustomTextView
+                android:id="@+id/txtDate"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="12dp"
+                app:iconState="true"
+                app:customText="تاریخ تولد"
+                android:layout_height="50dp"/>
+
+            <info.alirezaahmadi.frenchpastry.ui.customView.CustomTextView
+                android:id="@+id/txtEmail"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="12dp"
+                app:iconState="true"
+                app:customText="ایمیل"
+                android:layout_height="50dp"/>
+
+            <info.alirezaahmadi.frenchpastry.ui.customView.CustomTextView
+                android:id="@+id/txtCode"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="12dp"
+                app:iconState="true"
+                app:customText="کد ملی"
+                android:layout_height="50dp"/>
+
+            <LinearLayout
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="12dp"
+                android:gravity="end"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/rdbWomen"
+                    android:text="@string/women"
+                    android:layout_marginEnd="12dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <RadioButton
+                    android:id="@+id/rdbMen"
+                    android:text="@string/men"
+                    android:layout_marginEnd="12dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:text="@string/sex"
+                    android:textSize="@dimen/text_large_size"
+                    android:textColor="@color/color_text_black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <info.alirezaahmadi.frenchpastry.ui.customView.CustomButton
+                android:id="@+id/btnSaveInfo"
+                app:buttonText="@string/save_info"
+                android:layout_margin="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
