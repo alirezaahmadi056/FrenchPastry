@@ -71,6 +71,9 @@ class SpecialOfferPastryRecyclerAdapter(
                         .error(R.drawable.img_place_holder)
                         .into(binding.imgPastry)
 
+                if (position == pastries.lastIndex)
+                    binding.txtPastryName.text = "آخریه"
+
             }
 
         }

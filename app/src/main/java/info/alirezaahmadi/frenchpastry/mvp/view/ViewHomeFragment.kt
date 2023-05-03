@@ -14,6 +14,7 @@ import info.alirezaahmadi.frenchpastry.adapter.recycler.NewPastryRecyclerAdapter
 import info.alirezaahmadi.frenchpastry.adapter.recycler.SpecialOfferPastryRecyclerAdapter
 import info.alirezaahmadi.frenchpastry.adapter.recycler.TopPastryRecyclerAdapter
 import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
+import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastriesModel
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.RequestMain
 import info.alirezaahmadi.frenchpastry.databinding.FragmentHomeBinding
 import info.alirezaahmadi.frenchpastry.mvp.ext.ToastUtils
@@ -61,8 +62,21 @@ class ViewHomeFragment : FrameLayout {
 
         binding.specialOfferPastryRecycler.getRecycler().layoutManager =
             LinearLayoutManager(context, RecyclerView.HORIZONTAL, true)
+        val specialOfferData = data.pastries[1].pastries
+        specialOfferData.add(
+            0,
+            PastriesModel(
+                "",
+                0,
+                "",
+                0,
+                0,
+                false,
+                ""
+            )
+        )
         binding.specialOfferPastryRecycler.getRecycler().adapter =
-            SpecialOfferPastryRecyclerAdapter(data.pastries[1].pastries)
+            SpecialOfferPastryRecyclerAdapter(specialOfferData)
 
         binding.topPastryRecycler.getRecycler().layoutManager =
             GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
@@ -79,6 +93,13 @@ class ViewHomeFragment : FrameLayout {
 
         binding.newPastryRecycler.getAll().setOnClickListener {
             val intent = Intent(context, ListPastryActivity::class.java)
+            intent.putExtra(ListPastryActivity.TYPE, ListPastryActivity.NEW)
+            context.startActivity(intent)
+        }
+
+        binding.topPastryRecycler.getAll().setOnClickListener {
+            val intent = Intent(context, ListPastryActivity::class.java)
+            intent.putExtra(ListPastryActivity.TYPE, ListPastryActivity.RATE)
             context.startActivity(intent)
         }
 

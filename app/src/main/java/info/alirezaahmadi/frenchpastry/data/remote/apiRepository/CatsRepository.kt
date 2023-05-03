@@ -13,7 +13,7 @@ class CatsApiRepository private constructor() {
     companion object {
 
         private var apiRepository: CatsApiRepository? = null
-        const val PASTRY_TYPE = "pastry"
+        const val PASTRY_TYPE = "pastries"
         const val CAKE_TYPE = "cake"
 
         val instance: CatsApiRepository

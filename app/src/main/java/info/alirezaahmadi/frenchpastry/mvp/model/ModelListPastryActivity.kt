@@ -14,7 +14,7 @@ class ModelListPastryActivity(
         if (id != 0)
             PastryListApiRepository.instance.getMainContent(callbackRequest, id)
         else
-            PastryListApiRepository.instance.getMainContent(callbackRequest, id)
+            PastryListApiRepository.instance.getContentByType(callbackRequest, type)
 
     }
 
