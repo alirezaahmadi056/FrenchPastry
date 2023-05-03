@@ -28,6 +28,8 @@ class CustomRecyclerHorizontal(
 
     fun getRecycler() = binding.recyclerView
 
+    fun getAll() = binding.txtAll
+
     private fun initialized(attrs: AttributeSet){
 
         val typeArray = context.obtainStyledAttributes(attrs, R.styleable.CustomRecyclerHorizontal)

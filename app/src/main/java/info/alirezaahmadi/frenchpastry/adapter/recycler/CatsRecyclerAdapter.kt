@@ -52,7 +52,7 @@ class CatsRecyclerAdapter(
 
             binding.root.setOnClickListener {
                 val intent = Intent(context, ListPastryActivity::class.java)
-                intent.putExtra("ID", data.ID)
+                intent.putExtra(ListPastryActivity.ID, data.ID)
                 context.startActivity(intent)
             }
 

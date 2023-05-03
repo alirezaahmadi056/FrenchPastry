@@ -1,6 +1,7 @@
 package info.alirezaahmadi.frenchpastry.mvp.view
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
@@ -16,6 +17,7 @@ import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.RequestMain
 import info.alirezaahmadi.frenchpastry.databinding.FragmentHomeBinding
 import info.alirezaahmadi.frenchpastry.mvp.ext.ToastUtils
+import info.alirezaahmadi.frenchpastry.ui.activity.ListPastryActivity
 
 class ViewHomeFragment : FrameLayout {
 
@@ -74,6 +76,11 @@ class ViewHomeFragment : FrameLayout {
                 .placeholder(R.drawable.img_banner_place_holder)
                 .error(R.drawable.img_banner_place_holder)
                 .into(binding.imgBanner)
+
+        binding.newPastryRecycler.getAll().setOnClickListener {
+            val intent = Intent(context, ListPastryActivity::class.java)
+            context.startActivity(intent)
+        }
 
     }
 
