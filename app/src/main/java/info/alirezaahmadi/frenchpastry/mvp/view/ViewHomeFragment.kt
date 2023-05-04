@@ -75,8 +75,19 @@ class ViewHomeFragment : FrameLayout {
                 ""
             )
         )
+        specialOfferData.add(
+            PastriesModel(
+                "",
+                0,
+                "",
+                0,
+                0,
+                false,
+                ""
+            )
+        )
         binding.specialOfferPastryRecycler.getRecycler().adapter =
-            SpecialOfferPastryRecyclerAdapter(specialOfferData)
+            SpecialOfferPastryRecyclerAdapter(specialOfferData, context)
 
         binding.topPastryRecycler.getRecycler().layoutManager =
             GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)

@@ -9,12 +9,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import info.alirezaahmadi.frenchpastry.R
-import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastryListModel
+import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastryModel
 import info.alirezaahmadi.frenchpastry.databinding.RecyclerItemListProductsBinding
 import info.alirezaahmadi.frenchpastry.mvp.ext.OthersUtilities
 
 class ProductListRecyclerAdapter(
-    private val pastries: ArrayList<PastryListModel>,
+    private val pastries: ArrayList<PastryModel>,
     private val context: Context
 ) : RecyclerView.Adapter<ProductListRecyclerAdapter.PastryListViewHolder>() {
 
@@ -39,7 +39,7 @@ class ProductListRecyclerAdapter(
         private val binding: RecyclerItemListProductsBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun setData(data: PastryListModel) {
+        fun setData(data: PastryModel) {
 
             binding.txtTitle.text = data.title
             binding.txtPriceMain.text = OthersUtilities.changePrice(data.price).toString()

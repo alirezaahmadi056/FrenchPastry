@@ -1,5 +1,7 @@
 package info.alirezaahmadi.frenchpastry.adapter.recycler
 
+import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Paint
 import android.view.LayoutInflater
@@ -12,9 +14,11 @@ import info.alirezaahmadi.frenchpastry.R
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastriesModel
 import info.alirezaahmadi.frenchpastry.databinding.RecyclerItemMainVerticalBinding
 import info.alirezaahmadi.frenchpastry.mvp.ext.OthersUtilities
+import info.alirezaahmadi.frenchpastry.ui.activity.ListPastryActivity
 
 class SpecialOfferPastryRecyclerAdapter(
-    private val pastries: ArrayList<PastriesModel>
+    private val pastries: ArrayList<PastriesModel>,
+    private val context: Context
 ) : RecyclerView.Adapter<SpecialOfferPastryRecyclerAdapter.SpecialOfferPastryViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -71,8 +75,18 @@ class SpecialOfferPastryRecyclerAdapter(
                         .error(R.drawable.img_place_holder)
                         .into(binding.imgPastry)
 
-                if (position == pastries.lastIndex)
-                    binding.txtPastryName.text = "آخریه"
+                if (position == pastries.lastIndex) {
+
+                    binding.allViews.visibility = View.INVISIBLE
+                    binding.others.visibility = View.VISIBLE
+
+                    binding.root.setOnClickListener {
+                        val intent = Intent(context, ListPastryActivity::class.java)
+                        intent.putExtra(ListPastryActivity.TYPE, ListPastryActivity.SPECIAL_OFFER)
+                        context.startActivity(intent)
+                    }
+
+                }
 
             }
 

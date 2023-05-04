@@ -3,6 +3,7 @@ package info.alirezaahmadi.frenchpastry.mvp.presenter
 import android.content.Context
 import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
 import info.alirezaahmadi.frenchpastry.androidWrapper.NetworkInfo
+import info.alirezaahmadi.frenchpastry.data.remote.dataModel.AllPastriesModel
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.ListPastriesModel
 import info.alirezaahmadi.frenchpastry.data.remote.ext.CallbackRequest
 import info.alirezaahmadi.frenchpastry.mvp.ext.BaseLifeCycle
@@ -51,6 +52,25 @@ class PresenterListPastryActivity(
                 override fun onSuccess(code: Int, data: ListPastriesModel) {
                     view.endGetData()
                     view.setData(data)
+                }
+
+                override fun onNotSuccess(code: Int, error: String, message: String) {
+                    view.endProgress()
+                    view.toast(message, false)
+                }
+
+                override fun onError(error: String) {
+                    view.endProgress()
+                    view.toast("", true)
+                }
+
+            },
+
+            object : CallbackRequest<AllPastriesModel> {
+
+                override fun onSuccess(code: Int, data: AllPastriesModel) {
+                    view.endGetData()
+                    view.setData2(data, model.getTitle())
                 }
 
                 override fun onNotSuccess(code: Int, error: String, message: String) {

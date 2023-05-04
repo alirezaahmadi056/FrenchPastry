@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import info.alirezaahmadi.frenchpastry.adapter.recycler.ProductListRecyclerAdapter
 import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
+import info.alirezaahmadi.frenchpastry.data.remote.dataModel.AllPastriesModel
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.ListPastriesModel
 import info.alirezaahmadi.frenchpastry.databinding.ActivityListPastryBinding
 import info.alirezaahmadi.frenchpastry.mvp.ext.ToastUtils
@@ -48,6 +49,18 @@ class ViewListPastryActivity : FrameLayout {
             ProductListRecyclerAdapter(data.category.pastries, context)
 
         binding.txtTitle.text = data.category.title
+
+    }
+
+    fun setData2(data: AllPastriesModel, title: String) {
+
+        binding.recyclerViewPastry.layoutManager =
+            LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+
+        binding.recyclerViewPastry.adapter =
+            ProductListRecyclerAdapter(data.pastries, context)
+
+        binding.txtTitle.text = title
 
     }
 

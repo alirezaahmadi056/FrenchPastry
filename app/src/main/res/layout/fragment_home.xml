@@ -51,7 +51,7 @@
                 android:id="@+id/topPastryRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:title="پرطرفدار ترین ها" />
+                app:title="محبوب ترین ها" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"

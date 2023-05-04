@@ -1,5 +1,6 @@
 package info.alirezaahmadi.frenchpastry.data.remote.apiRepository
 
+import info.alirezaahmadi.frenchpastry.data.remote.dataModel.AllPastriesModel
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.ListPastriesModel
 import info.alirezaahmadi.frenchpastry.data.remote.ext.CallbackRequest
 import info.alirezaahmadi.frenchpastry.data.remote.mainService.RetrofitService
@@ -67,20 +68,20 @@ class PastryListApiRepository private constructor() {
     }
 
     fun getContentByType(
-        callbackRequest: CallbackRequest<ListPastriesModel>,
+        callbackRequest: CallbackRequest<AllPastriesModel>,
         type: String
     ) {
 
         RetrofitService.pastriesListApiService.getPastriesByType(type).enqueue(
 
-            object : Callback<ListPastriesModel> {
+            object : Callback<AllPastriesModel> {
 
                 override fun onResponse(
-                    call: Call<ListPastriesModel>,
-                    response: Response<ListPastriesModel>
+                    call: Call<AllPastriesModel>,
+                    response: Response<AllPastriesModel>
                 ) {
 
-                    val data = response.body() as ListPastriesModel
+                    val data = response.body() as AllPastriesModel
 
                     if (response.isSuccessful)
                         callbackRequest.onSuccess(
@@ -96,7 +97,7 @@ class PastryListApiRepository private constructor() {
 
                 }
 
-                override fun onFailure(call: Call<ListPastriesModel>, t: Throwable) {
+                override fun onFailure(call: Call<AllPastriesModel>, t: Throwable) {
 
                     callbackRequest.onError(t.message.toString())
 
@@ -121,6 +122,6 @@ interface PastryListApiService {
     @GET("pastries")
     fun getPastriesByType(
         @Query("orderBy") type: String
-    ): Call<ListPastriesModel>
+    ): Call<AllPastriesModel>
 
 }

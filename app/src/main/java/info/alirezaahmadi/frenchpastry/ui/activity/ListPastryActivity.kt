@@ -13,7 +13,7 @@ class ListPastryActivity : AppCompatActivity(), ActivityUtils {
         const val ID = "ID"
         const val TYPE = "TYPE"
         const val NEW = "NEW"
-        const val SALE_TOP = "SALE_TOP"
+        const val SPECIAL_OFFER = "SPECIAL_OFFER"
         const val RATE = "RATE"
     }
 
