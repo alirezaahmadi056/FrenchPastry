@@ -11,10 +11,14 @@ import android.text.InputType
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.FrameLayout
+import android.widget.Toast
 import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
 import info.alirezaahmadi.frenchpastry.androidWrapper.DeviceInfo
 import info.alirezaahmadi.frenchpastry.androidWrapper.NetworkInfo
+import info.alirezaahmadi.frenchpastry.data.local.db.MainDatabase
+import info.alirezaahmadi.frenchpastry.data.local.db.entitiesModel.UserEntity
 import info.alirezaahmadi.frenchpastry.data.remote.apiRepository.LoginApiRepository
+import info.alirezaahmadi.frenchpastry.data.remote.dataModel.DefaultModel
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.RequestSendPhone
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.RequestVerifyCode
 import info.alirezaahmadi.frenchpastry.data.remote.ext.CallbackRequest
@@ -140,7 +144,50 @@ class ViewLoginActivity(
                                     nameView.inputEnterCode.error = null
 
                                 if (isCheckedNetwork()) {
-                                    //code
+
+                                    nameView.btnConfirm.enableProgress()
+
+                                    LoginApiRepository.instance.editUser(
+                                        name,
+                                        object : CallbackRequest<DefaultModel> {
+
+                                            override fun onSuccess(code: Int, data: DefaultModel) {
+
+                                                val db = MainDatabase.getDatabase(context)
+
+                                                Thread {
+                                                    db.userDAO().insertUser(
+                                                        UserEntity(
+                                                            fullName = name
+                                                        )
+                                                    )
+                                                }.start()
+
+                                                Toast.makeText(
+                                                    context,
+                                                    "OK",
+                                                    Toast.LENGTH_SHORT
+                                                ).show()
+
+                                            }
+
+                                            override fun onNotSuccess(
+                                                code: Int,
+                                                error: String,
+                                                message: String
+                                            ) {
+                                                nameView.btnConfirm.disableProgress()
+                                                ToastUtils.toast(context, message)
+                                            }
+
+                                            override fun onError(error: String) {
+                                                nameView.btnConfirm.disableProgress()
+                                                ToastUtils.toastServerError(context)
+                                            }
+
+                                        }
+                                    )
+
                                 }
 
                             }

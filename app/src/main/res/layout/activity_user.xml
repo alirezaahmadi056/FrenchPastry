@@ -71,17 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_marginHorizontal="12dp"
                 android:layout_marginTop="12dp"
-                app:iconState="true"
                 app:customText="09035802464"
-                android:layout_height="50dp"/>
-
-            <info.alirezaahmadi.frenchpastry.ui.customView.CustomTextView
-                android:id="@+id/txtPass"
-                android:layout_width="match_parent"
-                android:layout_marginHorizontal="12dp"
-                android:layout_marginTop="12dp"
-                app:iconState="true"
-                app:customText="تغییر رمز عبور"
                 android:layout_height="50dp"/>
 
             <info.alirezaahmadi.frenchpastry.ui.customView.CustomTextView
@@ -109,6 +99,15 @@
                 android:layout_marginTop="12dp"
                 app:iconState="true"
                 app:customText="کد ملی"
+                android:layout_height="50dp"/>
+
+            <info.alirezaahmadi.frenchpastry.ui.customView.CustomTextView
+                android:id="@+id/txtAddress"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="12dp"
+                app:iconState="true"
+                app:customText="آدرس های من"
                 android:layout_height="50dp"/>
 
             <LinearLayout

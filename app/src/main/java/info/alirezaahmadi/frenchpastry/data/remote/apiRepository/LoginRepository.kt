@@ -1,5 +1,6 @@
 package info.alirezaahmadi.frenchpastry.data.remote.apiRepository
 
+import info.alirezaahmadi.frenchpastry.data.remote.dataModel.DefaultModel
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.RequestSendPhone
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.RequestVerifyCode
 import info.alirezaahmadi.frenchpastry.data.remote.ext.CallbackRequest
@@ -111,6 +112,46 @@ class LoginApiRepository private constructor() {
 
     }
 
+    fun editUser(
+        fullName: String,
+        callbackRequest: CallbackRequest<DefaultModel>
+    ) {
+
+        RetrofitService.apiService.editUser(fullName).enqueue(
+
+            object : Callback<DefaultModel>{
+
+                override fun onResponse(
+                    call: Call<DefaultModel>,
+                    response: Response<DefaultModel>
+                ) {
+
+                    if (response.isSuccessful)
+                        callbackRequest.onSuccess(
+                            response.code(),
+                            response.body() as DefaultModel
+                        )
+                    else {
+                        val data = response.body() as DefaultModel
+                        callbackRequest.onNotSuccess(
+                            response.code(),
+                            response.errorBody().toString(),
+                            data.message
+                        )
+                    }
+
+                }
+
+                override fun onFailure(call: Call<DefaultModel>, t: Throwable) {
+                    callbackRequest.onError(t.message.toString())
+                }
+
+            }
+
+        )
+
+    }
+
 }
 
 interface LoginApiService {
@@ -129,5 +170,11 @@ interface LoginApiService {
         @Field("code") code: String,
         @Field("phone") phone: String
     ): Call<RequestVerifyCode>
+
+    @FormUrlEncoded
+    @POST("user/profile")
+    fun editUser(
+        @Field("fullname") fullName: String
+    ): Call<DefaultModel>
 
 }
