@@ -21,7 +21,7 @@ class ProfileFragment(
     ): View {
 
         val view = ViewProfileFragment(mContext)
-        val presenter = PresenterProfileFragment(view, ModelProfileFragment(), mContext)
+        val presenter = PresenterProfileFragment(view, ModelProfileFragment(mContext), mContext)
         presenter.onCreate()
         return view.binding.root
 

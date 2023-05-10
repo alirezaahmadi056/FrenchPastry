@@ -52,11 +52,9 @@ class LoginApiRepository private constructor() {
                             response.body() as RequestSendPhone
                         )
                     else {
-                        val data = response.body() as RequestSendPhone
                         callbackRequest.onNotSuccess(
                             response.code(),
-                            response.errorBody().toString(),
-                            data.message
+                            response.errorBody().toString()
                         )
                     }
                 }
@@ -92,11 +90,9 @@ class LoginApiRepository private constructor() {
                             response.body() as RequestVerifyCode
                         )
                     else {
-                        val data = response.body() as RequestVerifyCode
                         callbackRequest.onNotSuccess(
                             response.code(),
-                            response.errorBody().toString(),
-                            data.message
+                            response.errorBody().toString()
                         )
                     }
 
@@ -113,13 +109,16 @@ class LoginApiRepository private constructor() {
     }
 
     fun editUser(
+        apiKey: String,
+        id: String,
+        pubKey: String,
         fullName: String,
         callbackRequest: CallbackRequest<DefaultModel>
     ) {
 
-        RetrofitService.apiService.editUser(fullName).enqueue(
+        RetrofitService.apiService.editUser(apiKey, id, pubKey, fullName).enqueue(
 
-            object : Callback<DefaultModel>{
+            object : Callback<DefaultModel> {
 
                 override fun onResponse(
                     call: Call<DefaultModel>,
@@ -132,11 +131,9 @@ class LoginApiRepository private constructor() {
                             response.body() as DefaultModel
                         )
                     else {
-                        val data = response.body() as DefaultModel
                         callbackRequest.onNotSuccess(
                             response.code(),
-                            response.errorBody().toString(),
-                            data.message
+                            response.errorBody().toString()
                         )
                     }
 
@@ -174,6 +171,9 @@ interface LoginApiService {
     @FormUrlEncoded
     @POST("user/profile")
     fun editUser(
+        @Header("app-api-key") apiKey: String,
+        @Header("app-device-uid") id: String,
+        @Header("app-public-key") pubKey: String,
         @Field("fullname") fullName: String
     ): Call<DefaultModel>
 

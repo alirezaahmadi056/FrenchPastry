@@ -54,14 +54,14 @@ class PresenterListPastryActivity(
                     view.setData(data)
                 }
 
-                override fun onNotSuccess(code: Int, error: String, message: String) {
+                override fun onNotSuccess(code: Int, error: String) {
                     view.endProgress()
-                    view.toast(message, false)
+                    view.toast()
                 }
 
                 override fun onError(error: String) {
                     view.endProgress()
-                    view.toast("", true)
+                    view.toast()
                 }
 
             },
@@ -73,14 +73,14 @@ class PresenterListPastryActivity(
                     view.setData2(data, model.getTitle())
                 }
 
-                override fun onNotSuccess(code: Int, error: String, message: String) {
+                override fun onNotSuccess(code: Int, error: String) {
                     view.endProgress()
-                    view.toast(message, false)
+                    view.toast()
                 }
 
                 override fun onError(error: String) {
                     view.endProgress()
-                    view.toast("", true)
+                    view.toast()
                 }
 
             }

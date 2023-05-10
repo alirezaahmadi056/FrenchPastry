@@ -43,11 +43,9 @@ class CatsApiRepository private constructor() {
                             response.body() as ParentCategoryModel
                         )
                     else {
-                        val data = response.body() as ParentCategoryModel
                         callbackRequest.onNotSuccess(
                             response.code(),
-                            response.errorBody().toString(),
-                            data.message
+                            response.errorBody().toString()
                         )
                     }
                 }

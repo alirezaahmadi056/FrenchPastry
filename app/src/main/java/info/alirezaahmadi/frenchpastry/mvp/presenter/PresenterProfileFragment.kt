@@ -3,6 +3,8 @@ package info.alirezaahmadi.frenchpastry.mvp.presenter
 import android.content.Context
 import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
 import info.alirezaahmadi.frenchpastry.androidWrapper.NetworkInfo
+import info.alirezaahmadi.frenchpastry.data.remote.dataModel.UserInfoData
+import info.alirezaahmadi.frenchpastry.data.remote.ext.CallbackRequest
 import info.alirezaahmadi.frenchpastry.mvp.ext.BaseLifeCycle
 import info.alirezaahmadi.frenchpastry.mvp.model.ModelProfileFragment
 import info.alirezaahmadi.frenchpastry.mvp.view.ViewProfileFragment
@@ -19,19 +21,39 @@ class PresenterProfileFragment(
         view.startGetData()
 
         if (NetworkInfo.internetInfo(context, this))
-            getCats()
+            getUserInfo()
 
     }
 
     override fun activeNetwork() {
-        getCats()
+        getUserInfo()
     }
 
     private fun onClickHandler() {
         view.onClick()
     }
 
-    private fun getCats() {
+    private fun getUserInfo() {
+
+        model.getUserInfo(
+
+            object : CallbackRequest<UserInfoData> {
+
+                override fun onSuccess(code: Int, data: UserInfoData) {
+                    view.setUserData(data.user)
+                }
+
+                override fun onNotSuccess(code: Int, error: String) {
+
+                }
+
+                override fun onError(error: String) {
+
+                }
+
+            }
+
+        )
 
     }
 

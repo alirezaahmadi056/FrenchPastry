@@ -39,14 +39,14 @@ class PresenterCakeCatsFragment(
                     view.setDataRecycler(data)
                 }
 
-                override fun onNotSuccess(code: Int, error: String, message: String) {
+                override fun onNotSuccess(code: Int, error: String) {
                     view.endProgress()
-                    view.toast(message, false)
+                    view.toast()
                 }
 
                 override fun onError(error: String) {
                     view.endProgress()
-                    view.toast("", true)
+                    view.toast()
                 }
 
             }

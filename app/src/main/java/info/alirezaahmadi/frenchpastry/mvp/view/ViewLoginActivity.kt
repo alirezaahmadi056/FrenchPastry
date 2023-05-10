@@ -3,11 +3,13 @@ package info.alirezaahmadi.frenchpastry.mvp.view
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.CountDownTimer
 import android.text.InputFilter
 import android.text.InputType
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.FrameLayout
@@ -17,6 +19,7 @@ import info.alirezaahmadi.frenchpastry.androidWrapper.DeviceInfo
 import info.alirezaahmadi.frenchpastry.androidWrapper.NetworkInfo
 import info.alirezaahmadi.frenchpastry.data.local.db.MainDatabase
 import info.alirezaahmadi.frenchpastry.data.local.db.entitiesModel.UserEntity
+import info.alirezaahmadi.frenchpastry.data.local.preferences.SharedPrefKey
 import info.alirezaahmadi.frenchpastry.data.remote.apiRepository.LoginApiRepository
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.DefaultModel
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.RequestSendPhone
@@ -25,6 +28,7 @@ import info.alirezaahmadi.frenchpastry.data.remote.ext.CallbackRequest
 import info.alirezaahmadi.frenchpastry.databinding.ActivityLoginBinding
 import info.alirezaahmadi.frenchpastry.databinding.CustomDialogLoginBinding
 import info.alirezaahmadi.frenchpastry.mvp.ext.ToastUtils
+import info.alirezaahmadi.frenchpastry.ui.activity.MainActivity
 
 class ViewLoginActivity(
     contextInstance: Context
@@ -134,6 +138,13 @@ class ViewLoginActivity(
                             nameDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                             nameDialog.show()
 
+                            val shared = context.getSharedPreferences(
+                                SharedPrefKey.PREFERENCES,
+                                Context.MODE_PRIVATE
+                            )
+                            val edit = shared.edit().putString(SharedPrefKey.API_KEY, data.api)
+                            edit.apply()
+
                             nameView.btnConfirm.getView().setOnClickListener {
 
                                 val name = nameView.edtEnterCode.text.toString().trim()
@@ -148,36 +159,35 @@ class ViewLoginActivity(
                                     nameView.btnConfirm.enableProgress()
 
                                     LoginApiRepository.instance.editUser(
+                                        DeviceInfo.getApi(context),
+                                        DeviceInfo.getDeviceID(context),
+                                        DeviceInfo.getPublicKey(context),
                                         name,
                                         object : CallbackRequest<DefaultModel> {
 
                                             override fun onSuccess(code: Int, data: DefaultModel) {
 
-                                                val db = MainDatabase.getDatabase(context)
+                                                nameView.btnConfirm.disableProgress()
 
-                                                Thread {
-                                                    db.userDAO().insertUser(
-                                                        UserEntity(
-                                                            fullName = name
-                                                        )
-                                                    )
-                                                }.start()
+                                                val editLogin = shared.edit()
+                                                editLogin.putBoolean(
+                                                    SharedPrefKey.LOGIN_STATE_KEY,
+                                                    true
+                                                )
+                                                editLogin.apply()
 
-                                                Toast.makeText(
-                                                    context,
-                                                    "OK",
-                                                    Toast.LENGTH_SHORT
-                                                ).show()
+                                                context.startActivity(
+                                                    Intent(context, MainActivity::class.java)
+                                                )
 
                                             }
 
                                             override fun onNotSuccess(
                                                 code: Int,
-                                                error: String,
-                                                message: String
+                                                error: String
                                             ) {
                                                 nameView.btnConfirm.disableProgress()
-                                                ToastUtils.toast(context, message)
+                                                ToastUtils.toastServerError(context)
                                             }
 
                                             override fun onError(error: String) {
@@ -194,9 +204,9 @@ class ViewLoginActivity(
 
                         }
 
-                        override fun onNotSuccess(code: Int, error: String, message: String) {
+                        override fun onNotSuccess(code: Int, error: String) {
                             view.btnConfirm.disableProgress()
-                            ToastUtils.toast(context, message)
+                            ToastUtils.toastServerError(context)
                         }
 
                         override fun onError(error: String) {
@@ -278,9 +288,9 @@ class ViewLoginActivity(
                         createDialog(id, key)
                 }
 
-                override fun onNotSuccess(code: Int, error: String, message: String) {
+                override fun onNotSuccess(code: Int, error: String) {
                     binding.btnLogin.disableProgress()
-                    ToastUtils.toast(context, message)
+                    ToastUtils.toastServerError(context)
                 }
 
                 override fun onError(error: String) {

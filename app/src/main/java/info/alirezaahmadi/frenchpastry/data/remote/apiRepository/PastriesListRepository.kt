@@ -39,18 +39,16 @@ class PastryListApiRepository private constructor() {
                     response: Response<ListPastriesModel>
                 ) {
 
-                    val data = response.body() as ListPastriesModel
-
-                    if (response.isSuccessful)
+                    if (response.isSuccessful) {
+                        val data = response.body() as ListPastriesModel
                         callbackRequest.onSuccess(
                             response.code(),
                             data
                         )
-                    else
+                    } else
                         callbackRequest.onNotSuccess(
                             response.code(),
-                            response.errorBody().toString(),
-                            data.message
+                            response.errorBody().toString()
                         )
 
                 }
@@ -81,18 +79,17 @@ class PastryListApiRepository private constructor() {
                     response: Response<AllPastriesModel>
                 ) {
 
-                    val data = response.body() as AllPastriesModel
-
-                    if (response.isSuccessful)
+                    if (response.isSuccessful) {
+                        val data = response.body() as AllPastriesModel
                         callbackRequest.onSuccess(
                             response.code(),
                             data
                         )
+                    }
                     else
                         callbackRequest.onNotSuccess(
                             response.code(),
-                            response.errorBody().toString(),
-                            data.message
+                            response.errorBody().toString()
                         )
 
                 }

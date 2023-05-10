@@ -6,6 +6,7 @@ import android.content.Context
 import android.os.Build
 import android.provider.Settings
 import androidx.window.layout.WindowMetricsCalculator
+import info.alirezaahmadi.frenchpastry.data.local.preferences.SharedPrefKey
 import java.io.BufferedReader
 import java.io.File
 import java.io.InputStreamReader
@@ -24,9 +25,23 @@ class DeviceInfo {
             Settings.Secure.ANDROID_ID
         ) ?: ""
 
-        fun getPublicKey(context: Context, api: String): String {
+        fun getApi(context: Context): String {
 
-            val input = PRIVATE_KEY + api + getDeviceID(context)
+            val shared =
+                context.getSharedPreferences(SharedPrefKey.PREFERENCES, Context.MODE_PRIVATE)
+            val api = shared.getString(SharedPrefKey.API_KEY, "")
+
+            return api ?: ""
+
+        }
+
+        fun getPublicKey(context: Context): String {
+
+            val shared =
+                context.getSharedPreferences(SharedPrefKey.PREFERENCES, Context.MODE_PRIVATE)
+            val apiKey = shared.getString(SharedPrefKey.API_KEY, "") ?: ""
+
+            val input = PRIVATE_KEY + getDeviceID(context) + apiKey
             val md = MessageDigest.getInstance("MD5")
 
             return BigInteger(

@@ -116,13 +116,8 @@ class ViewHomeFragment : FrameLayout {
 
     }
 
-    fun toast(text: String, errorState: Boolean) {
-
-        if (errorState)
-            ToastUtils.toastServerError(context)
-        else
-            ToastUtils.toast(context, text)
-
+    fun toast() {
+        ToastUtils.toastServerError(context)
     }
 
 }

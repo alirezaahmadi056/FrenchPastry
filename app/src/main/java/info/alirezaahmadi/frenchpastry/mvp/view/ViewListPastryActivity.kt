@@ -78,13 +78,8 @@ class ViewListPastryActivity : FrameLayout {
         binding.progressBar.visibility = View.INVISIBLE
     }
 
-    fun toast(text: String, errorState: Boolean) {
-
-        if (errorState)
-            ToastUtils.toastServerError(context)
-        else
-            ToastUtils.toast(context, text)
-
+    fun toast() {
+        ToastUtils.toastServerError(context)
     }
 
 }

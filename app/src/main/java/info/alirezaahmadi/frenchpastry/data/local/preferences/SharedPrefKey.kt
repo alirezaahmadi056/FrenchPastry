@@ -1,8 +1,9 @@
 package info.alirezaahmadi.frenchpastry.data.local.preferences
 
-object LoginInfo {
+object SharedPrefKey {
 
-    const val LOGIN_PREFERENCES = "loginPref"
+    const val PREFERENCES = "mainPref"
     const val LOGIN_STATE_KEY = "loginState"
+    const val API_KEY = "apiKey"
 
 }

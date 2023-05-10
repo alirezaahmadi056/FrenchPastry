@@ -9,7 +9,7 @@ import android.os.Looper
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
-import info.alirezaahmadi.frenchpastry.data.local.preferences.LoginInfo
+import info.alirezaahmadi.frenchpastry.data.local.preferences.SharedPrefKey
 import info.alirezaahmadi.frenchpastry.databinding.ActivityFullscreenBinding
 
 class FullscreenActivity : AppCompatActivity(), ActivityUtils {
@@ -23,12 +23,12 @@ class FullscreenActivity : AppCompatActivity(), ActivityUtils {
 
         hideStatus()
 
-        loginState = getSharedPreferences(LoginInfo.LOGIN_PREFERENCES, MODE_PRIVATE)
+        loginState = getSharedPreferences(SharedPrefKey.PREFERENCES, MODE_PRIVATE)
 
         Handler(Looper.getMainLooper()).postDelayed(
             {
                 //TODO change default to false
-                if (loginState.getBoolean(LoginInfo.LOGIN_STATE_KEY, true))
+                if (loginState.getBoolean(SharedPrefKey.LOGIN_STATE_KEY, false))
                     startActivity(
                         Intent(this@FullscreenActivity, MainActivity::class.java)
                     )
