@@ -187,7 +187,7 @@ class ViewLoginActivity(
                                                 error: String
                                             ) {
                                                 nameView.btnConfirm.disableProgress()
-                                                ToastUtils.toastServerError(context)
+                                                ToastUtils.toast(context, error)
                                             }
 
                                             override fun onError(error: String) {
@@ -206,7 +206,7 @@ class ViewLoginActivity(
 
                         override fun onNotSuccess(code: Int, error: String) {
                             view.btnConfirm.disableProgress()
-                            ToastUtils.toastServerError(context)
+                            ToastUtils.toast(context, error)
                         }
 
                         override fun onError(error: String) {
@@ -290,7 +290,7 @@ class ViewLoginActivity(
 
                 override fun onNotSuccess(code: Int, error: String) {
                     binding.btnLogin.disableProgress()
-                    ToastUtils.toastServerError(context)
+                    ToastUtils.toast(context, error)
                 }
 
                 override fun onError(error: String) {

@@ -1,9 +1,11 @@
 package info.alirezaahmadi.frenchpastry.data.remote.apiRepository
 
+import android.util.Log
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.DefaultModel
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.RequestSendPhone
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.RequestVerifyCode
 import info.alirezaahmadi.frenchpastry.data.remote.ext.CallbackRequest
+import info.alirezaahmadi.frenchpastry.data.remote.ext.ErrorUtils
 import info.alirezaahmadi.frenchpastry.data.remote.mainService.RetrofitService
 import retrofit2.Call
 import retrofit2.Callback
@@ -12,6 +14,7 @@ import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.Header
 import retrofit2.http.POST
+import java.net.SocketTimeoutException
 
 class LoginApiRepository private constructor() {
 
@@ -52,15 +55,20 @@ class LoginApiRepository private constructor() {
                             response.body() as RequestSendPhone
                         )
                     else {
+                        val error = ErrorUtils.parseError(response)
                         callbackRequest.onNotSuccess(
                             response.code(),
-                            response.errorBody().toString()
+                            error
                         )
                     }
                 }
 
                 override fun onFailure(call: Call<RequestSendPhone>, t: Throwable) {
-                    callbackRequest.onError(t.message.toString())
+                    if (t is SocketTimeoutException) {
+                        callbackRequest.onError("تایم اوت")
+                    } else {
+                        callbackRequest.onError(t.message.toString())
+                    }
                 }
 
             }
@@ -90,9 +98,10 @@ class LoginApiRepository private constructor() {
                             response.body() as RequestVerifyCode
                         )
                     else {
+                        val error = ErrorUtils.parseError(response)
                         callbackRequest.onNotSuccess(
                             response.code(),
-                            response.errorBody().toString()
+                            error
                         )
                     }
 
@@ -131,9 +140,10 @@ class LoginApiRepository private constructor() {
                             response.body() as DefaultModel
                         )
                     else {
+                        val error = ErrorUtils.parseError(response)
                         callbackRequest.onNotSuccess(
                             response.code(),
-                            response.errorBody().toString()
+                            error
                         )
                     }
 
