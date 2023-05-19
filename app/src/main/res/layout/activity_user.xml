@@ -1,159 +1,216 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#141217"
     android:layoutDirection="ltr"
     tools:context=".ui.activity.UserActivity">
 
-    <ImageView
-        android:id="@+id/imageView18"
-        android:layout_width="150dp"
-        android:layout_height="140dp"
-        android:contentDescription="@string/image_desc"
-        android:scaleType="fitXY"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/customAppBar"
-        app:srcCompat="@drawable/img_profile_lines" />
-
-    <TextView
-        android:id="@+id/txtName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:textColor="@color/white_main"
-        android:textSize="@dimen/heading_large_size"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/customAppBar"
-        tools:text="علیرضا احمدی" />
-
-    <TextView
-        android:id="@+id/txtPhone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textColor="@color/white_main"
-        android:textSize="@dimen/heading_large_size"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtName"
-        tools:text="09035802464" />
-
-    <info.alirezaahmadi.frenchpastry.ui.customView.CustomAppBar
-        android:id="@+id/customAppBar"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainView"
+        android:background="#141217"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent">
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/view20"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/back_item_white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPhone">
+        <ImageView
+            android:id="@+id/imageView18"
+            android:layout_width="150dp"
+            android:layout_height="140dp"
+            android:contentDescription="@string/image_desc"
+            android:scaleType="fitXY"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/customAppBar"
+            app:srcCompat="@drawable/img_profile_lines" />
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:textColor="@color/white_main"
+            android:textSize="@dimen/heading_large_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/customAppBar"
+            tools:text="علیرضا احمدی" />
+
+        <TextView
+            android:id="@+id/txtPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/white_main"
+            android:textSize="@dimen/heading_large_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtName"
+            tools:text="09035802464" />
+
+        <info.alirezaahmadi.frenchpastry.ui.customView.CustomAppBar
+            android:id="@+id/customAppBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <info.alirezaahmadi.frenchpastry.ui.customView.CustomTextView
-                android:id="@+id/txtEditName"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginHorizontal="18dp"
-                android:layout_marginTop="18dp"
-                app:customText="علیرضا احمدی"
-                app:iconState="true" />
-
-            <info.alirezaahmadi.frenchpastry.ui.customView.CustomTextView
-                android:id="@+id/txtDate"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginHorizontal="18dp"
-                android:layout_marginTop="18dp"
-                app:customText="تاریخ تولد"
-                app:iconState="true" />
-
-            <info.alirezaahmadi.frenchpastry.ui.customView.CustomTextView
-                android:id="@+id/txtEmail"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginHorizontal="18dp"
-                android:layout_marginTop="18dp"
-                app:customText="ایمیل"
-                app:iconState="true" />
-
-            <info.alirezaahmadi.frenchpastry.ui.customView.CustomTextView
-                android:id="@+id/txtCode"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginHorizontal="18dp"
-                android:layout_marginTop="18dp"
-                app:customText="کد ملی"
-                app:iconState="true" />
-
-            <info.alirezaahmadi.frenchpastry.ui.customView.CustomTextView
-                android:id="@+id/txtAddress"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginHorizontal="18dp"
-                android:layout_marginTop="18dp"
-                app:customText="آدرس های من"
-                app:iconState="true" />
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/view20"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/back_item_white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPhone">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="18dp"
-                android:layout_marginTop="18dp"
-                android:gravity="end"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <RadioButton
-                    android:id="@+id/rdbWomen"
-                    android:layout_width="wrap_content"
+                <info.alirezaahmadi.frenchpastry.ui.customView.CustomEditText
+                    android:id="@+id/txtEditName"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="12dp"
-                    android:text="@string/women" />
+                    app:rtlSupport="true"
+                    app:hintText="نام و نام خانوادگی"
+                    android:layout_marginHorizontal="18dp"
+                    android:layout_marginTop="12dp"
+                    app:iconState="true" />
 
-                <RadioButton
-                    android:id="@+id/rdbMen"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="12dp"
-                    android:text="@string/men" />
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_marginHorizontal="18dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                    <info.alirezaahmadi.frenchpastry.ui.customView.CustomEditText
+                        android:id="@+id/txtYear"
+                        android:layout_weight="0.3"
+                        android:layout_width="0dp"
+                        android:layout_marginEnd="8dp"
+                        app:centerGravity="true"
+                        app:type="2"
+                        app:max="4"
+                        android:layout_height="wrap_content"
+                        app:hintText="سال"
+                        app:iconState="true" />
+
+                    <info.alirezaahmadi.frenchpastry.ui.customView.CustomEditText
+                        android:id="@+id/txtMount"
+                        android:layout_weight="0.2"
+                        android:layout_width="0dp"
+                        android:layout_marginEnd="8dp"
+                        app:centerGravity="true"
+                        app:max="2"
+                        app:type="2"
+                        android:layout_height="wrap_content"
+                        app:hintText="ماه"
+                        app:iconState="true" />
+
+                    <info.alirezaahmadi.frenchpastry.ui.customView.CustomEditText
+                        android:id="@+id/txtDay"
+                        android:layout_weight="0.2"
+                        app:centerGravity="true"
+                        app:type="2"
+                        app:max="2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:hintText="روز"
+                        app:iconState="true" />
+
+                    <TextView
+                        android:text="@string/date"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.3"
+                        android:textColor="@color/color_text_black"
+                        android:textSize="@dimen/text_large_size"
+                        android:layout_marginEnd="4dp"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <info.alirezaahmadi.frenchpastry.ui.customView.CustomEditText
+                    android:id="@+id/txtEmail"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/sex"
-                    android:textColor="@color/color_text_black"
-                    android:textSize="@dimen/text_large_size" />
+                    android:layout_marginHorizontal="18dp"
+                    app:hintText="ایمیل"
+                    app:iconState="true" />
+
+                <info.alirezaahmadi.frenchpastry.ui.customView.CustomTextView
+                    android:id="@+id/txtAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginHorizontal="18dp"
+                    app:customText="آدرس های من"
+                    app:iconState="true" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="18dp"
+                    android:layout_marginTop="18dp"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <RadioGroup
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:id="@+id/rdbWomen"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="12dp"
+                            android:text="@string/women" />
+
+                        <RadioButton
+                            android:id="@+id/rdbMen"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="12dp"
+                            android:text="@string/men" />
+
+                    </RadioGroup>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sex"
+                        android:layout_marginEnd="4dp"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/color_text_black"
+                        android:textSize="@dimen/text_large_size" />
+
+                </LinearLayout>
+
+                <info.alirezaahmadi.frenchpastry.ui.customView.CustomButton
+                    android:id="@+id/btnSaveInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="18dp"
+                    app:buttonText="@string/save_info" />
 
             </LinearLayout>
 
-            <info.alirezaahmadi.frenchpastry.ui.customView.CustomButton
-                android:id="@+id/btnSaveInfo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="18dp"
-                app:buttonText="@string/save_info" />
+        </androidx.core.widget.NestedScrollView>
 
-        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.core.widget.NestedScrollView>
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

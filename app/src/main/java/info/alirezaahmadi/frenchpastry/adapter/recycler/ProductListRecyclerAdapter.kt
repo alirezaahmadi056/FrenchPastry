@@ -6,9 +6,13 @@ import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import info.alirezaahmadi.frenchpastry.R
+import info.alirezaahmadi.frenchpastry.adapter.recycler.diffUtil.ProductListDiffUtil
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastryModel
 import info.alirezaahmadi.frenchpastry.databinding.RecyclerItemListProductsBinding
 import info.alirezaahmadi.frenchpastry.mvp.ext.OthersUtilities
@@ -16,7 +20,15 @@ import info.alirezaahmadi.frenchpastry.mvp.ext.OthersUtilities
 class ProductListRecyclerAdapter(
     private val pastries: ArrayList<PastryModel>,
     private val context: Context
-) : RecyclerView.Adapter<ProductListRecyclerAdapter.PastryListViewHolder>() {
+) : RecyclerView.Adapter<ProductListRecyclerAdapter.PastryListViewHolder>(), Filterable {
+
+    private val dataFull = ArrayList<PastryModel>()
+    private val dataMain = ArrayList<PastryModel>()
+
+    init {
+        dataFull.addAll(pastries)
+        dataMain.addAll(pastries)
+    }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -69,6 +81,48 @@ class ProductListRecyclerAdapter(
             }
 
         }
+
+    }
+
+    override fun getFilter(): Filter =
+        object : Filter() {
+
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+
+                val data = ArrayList<PastryModel>()
+
+                if (constraint == null || constraint.isEmpty())
+                    data.addAll(dataFull)
+                else {
+                    val filter = constraint.toString().trim()
+                    for (item in dataFull) {
+                        if (item.title.contains(filter))
+                            data.add(item)
+                    }
+                }
+
+                pastries.clear()
+                pastries.addAll(data)
+
+                return FilterResults()
+
+            }
+
+            override fun publishResults(p0: CharSequence?, result: FilterResults?) {
+                dataUpdate(pastries)
+            }
+
+        }
+
+    private fun dataUpdate(newList: ArrayList<PastryModel>) {
+
+        val diffCallback = ProductListDiffUtil(dataMain, newList)
+        val diffResult = DiffUtil.calculateDiff(diffCallback)
+
+        dataMain.clear()
+        dataMain.addAll(newList)
+
+        diffResult.dispatchUpdatesTo(this)
 
     }
 

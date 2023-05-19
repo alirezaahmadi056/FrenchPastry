@@ -1,6 +1,7 @@
 package info.alirezaahmadi.frenchpastry.ui.customView
 
 import android.content.Context
+import android.text.Editable
 import android.text.InputFilter
 import android.util.AttributeSet
 import android.view.Gravity
@@ -36,7 +37,7 @@ class CustomEditText(
         val typeArray = context.obtainStyledAttributes(attrs, R.styleable.CustomEditText)
 
         val hint = typeArray.getString(R.styleable.CustomEditText_hintText)
-        val type = typeArray.getInteger(R.styleable.CustomEditText_type, 0)
+        val type = typeArray.getInteger(R.styleable.CustomEditText_type, 1)
         val rtlSupport =
             typeArray.getBoolean(R.styleable.CustomEditText_rtlSupport, false)
         val maxLength = typeArray.getInteger(R.styleable.CustomEditText_max, 0)
@@ -55,7 +56,7 @@ class CustomEditText(
             binding.textInputEditText.filters = arrayOf(InputFilter.LengthFilter(maxLength))
 
         if (centerGravity)
-            binding.textInputEditText.gravity = Gravity.CENTER_HORIZONTAL
+            binding.textInputEditText.gravity = Gravity.CENTER
 
         typeArray.recycle()
 
@@ -66,5 +67,11 @@ class CustomEditText(
     }
 
     fun getText() = binding.textInputEditText.text.toString()
+
+    fun setText(text: String) {
+        binding.textInputEditText.text = Editable.Factory().newEditable(text)
+    }
+
+    fun getEditText() = binding.textInputEditText
 
 }

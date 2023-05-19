@@ -6,6 +6,7 @@ import info.alirezaahmadi.frenchpastry.androidWrapper.NetworkInfo
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.RequestMain
 import info.alirezaahmadi.frenchpastry.data.remote.ext.CallbackRequest
 import info.alirezaahmadi.frenchpastry.mvp.ext.BaseLifeCycle
+import info.alirezaahmadi.frenchpastry.mvp.ext.ToastUtils
 import info.alirezaahmadi.frenchpastry.mvp.model.ModelHomeFragment
 import info.alirezaahmadi.frenchpastry.mvp.view.ViewHomeFragment
 
@@ -44,12 +45,12 @@ class PresenterHomeFragment(
 
                 override fun onNotSuccess(code: Int, error: String) {
                     view.endProgress()
-                    view.toast()
+                    ToastUtils.toast(context, error)
                 }
 
                 override fun onError(error: String) {
                     view.endProgress()
-                    view.toast()
+                    ToastUtils.toastServerError(context)
                 }
 
             }

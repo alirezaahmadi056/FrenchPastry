@@ -3,6 +3,7 @@ package info.alirezaahmadi.frenchpastry.data.remote.apiRepository
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.AllPastriesModel
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.ListPastriesModel
 import info.alirezaahmadi.frenchpastry.data.remote.ext.CallbackRequest
+import info.alirezaahmadi.frenchpastry.data.remote.ext.ErrorUtils
 import info.alirezaahmadi.frenchpastry.data.remote.mainService.RetrofitService
 import retrofit2.Call
 import retrofit2.Callback
@@ -45,11 +46,13 @@ class PastryListApiRepository private constructor() {
                             response.code(),
                             data
                         )
-                    } else
+                    } else {
+                        val error = ErrorUtils.parseError(response)
                         callbackRequest.onNotSuccess(
                             response.code(),
-                            response.errorBody().toString()
+                            error
                         )
+                    }
 
                 }
 
@@ -85,8 +88,7 @@ class PastryListApiRepository private constructor() {
                             response.code(),
                             data
                         )
-                    }
-                    else
+                    } else
                         callbackRequest.onNotSuccess(
                             response.code(),
                             response.errorBody().toString()

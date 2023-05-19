@@ -6,6 +6,7 @@ import info.alirezaahmadi.frenchpastry.androidWrapper.NetworkInfo
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.UserInfoData
 import info.alirezaahmadi.frenchpastry.data.remote.ext.CallbackRequest
 import info.alirezaahmadi.frenchpastry.mvp.ext.BaseLifeCycle
+import info.alirezaahmadi.frenchpastry.mvp.ext.ToastUtils
 import info.alirezaahmadi.frenchpastry.mvp.model.ModelProfileFragment
 import info.alirezaahmadi.frenchpastry.mvp.view.ViewProfileFragment
 
@@ -40,15 +41,18 @@ class PresenterProfileFragment(
             object : CallbackRequest<UserInfoData> {
 
                 override fun onSuccess(code: Int, data: UserInfoData) {
+                    view.endGetData()
                     view.setUserData(data.user)
                 }
 
                 override fun onNotSuccess(code: Int, error: String) {
-
+                    view.endProgress()
+                    ToastUtils.toast(context, error)
                 }
 
                 override fun onError(error: String) {
-
+                    view.endProgress()
+                    ToastUtils.toastServerError(context)
                 }
 
             }

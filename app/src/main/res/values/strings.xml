@@ -63,4 +63,6 @@
     <string name="sex">جنسیت :</string>
     <string name="women">زن</string>
     <string name="save_info">ثبت اطلاعات</string>
+    <string name="date">تاریخ تولد :</string>
+    <string name="search_desc">search_desc</string>
 </resources>

@@ -2,6 +2,7 @@ package info.alirezaahmadi.frenchpastry.data.remote.apiRepository
 
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.UserInfoData
 import info.alirezaahmadi.frenchpastry.data.remote.ext.CallbackRequest
+import info.alirezaahmadi.frenchpastry.data.remote.ext.ErrorUtils
 import info.alirezaahmadi.frenchpastry.data.remote.mainService.RetrofitService
 import retrofit2.Call
 import retrofit2.Callback
@@ -34,7 +35,10 @@ class UserApiRepository private constructor() {
 
             object : Callback<UserInfoData> {
 
-                override fun onResponse(call: Call<UserInfoData>, response: Response<UserInfoData>) {
+                override fun onResponse(
+                    call: Call<UserInfoData>,
+                    response: Response<UserInfoData>
+                ) {
 
                     if (response.isSuccessful) {
                         val data = response.body() as UserInfoData
@@ -42,11 +46,13 @@ class UserApiRepository private constructor() {
                             response.code(),
                             data
                         )
-                    } else
+                    } else {
+                        val error = ErrorUtils.parseError(response)
                         callbackRequest.onNotSuccess(
                             response.code(),
-                            response.errorBody().toString()
+                            error
                         )
+                    }
 
                 }
 

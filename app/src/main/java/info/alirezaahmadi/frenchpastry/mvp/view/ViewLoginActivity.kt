@@ -9,16 +9,12 @@ import android.graphics.drawable.ColorDrawable
 import android.os.CountDownTimer
 import android.text.InputFilter
 import android.text.InputType
-import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.FrameLayout
-import android.widget.Toast
 import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
 import info.alirezaahmadi.frenchpastry.androidWrapper.DeviceInfo
 import info.alirezaahmadi.frenchpastry.androidWrapper.NetworkInfo
-import info.alirezaahmadi.frenchpastry.data.local.db.MainDatabase
-import info.alirezaahmadi.frenchpastry.data.local.db.entitiesModel.UserEntity
 import info.alirezaahmadi.frenchpastry.data.local.preferences.SharedPrefKey
 import info.alirezaahmadi.frenchpastry.data.remote.apiRepository.LoginApiRepository
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.DefaultModel

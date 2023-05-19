@@ -44,4 +44,8 @@ class CustomTextView(
 
     }
 
+    fun getTxt() = binding.txtMain
+
+    fun getIcon() = binding.imgIcon
+
 }

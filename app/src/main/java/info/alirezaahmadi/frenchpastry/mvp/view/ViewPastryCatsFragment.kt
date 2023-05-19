@@ -11,7 +11,6 @@ import info.alirezaahmadi.frenchpastry.R
 import info.alirezaahmadi.frenchpastry.adapter.recycler.CatsRecyclerAdapter
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.ParentCategoryModel
 import info.alirezaahmadi.frenchpastry.databinding.FragmentPastryCatsBinding
-import info.alirezaahmadi.frenchpastry.mvp.ext.ToastUtils
 
 class ViewPastryCatsFragment(
     contextInstance: Context
@@ -51,10 +50,6 @@ class ViewPastryCatsFragment(
 
     fun endProgress() {
         binding.progressBar.visibility = View.INVISIBLE
-    }
-
-    fun toast() {
-        ToastUtils.toastServerError(context)
     }
 
 }

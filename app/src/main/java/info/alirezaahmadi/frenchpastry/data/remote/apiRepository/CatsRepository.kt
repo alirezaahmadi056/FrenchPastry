@@ -2,6 +2,7 @@ package info.alirezaahmadi.frenchpastry.data.remote.apiRepository
 
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.ParentCategoryModel
 import info.alirezaahmadi.frenchpastry.data.remote.ext.CallbackRequest
+import info.alirezaahmadi.frenchpastry.data.remote.ext.ErrorUtils
 import info.alirezaahmadi.frenchpastry.data.remote.mainService.RetrofitService
 import retrofit2.Call
 import retrofit2.Callback
@@ -43,9 +44,10 @@ class CatsApiRepository private constructor() {
                             response.body() as ParentCategoryModel
                         )
                     else {
+                        val error = ErrorUtils.parseError(response)
                         callbackRequest.onNotSuccess(
                             response.code(),
-                            response.errorBody().toString()
+                            error
                         )
                     }
                 }

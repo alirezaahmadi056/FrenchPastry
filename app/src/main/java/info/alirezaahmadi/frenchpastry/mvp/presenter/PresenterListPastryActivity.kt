@@ -7,6 +7,7 @@ import info.alirezaahmadi.frenchpastry.data.remote.dataModel.AllPastriesModel
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.ListPastriesModel
 import info.alirezaahmadi.frenchpastry.data.remote.ext.CallbackRequest
 import info.alirezaahmadi.frenchpastry.mvp.ext.BaseLifeCycle
+import info.alirezaahmadi.frenchpastry.mvp.ext.ToastUtils
 import info.alirezaahmadi.frenchpastry.mvp.model.ModelListPastryActivity
 import info.alirezaahmadi.frenchpastry.mvp.view.ViewListPastryActivity
 
@@ -56,12 +57,12 @@ class PresenterListPastryActivity(
 
                 override fun onNotSuccess(code: Int, error: String) {
                     view.endProgress()
-                    view.toast()
+                    ToastUtils.toast(context, error)
                 }
 
                 override fun onError(error: String) {
                     view.endProgress()
-                    view.toast()
+                    ToastUtils.toastServerError(context)
                 }
 
             },
@@ -75,12 +76,12 @@ class PresenterListPastryActivity(
 
                 override fun onNotSuccess(code: Int, error: String) {
                     view.endProgress()
-                    view.toast()
+                    ToastUtils.toast(context, error)
                 }
 
                 override fun onError(error: String) {
                     view.endProgress()
-                    view.toast()
+                    ToastUtils.toastServerError(context)
                 }
 
             }

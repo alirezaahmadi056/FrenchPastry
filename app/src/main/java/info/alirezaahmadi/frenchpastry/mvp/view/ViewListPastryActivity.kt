@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
+import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import info.alirezaahmadi.frenchpastry.adapter.recycler.ProductListRecyclerAdapter
@@ -45,10 +46,14 @@ class ViewListPastryActivity : FrameLayout {
         binding.recyclerViewPastry.layoutManager =
             LinearLayoutManager(context, RecyclerView.VERTICAL, false)
 
-        binding.recyclerViewPastry.adapter =
-            ProductListRecyclerAdapter(data.category.pastries, context)
+        val adapter = ProductListRecyclerAdapter(data.category.pastries, context)
+        binding.recyclerViewPastry.adapter = adapter
 
         binding.txtTitle.text = data.category.title
+
+        binding.edtSearch.getEditText().doOnTextChanged { text, _, _, _ ->
+            adapter.filter.filter(text)
+        }
 
     }
 
@@ -57,8 +62,12 @@ class ViewListPastryActivity : FrameLayout {
         binding.recyclerViewPastry.layoutManager =
             LinearLayoutManager(context, RecyclerView.VERTICAL, false)
 
-        binding.recyclerViewPastry.adapter =
-            ProductListRecyclerAdapter(data.pastries, context)
+        val adapter = ProductListRecyclerAdapter(data.pastries, context)
+        binding.recyclerViewPastry.adapter = adapter
+
+        binding.edtSearch.getEditText().doOnTextChanged { text, _, _, _ ->
+            adapter.filter.filter(text)
+        }
 
         binding.txtTitle.text = title
 
@@ -76,10 +85,6 @@ class ViewListPastryActivity : FrameLayout {
 
     fun endProgress() {
         binding.progressBar.visibility = View.INVISIBLE
-    }
-
-    fun toast() {
-        ToastUtils.toastServerError(context)
     }
 
 }

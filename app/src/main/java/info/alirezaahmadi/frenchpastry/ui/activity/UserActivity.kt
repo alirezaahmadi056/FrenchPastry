@@ -13,7 +13,7 @@ class UserActivity : AppCompatActivity() {
         val view = ViewUserActivity(this)
         setContentView(view.binding.root)
 
-        val presenter = PresenterUserActivity(view, ModelUserActivity())
+        val presenter = PresenterUserActivity(view, ModelUserActivity(this), this)
         presenter.onCreate()
 
     }

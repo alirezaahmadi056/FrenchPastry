@@ -6,6 +6,7 @@ import info.alirezaahmadi.frenchpastry.androidWrapper.NetworkInfo
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.ParentCategoryModel
 import info.alirezaahmadi.frenchpastry.data.remote.ext.CallbackRequest
 import info.alirezaahmadi.frenchpastry.mvp.ext.BaseLifeCycle
+import info.alirezaahmadi.frenchpastry.mvp.ext.ToastUtils
 import info.alirezaahmadi.frenchpastry.mvp.model.ModelPastryCatsFragment
 import info.alirezaahmadi.frenchpastry.mvp.view.ViewPastryCatsFragment
 
@@ -41,12 +42,12 @@ class PresenterPastryCatsFragment(
 
                 override fun onNotSuccess(code: Int, error: String) {
                     view.endProgress()
-                    view.toast()
+                    ToastUtils.toast(context, error)
                 }
 
                 override fun onError(error: String) {
                     view.endProgress()
-                    view.toast()
+                    ToastUtils.toastServerError(context)
                 }
 
             }

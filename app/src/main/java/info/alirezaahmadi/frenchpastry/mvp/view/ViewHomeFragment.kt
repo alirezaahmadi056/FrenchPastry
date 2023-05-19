@@ -17,7 +17,6 @@ import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastriesModel
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.RequestMain
 import info.alirezaahmadi.frenchpastry.databinding.FragmentHomeBinding
-import info.alirezaahmadi.frenchpastry.mvp.ext.ToastUtils
 import info.alirezaahmadi.frenchpastry.ui.activity.ListPastryActivity
 
 class ViewHomeFragment : FrameLayout {
@@ -114,10 +113,6 @@ class ViewHomeFragment : FrameLayout {
             context.startActivity(intent)
         }
 
-    }
-
-    fun toast() {
-        ToastUtils.toastServerError(context)
     }
 
 }

@@ -19,11 +19,22 @@ class DeviceInfo {
 
         private const val PRIVATE_KEY = "NKFewSfScCRrbxzULrSivWAXq2yvGd"
 
+        private var deviceId: String? = null
+        private var publicKey: String? = null
+        private var publicKeyWithout: String? = null
+
         @SuppressLint("HardwareIds")
-        fun getDeviceID(context: Context): String = Settings.Secure.getString(
-            context.contentResolver,
-            Settings.Secure.ANDROID_ID
-        ) ?: ""
+        fun getDeviceID(context: Context): String {
+
+            if (deviceId == null)
+                deviceId = Settings.Secure.getString(
+                    context.contentResolver,
+                    Settings.Secure.ANDROID_ID
+                )
+
+            return deviceId ?: ""
+
+        }
 
         fun getApi(context: Context): String {
 
@@ -44,10 +55,13 @@ class DeviceInfo {
             val input = PRIVATE_KEY + getDeviceID(context) + apiKey
             val md = MessageDigest.getInstance("MD5")
 
-            return BigInteger(
-                1,
-                md.digest(input.toByteArray())
-            ).toString(16).padStart(32, '0')
+            if (publicKey == null)
+                publicKey = BigInteger(
+                    1,
+                    md.digest(input.toByteArray())
+                ).toString(16).padStart(32, '0')
+
+            return publicKey ?: ""
 
         }
 
@@ -56,10 +70,13 @@ class DeviceInfo {
             val input = PRIVATE_KEY + getDeviceID(context)
             val md = MessageDigest.getInstance("MD5")
 
-            return BigInteger(
-                1,
-                md.digest(input.toByteArray())
-            ).toString(16).padStart(32, '0')
+            if (publicKeyWithout == null)
+                publicKeyWithout = BigInteger(
+                    1,
+                    md.digest(input.toByteArray())
+                ).toString(16).padStart(32, '0')
+
+            return publicKeyWithout ?: ""
 
         }
 

@@ -3,320 +3,335 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white_color200"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#141217">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imageView18"
-            android:layout_width="150dp"
-            android:layout_height="140dp"
-            android:contentDescription="@string/image_desc"
-            android:scaleType="fitXY"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/img_profile_lines" />
-
-        <TextView
-            android:id="@+id/txtName"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/mainView"
+            android:visibility="invisible"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:textColor="@color/white_main"
-            android:textSize="@dimen/heading_large_size"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="علیرضا احمدی" />
+            android:background="#141217">
 
-        <TextView
-            android:id="@+id/txtPhone"
+            <ImageView
+                android:id="@+id/imageView18"
+                android:layout_width="150dp"
+                android:layout_height="140dp"
+                android:contentDescription="@string/image_desc"
+                android:scaleType="fitXY"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/img_profile_lines" />
+
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:textColor="@color/white_main"
+                android:textSize="@dimen/heading_large_size"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="علیرضا احمدی" />
+
+            <TextView
+                android:id="@+id/txtPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/white_main"
+                android:textSize="@dimen/heading_large_size"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtName"
+                tools:text="09035802464" />
+
+            <View
+                android:id="@+id/view15"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/back_view_profile_fragment"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtPhone" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="@string/state_sell"
+                android:textColor="@color/color_text_black"
+                android:textSize="@dimen/heading_large_size"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView21"
+                app:layout_constraintEnd_toStartOf="@+id/imageView21"
+                app:layout_constraintTop_toTopOf="@+id/imageView21" />
+
+            <ImageView
+                android:id="@+id/imageView21"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:contentDescription="@string/img_sell_desc"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/view15"
+                app:srcCompat="@drawable/ic_f" />
+
+            <ImageView
+                android:id="@+id/img_payment"
+                android:layout_width="80dp"
+                android:layout_height="110dp"
+                android:layout_marginTop="32dp"
+                android:contentDescription="@string/img_sell_desc"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/img_review"
+                app:layout_constraintTop_toBottomOf="@+id/imageView21"
+                app:srcCompat="@drawable/img_sell_state1" />
+
+            <ImageView
+                android:id="@+id/img_review"
+                android:layout_width="80dp"
+                android:layout_height="110dp"
+                android:contentDescription="@string/img_sell_desc"
+                app:layout_constraintBottom_toBottomOf="@+id/img_payment"
+                app:layout_constraintEnd_toStartOf="@+id/img_payment"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/img_processing"
+                app:layout_constraintTop_toTopOf="@+id/img_payment"
+                app:srcCompat="@drawable/img_sell_state2" />
+
+            <ImageView
+                android:id="@+id/img_processing"
+                android:layout_width="80dp"
+                android:layout_height="110dp"
+                android:contentDescription="@string/img_sell_desc"
+                app:layout_constraintBottom_toBottomOf="@+id/img_review"
+                app:layout_constraintEnd_toStartOf="@+id/img_review"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/img_complete"
+                app:layout_constraintTop_toTopOf="@+id/img_review"
+                app:srcCompat="@drawable/img_sell_state3" />
+
+            <ImageView
+                android:id="@+id/img_complete"
+                android:layout_width="80dp"
+                android:layout_height="110dp"
+                android:contentDescription="@string/img_sell_desc"
+                app:layout_constraintBottom_toBottomOf="@+id/img_processing"
+                app:layout_constraintEnd_toStartOf="@+id/img_processing"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/view15"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/img_processing"
+                app:srcCompat="@drawable/img_sell_state4" />
+
+            <View
+                android:id="@+id/view16"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/back_circle_shopping_cart"
+                app:layout_constraintEnd_toEndOf="@+id/img_complete"
+                app:layout_constraintStart_toStartOf="@+id/img_complete"
+                app:layout_constraintTop_toTopOf="@+id/img_complete" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/complete_count_group"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="view16,txt_complete_count" />
+
+            <TextView
+                android:id="@+id/txt_complete_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white_main"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="@+id/view16"
+                app:layout_constraintEnd_toEndOf="@+id/view16"
+                app:layout_constraintStart_toStartOf="@+id/view16"
+                app:layout_constraintTop_toTopOf="@+id/view16"
+                tools:text="55" />
+
+            <ImageView
+                android:id="@+id/img_user_info"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_marginTop="50dp"
+                android:contentDescription="@string/image_desc"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/img_favorite"
+                app:layout_constraintTop_toBottomOf="@+id/img_payment"
+                app:srcCompat="@drawable/img_my_info" />
+
+            <ImageView
+                android:id="@+id/img_favorite"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:contentDescription="@string/image_desc"
+                app:layout_constraintBottom_toBottomOf="@+id/img_user_info"
+                app:layout_constraintEnd_toStartOf="@+id/img_user_info"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/img_address"
+                app:layout_constraintTop_toTopOf="@+id/img_user_info"
+                app:srcCompat="@drawable/img_my_interests" />
+
+            <ImageView
+                android:id="@+id/img_address"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:contentDescription="@string/image_desc"
+                app:layout_constraintBottom_toBottomOf="@+id/img_favorite"
+                app:layout_constraintEnd_toStartOf="@+id/img_favorite"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/view15"
+                app:layout_constraintStart_toStartOf="@+id/view15"
+                app:layout_constraintTop_toTopOf="@+id/img_favorite"
+                app:srcCompat="@drawable/img_my_address" />
+
+            <View
+                android:id="@+id/view17"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/back_circle_shopping_cart"
+                app:layout_constraintEnd_toEndOf="@+id/img_processing"
+                app:layout_constraintStart_toStartOf="@+id/img_processing"
+                app:layout_constraintTop_toTopOf="@+id/img_processing" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/processing_count_group"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="view17,txt_processing_count" />
+
+            <TextView
+                android:id="@+id/txt_processing_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white_main"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="@+id/view17"
+                app:layout_constraintEnd_toEndOf="@+id/view17"
+                app:layout_constraintStart_toStartOf="@+id/view17"
+                app:layout_constraintTop_toTopOf="@+id/view17"
+                tools:text="55" />
+
+            <View
+                android:id="@+id/view18"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/back_circle_shopping_cart"
+                app:layout_constraintEnd_toEndOf="@+id/img_review"
+                app:layout_constraintStart_toStartOf="@+id/img_review"
+                app:layout_constraintTop_toTopOf="@+id/img_review" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/review_count_group"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="view18,txt_review_count" />
+
+            <TextView
+                android:id="@+id/txt_review_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white_main"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="@+id/view18"
+                app:layout_constraintEnd_toEndOf="@+id/view18"
+                app:layout_constraintStart_toStartOf="@+id/view18"
+                app:layout_constraintTop_toTopOf="@+id/view18"
+                tools:text="55" />
+
+            <View
+                android:id="@+id/view19"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/back_circle_shopping_cart"
+                app:layout_constraintEnd_toEndOf="@+id/img_payment"
+                app:layout_constraintStart_toStartOf="@+id/img_payment"
+                app:layout_constraintTop_toTopOf="@+id/img_payment" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/payment_count_group"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="view19,txt_payment_count" />
+
+            <TextView
+                android:id="@+id/txt_payment_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white_main"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="@+id/view19"
+                app:layout_constraintEnd_toEndOf="@+id/view19"
+                app:layout_constraintStart_toStartOf="@+id/view19"
+                app:layout_constraintTop_toTopOf="@+id/view19"
+                tools:text="55" />
+
+            <ImageView
+                android:id="@+id/img_my_off"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_marginTop="16dp"
+                android:contentDescription="@string/image_desc"
+                app:layout_constraintEnd_toEndOf="@+id/img_user_info"
+                app:layout_constraintStart_toStartOf="@+id/img_user_info"
+                app:layout_constraintTop_toBottomOf="@+id/img_user_info"
+                app:srcCompat="@drawable/img_my_discounts" />
+
+            <ImageView
+                android:id="@+id/imageView31"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:contentDescription="@string/image_desc"
+                app:layout_constraintBottom_toBottomOf="@+id/img_my_off"
+                app:layout_constraintEnd_toEndOf="@+id/img_favorite"
+                app:layout_constraintStart_toStartOf="@+id/img_favorite"
+                app:layout_constraintTop_toTopOf="@+id/img_my_off"
+                app:srcCompat="@drawable/img_cake_custom" />
+
+            <ImageView
+                android:id="@+id/img_alert"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:contentDescription="@string/image_desc"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView31"
+                app:layout_constraintEnd_toEndOf="@+id/img_address"
+                app:layout_constraintStart_toStartOf="@+id/img_address"
+                app:layout_constraintTop_toTopOf="@+id/imageView31"
+                app:srcCompat="@drawable/img_my_notification" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_gravity="center"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textColor="@color/white_main"
-            android:textSize="@dimen/heading_large_size"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtName"
-            tools:text="09035802464" />
+            android:layout_height="wrap_content"/>
 
-        <View
-            android:id="@+id/view15"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/back_view_profile_fragment"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtPhone" />
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:text="@string/state_sell"
-            android:textColor="@color/color_text_black"
-            android:textSize="@dimen/heading_large_size"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView21"
-            app:layout_constraintEnd_toStartOf="@+id/imageView21"
-            app:layout_constraintTop_toTopOf="@+id/imageView21" />
-
-        <ImageView
-            android:id="@+id/imageView21"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:contentDescription="@string/img_sell_desc"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/view15"
-            app:srcCompat="@drawable/ic_f" />
-
-        <ImageView
-            android:id="@+id/img_payment"
-            android:layout_width="80dp"
-            android:layout_height="110dp"
-            android:layout_marginTop="32dp"
-            android:contentDescription="@string/img_sell_desc"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/img_review"
-            app:layout_constraintTop_toBottomOf="@+id/imageView21"
-            app:srcCompat="@drawable/img_sell_state1" />
-
-        <ImageView
-            android:id="@+id/img_review"
-            android:layout_width="80dp"
-            android:layout_height="110dp"
-            android:contentDescription="@string/img_sell_desc"
-            app:layout_constraintBottom_toBottomOf="@+id/img_payment"
-            app:layout_constraintEnd_toStartOf="@+id/img_payment"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/img_processing"
-            app:layout_constraintTop_toTopOf="@+id/img_payment"
-            app:srcCompat="@drawable/img_sell_state2" />
-
-        <ImageView
-            android:id="@+id/img_processing"
-            android:layout_width="80dp"
-            android:layout_height="110dp"
-            android:contentDescription="@string/img_sell_desc"
-            app:layout_constraintBottom_toBottomOf="@+id/img_review"
-            app:layout_constraintEnd_toStartOf="@+id/img_review"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/img_complete"
-            app:layout_constraintTop_toTopOf="@+id/img_review"
-            app:srcCompat="@drawable/img_sell_state3" />
-
-        <ImageView
-            android:id="@+id/img_complete"
-            android:layout_width="80dp"
-            android:layout_height="110dp"
-            android:contentDescription="@string/img_sell_desc"
-            app:layout_constraintBottom_toBottomOf="@+id/img_processing"
-            app:layout_constraintEnd_toStartOf="@+id/img_processing"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/view15"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/img_processing"
-            app:srcCompat="@drawable/img_sell_state4" />
-
-        <View
-            android:id="@+id/view16"
-            android:layout_width="22dp"
-            android:layout_height="22dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/back_circle_shopping_cart"
-            app:layout_constraintEnd_toEndOf="@+id/img_complete"
-            app:layout_constraintStart_toStartOf="@+id/img_complete"
-            app:layout_constraintTop_toTopOf="@+id/img_complete" />
-
-        <androidx.constraintlayout.widget.Group
-            android:id="@+id/complete_count_group"
-            android:visibility="gone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:constraint_referenced_ids="view16,txt_complete_count" />
-
-        <TextView
-            android:id="@+id/txt_complete_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white_main"
-            android:textSize="11sp"
-            app:layout_constraintBottom_toBottomOf="@+id/view16"
-            app:layout_constraintEnd_toEndOf="@+id/view16"
-            app:layout_constraintStart_toStartOf="@+id/view16"
-            app:layout_constraintTop_toTopOf="@+id/view16"
-            tools:text="55" />
-
-        <ImageView
-            android:id="@+id/img_user_info"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:layout_marginTop="50dp"
-            android:contentDescription="@string/image_desc"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/img_favorite"
-            app:layout_constraintTop_toBottomOf="@+id/img_payment"
-            app:srcCompat="@drawable/img_my_info" />
-
-        <ImageView
-            android:id="@+id/img_favorite"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:contentDescription="@string/image_desc"
-            app:layout_constraintBottom_toBottomOf="@+id/img_user_info"
-            app:layout_constraintEnd_toStartOf="@+id/img_user_info"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/img_address"
-            app:layout_constraintTop_toTopOf="@+id/img_user_info"
-            app:srcCompat="@drawable/img_my_interests" />
-
-        <ImageView
-            android:id="@+id/img_address"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:contentDescription="@string/image_desc"
-            app:layout_constraintBottom_toBottomOf="@+id/img_favorite"
-            app:layout_constraintEnd_toStartOf="@+id/img_favorite"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/view15"
-            app:layout_constraintStart_toStartOf="@+id/view15"
-            app:layout_constraintTop_toTopOf="@+id/img_favorite"
-            app:srcCompat="@drawable/img_my_address" />
-
-        <View
-            android:id="@+id/view17"
-            android:layout_width="22dp"
-            android:layout_height="22dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/back_circle_shopping_cart"
-            app:layout_constraintEnd_toEndOf="@+id/img_processing"
-            app:layout_constraintStart_toStartOf="@+id/img_processing"
-            app:layout_constraintTop_toTopOf="@+id/img_processing" />
-
-        <androidx.constraintlayout.widget.Group
-            android:id="@+id/processing_count_group"
-            android:visibility="gone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:constraint_referenced_ids="view17,txt_processing_count" />
-
-        <TextView
-            android:id="@+id/txt_processing_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white_main"
-            android:textSize="11sp"
-            app:layout_constraintBottom_toBottomOf="@+id/view17"
-            app:layout_constraintEnd_toEndOf="@+id/view17"
-            app:layout_constraintStart_toStartOf="@+id/view17"
-            app:layout_constraintTop_toTopOf="@+id/view17"
-            tools:text="55" />
-
-        <View
-            android:id="@+id/view18"
-            android:layout_width="22dp"
-            android:layout_height="22dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/back_circle_shopping_cart"
-            app:layout_constraintEnd_toEndOf="@+id/img_review"
-            app:layout_constraintStart_toStartOf="@+id/img_review"
-            app:layout_constraintTop_toTopOf="@+id/img_review" />
-
-        <androidx.constraintlayout.widget.Group
-            android:id="@+id/review_count_group"
-            android:visibility="gone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:constraint_referenced_ids="view18,txt_review_count" />
-
-        <TextView
-            android:id="@+id/txt_review_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white_main"
-            android:textSize="11sp"
-            app:layout_constraintBottom_toBottomOf="@+id/view18"
-            app:layout_constraintEnd_toEndOf="@+id/view18"
-            app:layout_constraintStart_toStartOf="@+id/view18"
-            app:layout_constraintTop_toTopOf="@+id/view18"
-            tools:text="55" />
-
-        <View
-            android:id="@+id/view19"
-            android:layout_width="22dp"
-            android:layout_height="22dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/back_circle_shopping_cart"
-            app:layout_constraintEnd_toEndOf="@+id/img_payment"
-            app:layout_constraintStart_toStartOf="@+id/img_payment"
-            app:layout_constraintTop_toTopOf="@+id/img_payment" />
-
-        <androidx.constraintlayout.widget.Group
-            android:id="@+id/payment_count_group"
-            android:visibility="gone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:constraint_referenced_ids="view19,txt_payment_count" />
-
-        <TextView
-            android:id="@+id/txt_payment_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white_main"
-            android:textSize="11sp"
-            app:layout_constraintBottom_toBottomOf="@+id/view19"
-            app:layout_constraintEnd_toEndOf="@+id/view19"
-            app:layout_constraintStart_toStartOf="@+id/view19"
-            app:layout_constraintTop_toTopOf="@+id/view19"
-            tools:text="55" />
-
-        <ImageView
-            android:id="@+id/img_my_off"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:layout_marginTop="16dp"
-            android:contentDescription="@string/image_desc"
-            app:layout_constraintEnd_toEndOf="@+id/img_user_info"
-            app:layout_constraintStart_toStartOf="@+id/img_user_info"
-            app:layout_constraintTop_toBottomOf="@+id/img_user_info"
-            app:srcCompat="@drawable/img_my_discounts" />
-
-        <ImageView
-            android:id="@+id/imageView31"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:contentDescription="@string/image_desc"
-            app:layout_constraintBottom_toBottomOf="@+id/img_my_off"
-            app:layout_constraintEnd_toEndOf="@+id/img_favorite"
-            app:layout_constraintStart_toStartOf="@+id/img_favorite"
-            app:layout_constraintTop_toTopOf="@+id/img_my_off"
-            app:srcCompat="@drawable/img_cake_custom" />
-
-        <ImageView
-            android:id="@+id/img_alert"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:contentDescription="@string/image_desc"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView31"
-            app:layout_constraintEnd_toEndOf="@+id/img_address"
-            app:layout_constraintStart_toStartOf="@+id/img_address"
-            app:layout_constraintTop_toTopOf="@+id/imageView31"
-            app:srcCompat="@drawable/img_my_notification" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
 
 </androidx.core.widget.NestedScrollView>
