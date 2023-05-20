@@ -84,9 +84,27 @@
                     android:layout_marginTop="12dp"
                     app:iconState="true" />
 
+                <info.alirezaahmadi.frenchpastry.ui.customView.CustomEditText
+                    android:id="@+id/txtEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="18dp"
+                    app:hintText="ایمیل"
+                    app:iconState="true" />
+
+                <info.alirezaahmadi.frenchpastry.ui.customView.CustomTextView
+                    android:id="@+id/txtAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginHorizontal="18dp"
+                    app:customText="آدرس های من"
+                    app:iconState="true" />
+
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_marginHorizontal="18dp"
+                    android:layout_marginTop="18dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -137,28 +155,10 @@
 
                 </LinearLayout>
 
-                <info.alirezaahmadi.frenchpastry.ui.customView.CustomEditText
-                    android:id="@+id/txtEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="18dp"
-                    app:hintText="ایمیل"
-                    app:iconState="true" />
-
-                <info.alirezaahmadi.frenchpastry.ui.customView.CustomTextView
-                    android:id="@+id/txtAddress"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginHorizontal="18dp"
-                    app:customText="آدرس های من"
-                    app:iconState="true" />
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="18dp"
-                    android:layout_marginTop="18dp"
                     android:gravity="end"
                     android:orientation="horizontal">
 

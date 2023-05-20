@@ -31,8 +31,8 @@
 
     <ImageView
         android:id="@+id/imgAlert"
-        android:layout_width="26dp"
-        android:layout_height="26dp"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
         android:layout_marginStart="12dp"
         android:contentDescription="@string/alert_icon_desc"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar"
@@ -64,10 +64,10 @@
 
     <ImageView
         android:id="@+id/imgMenu"
-        android:layout_width="26dp"
-        android:layout_height="26dp"
+        android:layout_width="28dp"
+        android:layout_height="30dp"
         android:contentDescription="@string/menu"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="14dp"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar"
         app:layout_constraintEnd_toEndOf="@+id/toolbar"
         app:layout_constraintTop_toTopOf="parent"
@@ -91,8 +91,8 @@
 
     <ImageView
         android:id="@+id/imgBack"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
         android:visibility="gone"
         android:contentDescription="@string/arrow_desc"
         android:layout_marginStart="12dp"
