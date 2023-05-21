@@ -76,4 +76,7 @@ dependencies {
     //Picasso
     implementation 'com.squareup.picasso:picasso:2.8'
 
+    //secure shared preferences
+    implementation "androidx.security:security-crypto:1.0.0"
+
 }

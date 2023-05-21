@@ -39,7 +39,7 @@ class DeviceInfo {
         fun getApi(context: Context): String {
 
             val shared =
-                context.getSharedPreferences(SharedPrefKey.PREFERENCES, Context.MODE_PRIVATE)
+                context.getSharedPreferences(SharedPrefKey.PREFERENCES_NAME, Context.MODE_PRIVATE)
             val api = shared.getString(SharedPrefKey.API_KEY, "")
 
             return api ?: ""
@@ -49,7 +49,7 @@ class DeviceInfo {
         fun getPublicKey(context: Context): String {
 
             val shared =
-                context.getSharedPreferences(SharedPrefKey.PREFERENCES, Context.MODE_PRIVATE)
+                context.getSharedPreferences(SharedPrefKey.PREFERENCES_NAME, Context.MODE_PRIVATE)
             val apiKey = shared.getString(SharedPrefKey.API_KEY, "") ?: ""
 
             val input = PRIVATE_KEY + getDeviceID(context) + apiKey

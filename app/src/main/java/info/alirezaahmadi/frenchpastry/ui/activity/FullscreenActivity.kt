@@ -23,7 +23,7 @@ class FullscreenActivity : AppCompatActivity(), ActivityUtils {
 
         hideStatus()
 
-        loginState = getSharedPreferences(SharedPrefKey.PREFERENCES, MODE_PRIVATE)
+        loginState = getSharedPreferences(SharedPrefKey.PREFERENCES_NAME, MODE_PRIVATE)
 
         Handler(Looper.getMainLooper()).postDelayed(
             {

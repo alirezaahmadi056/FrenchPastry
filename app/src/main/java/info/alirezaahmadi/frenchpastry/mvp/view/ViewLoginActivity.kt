@@ -135,7 +135,7 @@ class ViewLoginActivity(
                             nameDialog.show()
 
                             val shared = context.getSharedPreferences(
-                                SharedPrefKey.PREFERENCES,
+                                SharedPrefKey.PREFERENCES_NAME,
                                 Context.MODE_PRIVATE
                             )
                             val edit = shared.edit().putString(SharedPrefKey.API_KEY, data.api)
