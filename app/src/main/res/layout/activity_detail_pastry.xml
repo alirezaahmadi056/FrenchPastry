@@ -206,7 +206,8 @@
                     android:layout_margin="8dp"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    tools:ignore="UseCompoundDrawables">
 
                     <TextView
                         android:textColor="@color/color_text_black"
@@ -239,7 +240,70 @@
                     android:layout_margin="8dp"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <TextView
+                        android:textColor="@color/color_text_black"
+                        android:textSize="@dimen/heading_large_size"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/send_comment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:layout_margin="8dp"
+                        android:contentDescription="@string/f_logo_desc"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        app:srcCompat="@drawable/ic_f" />
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:background="@drawable/back_edit_text"
+                    android:inputType="text"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="-4dp"
+                    android:textColor="@color/color_text_black"
+                    android:textColorHint="@color/color_text_gray"
+                    android:textSize="@dimen/text_normal_size"/>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
+                    <info.alirezaahmadi.frenchpastry.ui.customView.CustomButton
+                        app:buttonText="ثبت نظر"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"/>
+
+                    <androidx.appcompat.widget.AppCompatRatingBar
+                        android:layout_width="wrap_content"
+                        android:numStars="5"
+                        android:rating="4.5"
+                        android:layout_gravity="center_vertical"
+                        android:theme="@style/CustomRatingBar"
+                        style="?android:attr/ratingBarStyleIndicator"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:gravity="end"
+                    android:layout_margin="8dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:ignore="UseCompoundDrawables">
 
                     <TextView
                         android:textColor="@color/color_text_black"
@@ -258,6 +322,11 @@
                         app:srcCompat="@drawable/ic_f" />
 
                 </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_margin="8dp"
+                    android:layout_height="wrap_content"/>
 
             </LinearLayout>
 

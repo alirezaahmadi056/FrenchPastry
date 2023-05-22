@@ -22,4 +22,9 @@
         <item name="boxStrokeWidthFocused">0dp</item>
     </style>
 
+    <style name="CustomRatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/gray_main</item>
+        <item name="colorControlActivated">@color/yellow_main</item>
+    </style>
+
 </resources>
