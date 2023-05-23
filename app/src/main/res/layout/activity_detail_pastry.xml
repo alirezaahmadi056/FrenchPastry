@@ -16,322 +16,336 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.core.widget.NestedScrollView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/customAppBar2">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/imageView8"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:contentDescription="@string/f_logo_desc"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_f" />
-
-            <TextView
-                android:id="@+id/txtTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:textColor="@color/color_text_black"
-                android:textSize="@dimen/heading_large_size"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView8"
-                app:layout_constraintEnd_toStartOf="@+id/imageView8"
-                app:layout_constraintTop_toTopOf="@+id/imageView8"
-                tools:text="کیک پروانه ای (1 کیلو)" />
-
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/viewPagerSlider"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/allViews"
                 android:layout_width="match_parent"
-                android:layout_height="230dp"
-                android:layout_marginHorizontal="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imgComment" />
+                android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/imgComment"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="16dp"
-                android:contentDescription="@string/comment_desc"
-                app:layout_constraintStart_toStartOf="@+id/viewPagerSlider"
-                app:layout_constraintTop_toBottomOf="@+id/txtTitle"
-                app:srcCompat="@drawable/ic_messages" />
+                <ImageView
+                    android:id="@+id/imageView8"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:contentDescription="@string/f_logo_desc"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_f" />
 
-            <View
-                android:id="@+id/view11"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:background="@drawable/back_circle_comment_count"
-                app:layout_constraintBottom_toBottomOf="@+id/imgComment"
-                app:layout_constraintEnd_toEndOf="@+id/imgComment"
-                app:layout_constraintStart_toEndOf="@+id/imgComment"
-                app:layout_constraintTop_toTopOf="@+id/imgComment"
-                app:layout_constraintVertical_bias="0.8" />
+                <TextView
+                    android:id="@+id/txtTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:textColor="@color/color_text_black"
+                    android:textSize="@dimen/heading_large_size"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView8"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView8"
+                    app:layout_constraintTop_toTopOf="@+id/imageView8"
+                    tools:text="کیک پروانه ای (1 کیلو)" />
 
-            <TextView
-                android:id="@+id/txtCommentCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white_main"
-                android:textSize="11sp"
-                app:layout_constraintBottom_toBottomOf="@+id/view11"
-                app:layout_constraintEnd_toEndOf="@+id/view11"
-                app:layout_constraintStart_toStartOf="@+id/view11"
-                app:layout_constraintTop_toTopOf="@+id/view11"
-                tools:text="55" />
-
-            <androidx.constraintlayout.widget.Group
-                android:id="@+id/commentCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:constraint_referenced_ids="view11,txtCommentCount" />
-
-            <View
-                android:id="@+id/view12"
-                android:layout_width="1dp"
-                android:layout_height="0dp"
-                android:layout_marginVertical="3dp"
-                android:layout_marginStart="10dp"
-                android:background="@color/gray_main"
-                app:layout_constraintBottom_toBottomOf="@+id/imgComment"
-                app:layout_constraintStart_toEndOf="@+id/view11"
-                app:layout_constraintTop_toTopOf="@+id/imgComment" />
-
-            <ImageView
-                android:id="@+id/imgShare"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="8dp"
-                android:contentDescription="@string/share_desc"
-                app:layout_constraintBottom_toBottomOf="@+id/imgComment"
-                app:layout_constraintStart_toEndOf="@+id/view12"
-                app:layout_constraintTop_toTopOf="@+id/imgComment"
-                app:srcCompat="@drawable/ic_share" />
-
-            <View
-                android:id="@+id/view13"
-                android:layout_width="1dp"
-                android:layout_height="0dp"
-                android:layout_marginVertical="3dp"
-                android:layout_marginStart="8dp"
-                android:background="@color/gray_main"
-                app:layout_constraintBottom_toBottomOf="@+id/imgShare"
-                app:layout_constraintStart_toEndOf="@+id/imgShare"
-                app:layout_constraintTop_toTopOf="@+id/imgShare" />
-
-            <ImageView
-                android:id="@+id/imgFavorite"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:layout_marginStart="8dp"
-                android:contentDescription="@string/favorite_desc"
-                app:layout_constraintBottom_toBottomOf="@+id/imgShare"
-                app:layout_constraintStart_toEndOf="@+id/view13"
-                app:layout_constraintTop_toTopOf="@+id/imgShare"
-                app:srcCompat="@drawable/ic_favorite" />
-
-            <View
-                android:id="@+id/view14"
-                android:layout_width="1dp"
-                android:layout_height="0dp"
-                android:layout_marginVertical="3dp"
-                android:layout_marginStart="8dp"
-                android:background="@color/gray_main"
-                app:layout_constraintBottom_toBottomOf="@+id/imgShare"
-                app:layout_constraintStart_toEndOf="@+id/imgFavorite"
-                app:layout_constraintTop_toTopOf="@+id/imgShare" />
-
-            <ImageView
-                android:id="@+id/imgStar"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginStart="8dp"
-                android:contentDescription="@string/star_desc"
-                app:layout_constraintBottom_toBottomOf="@+id/imgShare"
-                app:layout_constraintStart_toEndOf="@+id/view14"
-                app:layout_constraintTop_toTopOf="@+id/imgShare"
-                app:srcCompat="@drawable/ic_star" />
-
-            <TextView
-                android:id="@+id/txtRate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:textColor="@color/color_text_black"
-                android:textSize="@dimen/text_small_size"
-                app:layout_constraintBottom_toBottomOf="@+id/imgStar"
-                app:layout_constraintStart_toEndOf="@+id/imgStar"
-                app:layout_constraintTop_toTopOf="@+id/imgStar"
-                app:layout_constraintVertical_bias="1.0"
-                tools:text="4.5" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="12dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/viewPagerSlider">
-
-                <FrameLayout
-                    android:layout_margin="12dp"
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPagerSlider"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="230dp"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imgComment" />
+
+                <ImageView
+                    android:id="@+id/imgComment"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="16dp"
+                    android:contentDescription="@string/comment_desc"
+                    app:layout_constraintStart_toStartOf="@+id/viewPagerSlider"
+                    app:layout_constraintTop_toBottomOf="@+id/txtTitle"
+                    app:srcCompat="@drawable/ic_messages" />
+
+                <View
+                    android:id="@+id/view11"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/back_circle_comment_count"
+                    app:layout_constraintBottom_toBottomOf="@+id/imgComment"
+                    app:layout_constraintEnd_toEndOf="@+id/imgComment"
+                    app:layout_constraintStart_toEndOf="@+id/imgComment"
+                    app:layout_constraintTop_toTopOf="@+id/imgComment"
+                    app:layout_constraintVertical_bias="0.8" />
+
+                <TextView
+                    android:id="@+id/txtCommentCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white_main"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/view11"
+                    app:layout_constraintEnd_toEndOf="@+id/view11"
+                    app:layout_constraintStart_toStartOf="@+id/view11"
+                    app:layout_constraintTop_toTopOf="@+id/view11"
+                    tools:text="55" />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/commentCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="view11,txtCommentCount" />
+
+                <View
+                    android:id="@+id/view12"
+                    android:layout_width="1dp"
+                    android:layout_height="0dp"
+                    android:layout_marginVertical="3dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@color/gray_main"
+                    app:layout_constraintBottom_toBottomOf="@+id/imgComment"
+                    app:layout_constraintStart_toEndOf="@+id/view11"
+                    app:layout_constraintTop_toTopOf="@+id/imgComment" />
+
+                <ImageView
+                    android:id="@+id/imgShare"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="8dp"
+                    android:contentDescription="@string/share_desc"
+                    app:layout_constraintBottom_toBottomOf="@+id/imgComment"
+                    app:layout_constraintStart_toEndOf="@+id/view12"
+                    app:layout_constraintTop_toTopOf="@+id/imgComment"
+                    app:srcCompat="@drawable/ic_share" />
+
+                <View
+                    android:id="@+id/view13"
+                    android:layout_width="1dp"
+                    android:layout_height="0dp"
+                    android:layout_marginVertical="3dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@color/gray_main"
+                    app:layout_constraintBottom_toBottomOf="@+id/imgShare"
+                    app:layout_constraintStart_toEndOf="@+id/imgShare"
+                    app:layout_constraintTop_toTopOf="@+id/imgShare" />
+
+                <ImageView
+                    android:id="@+id/imgFavorite"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="8dp"
+                    android:contentDescription="@string/favorite_desc"
+                    app:layout_constraintBottom_toBottomOf="@+id/imgShare"
+                    app:layout_constraintStart_toEndOf="@+id/view13"
+                    app:layout_constraintTop_toTopOf="@+id/imgShare"
+                    app:srcCompat="@drawable/ic_favorite" />
+
+                <View
+                    android:id="@+id/view14"
+                    android:layout_width="1dp"
+                    android:layout_height="0dp"
+                    android:layout_marginVertical="3dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@color/gray_main"
+                    app:layout_constraintBottom_toBottomOf="@+id/imgShare"
+                    app:layout_constraintStart_toEndOf="@+id/imgFavorite"
+                    app:layout_constraintTop_toTopOf="@+id/imgShare" />
+
+                <ImageView
+                    android:id="@+id/imgStar"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="8dp"
+                    android:contentDescription="@string/star_desc"
+                    app:layout_constraintBottom_toBottomOf="@+id/imgShare"
+                    app:layout_constraintStart_toEndOf="@+id/view14"
+                    app:layout_constraintTop_toTopOf="@+id/imgShare"
+                    app:srcCompat="@drawable/ic_star" />
+
+                <TextView
+                    android:id="@+id/txtRate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:textColor="@color/color_text_black"
+                    android:textSize="@dimen/text_small_size"
+                    app:layout_constraintBottom_toBottomOf="@+id/imgStar"
+                    app:layout_constraintStart_toEndOf="@+id/imgStar"
+                    app:layout_constraintTop_toTopOf="@+id/imgStar"
+                    app:layout_constraintVertical_bias="1.0"
+                    tools:text="4.5" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="12dp"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewPagerSlider">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="12dp">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:gravity="end"
+                        android:orientation="horizontal"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="@string/detail"
+                            android:textColor="@color/color_text_black"
+                            android:textSize="@dimen/heading_large_size"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_margin="8dp"
+                            android:contentDescription="@string/f_logo_desc"
+                            app:srcCompat="@drawable/ic_f" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:text="@string/lorem"
+                        android:textColor="@color/color_text_gray"
+                        android:textSize="@dimen/text_normal_size" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:gravity="end"
+                        android:orientation="horizontal"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="@string/send_comment"
+                            android:textColor="@color/color_text_black"
+                            android:textSize="@dimen/heading_large_size"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_margin="8dp"
+                            android:contentDescription="@string/f_logo_desc"
+                            app:srcCompat="@drawable/ic_f" />
+
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:layout_marginHorizontal="16dp"
+                        android:background="@drawable/back_edit_text"
+                        android:inputType="text"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="-4dp"
+                        android:textColor="@color/color_text_black"
+                        android:textColorHint="@color/color_text_gray"
+                        android:textSize="@dimen/text_normal_size" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <info.alirezaahmadi.frenchpastry.ui.customView.CustomButton
+                            android:layout_width="140dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="8dp"
+                            app:buttonText="ثبت نظر" />
+
+                        <androidx.appcompat.widget.AppCompatRatingBar
+                            style="?android:attr/ratingBarStyleIndicator"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:numStars="5"
+                            android:rating="4.5"
+                            android:theme="@style/CustomRatingBar" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:gravity="end"
+                        android:orientation="horizontal"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="@string/comment"
+                            android:textColor="@color/color_text_black"
+                            android:textSize="@dimen/heading_large_size"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_margin="8dp"
+                            android:contentDescription="@string/f_logo_desc"
+                            app:srcCompat="@drawable/ic_f" />
+
+                    </LinearLayout>
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                </FrameLayout>
-
-                <LinearLayout
-                    android:gravity="end"
-                    android:layout_margin="8dp"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:ignore="UseCompoundDrawables">
-
-                    <TextView
-                        android:textColor="@color/color_text_black"
-                        android:textSize="@dimen/heading_large_size"
-                        android:textStyle="bold"
-                        android:layout_gravity="center_vertical"
-                        android:text="@string/detail"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                    <ImageView
-                        android:layout_margin="8dp"
-                        android:contentDescription="@string/f_logo_desc"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        app:srcCompat="@drawable/ic_f" />
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp" />
 
                 </LinearLayout>
 
-                <TextView
-                    android:layout_marginHorizontal="16dp"
-                    android:text="@string/lorem"
-                    android:textSize="@dimen/text_normal_size"
-                    android:textColor="@color/color_text_gray"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <LinearLayout
-                    android:gravity="end"
-                    android:layout_margin="8dp"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:ignore="UseCompoundDrawables">
+        </androidx.core.widget.NestedScrollView>
 
-                    <TextView
-                        android:textColor="@color/color_text_black"
-                        android:textSize="@dimen/heading_large_size"
-                        android:textStyle="bold"
-                        android:layout_gravity="center_vertical"
-                        android:text="@string/send_comment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
 
-                    <ImageView
-                        android:layout_margin="8dp"
-                        android:contentDescription="@string/f_logo_desc"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        app:srcCompat="@drawable/ic_f" />
-
-                </LinearLayout>
-
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:layout_marginHorizontal="16dp"
-                    android:background="@drawable/back_edit_text"
-                    android:inputType="text"
-                    android:paddingTop="4dp"
-                    android:paddingBottom="-4dp"
-                    android:textColor="@color/color_text_black"
-                    android:textColorHint="@color/color_text_gray"
-                    android:textSize="@dimen/text_normal_size"/>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_marginHorizontal="8dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <info.alirezaahmadi.frenchpastry.ui.customView.CustomButton
-                        app:buttonText="ثبت نظر"
-                        android:layout_marginHorizontal="8dp"
-                        android:layout_width="140dp"
-                        android:layout_height="wrap_content"/>
-
-                    <androidx.appcompat.widget.AppCompatRatingBar
-                        android:layout_width="wrap_content"
-                        android:numStars="5"
-                        android:rating="4.5"
-                        android:layout_gravity="center_vertical"
-                        android:theme="@style/CustomRatingBar"
-                        style="?android:attr/ratingBarStyleIndicator"
-                        android:layout_height="wrap_content"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:gravity="end"
-                    android:layout_margin="8dp"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:ignore="UseCompoundDrawables">
-
-                    <TextView
-                        android:textColor="@color/color_text_black"
-                        android:textSize="@dimen/heading_large_size"
-                        android:textStyle="bold"
-                        android:layout_gravity="center_vertical"
-                        android:text="@string/comment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                    <ImageView
-                        android:layout_margin="8dp"
-                        android:contentDescription="@string/f_logo_desc"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        app:srcCompat="@drawable/ic_f" />
-
-                </LinearLayout>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="match_parent"
-                    android:layout_margin="8dp"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.core.widget.NestedScrollView>
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
