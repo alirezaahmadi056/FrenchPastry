@@ -8,7 +8,7 @@
     tools:context=".ui.activity.DetailPastryActivity">
 
     <info.alirezaahmadi.frenchpastry.ui.customView.CustomAppBar
-        android:id="@+id/customAppBar2"
+        android:id="@+id/customAppBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:backIcon="true"
@@ -22,7 +22,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/customAppBar2">
+        app:layout_constraintTop_toBottomOf="@+id/customAppBar">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -234,6 +234,7 @@
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/txtDesc"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="16dp"
@@ -268,6 +269,7 @@
                     </LinearLayout>
 
                     <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/edtComment"
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
                         android:layout_marginHorizontal="16dp"
@@ -287,12 +289,14 @@
                         android:orientation="horizontal">
 
                         <info.alirezaahmadi.frenchpastry.ui.customView.CustomButton
+                            android:id="@+id/btnSendComment"
                             android:layout_width="140dp"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="8dp"
                             app:buttonText="ثبت نظر" />
 
                         <androidx.appcompat.widget.AppCompatRatingBar
+                            android:id="@+id/ratingComment"
                             style="?android:attr/ratingBarStyleIndicator"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -330,6 +334,7 @@
                     </LinearLayout>
 
                     <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerComments"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp" />

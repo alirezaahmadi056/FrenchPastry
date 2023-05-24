@@ -6,6 +6,7 @@ import android.content.Context
 import android.os.Build
 import android.provider.Settings
 import androidx.window.layout.WindowMetricsCalculator
+import info.alirezaahmadi.frenchpastry.data.local.preferences.SecureSharePref
 import info.alirezaahmadi.frenchpastry.data.local.preferences.SharedPrefKey
 import java.io.BufferedReader
 import java.io.File
@@ -38,8 +39,7 @@ class DeviceInfo {
 
         fun getApi(context: Context): String {
 
-            val shared =
-                context.getSharedPreferences(SharedPrefKey.PREFERENCES_NAME, Context.MODE_PRIVATE)
+            val shared = SecureSharePref.getSharedPref(context)
             val api = shared.getString(SharedPrefKey.API_KEY, "")
 
             return api ?: ""
@@ -48,8 +48,7 @@ class DeviceInfo {
 
         fun getPublicKey(context: Context): String {
 
-            val shared =
-                context.getSharedPreferences(SharedPrefKey.PREFERENCES_NAME, Context.MODE_PRIVATE)
+            val shared = SecureSharePref.getSharedPref(context)
             val apiKey = shared.getString(SharedPrefKey.API_KEY, "") ?: ""
 
             val input = PRIVATE_KEY + getDeviceID(context) + apiKey

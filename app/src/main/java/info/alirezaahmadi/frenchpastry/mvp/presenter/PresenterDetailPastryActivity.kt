@@ -19,6 +19,8 @@ class PresenterDetailPastryActivity(
     override fun onCreate() {
 
         view.startGetData()
+        view.showNavDrawer()
+        view.onBack()
 
         if (NetworkInfo.internetInfo(context, this))
             getDataPastry()

@@ -1,7 +1,6 @@
 package info.alirezaahmadi.frenchpastry.ui.activity
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -9,12 +8,11 @@ import android.os.Looper
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
+import info.alirezaahmadi.frenchpastry.data.local.preferences.SecureSharePref
 import info.alirezaahmadi.frenchpastry.data.local.preferences.SharedPrefKey
 import info.alirezaahmadi.frenchpastry.databinding.ActivityFullscreenBinding
 
 class FullscreenActivity : AppCompatActivity(), ActivityUtils {
-
-    private lateinit var loginState: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +21,7 @@ class FullscreenActivity : AppCompatActivity(), ActivityUtils {
 
         hideStatus()
 
-        loginState = getSharedPreferences(SharedPrefKey.PREFERENCES_NAME, MODE_PRIVATE)
+        val loginState = SecureSharePref.getSharedPref(this)
 
         Handler(Looper.getMainLooper()).postDelayed(
             {

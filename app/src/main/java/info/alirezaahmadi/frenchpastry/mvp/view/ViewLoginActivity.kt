@@ -15,6 +15,7 @@ import android.widget.FrameLayout
 import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
 import info.alirezaahmadi.frenchpastry.androidWrapper.DeviceInfo
 import info.alirezaahmadi.frenchpastry.androidWrapper.NetworkInfo
+import info.alirezaahmadi.frenchpastry.data.local.preferences.SecureSharePref
 import info.alirezaahmadi.frenchpastry.data.local.preferences.SharedPrefKey
 import info.alirezaahmadi.frenchpastry.data.remote.apiRepository.LoginApiRepository
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.DefaultModel
@@ -134,10 +135,7 @@ class ViewLoginActivity(
                             nameDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                             nameDialog.show()
 
-                            val shared = context.getSharedPreferences(
-                                SharedPrefKey.PREFERENCES_NAME,
-                                Context.MODE_PRIVATE
-                            )
+                            val shared = SecureSharePref.getSharedPref(context)
                             val edit = shared.edit().putString(SharedPrefKey.API_KEY, data.api)
                             edit.apply()
 
