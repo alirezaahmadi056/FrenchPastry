@@ -1,10 +1,13 @@
 package info.alirezaahmadi.frenchpastry.adapter.recycler
 
+import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.squareup.picasso.Picasso
@@ -12,15 +15,17 @@ import info.alirezaahmadi.frenchpastry.R
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastriesModel
 import info.alirezaahmadi.frenchpastry.databinding.RecyclerItemMainVerticalBinding
 import info.alirezaahmadi.frenchpastry.mvp.ext.OthersUtilities
+import info.alirezaahmadi.frenchpastry.ui.activity.DetailPastryActivity
 
 class TopPastryRecyclerAdapter(
-    private val pastries: ArrayList<PastriesModel>
-) : RecyclerView.Adapter<TopPastryRecyclerAdapter.SpecialOfferPastryViewHolder>() {
+    private val pastries: ArrayList<PastriesModel>,
+    private val context: Context
+) : RecyclerView.Adapter<TopPastryRecyclerAdapter.TopPastryViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ) = SpecialOfferPastryViewHolder(
+    ) = TopPastryViewHolder(
         RecyclerItemMainVerticalBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
@@ -30,11 +35,11 @@ class TopPastryRecyclerAdapter(
 
     override fun getItemCount() = pastries.size
 
-    override fun onBindViewHolder(holder: SpecialOfferPastryViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: TopPastryViewHolder, position: Int) {
         holder.setData(pastries[position])
     }
 
-    inner class SpecialOfferPastryViewHolder(
+    inner class TopPastryViewHolder(
         private val binding: RecyclerItemMainVerticalBinding
     ) : ViewHolder(binding.root) {
 
@@ -63,6 +68,13 @@ class TopPastryRecyclerAdapter(
                     .placeholder(R.drawable.img_place_holder)
                     .error(R.drawable.img_place_holder)
                     .into(binding.imgPastry)
+
+            binding.root.setOnClickListener {
+                //val intent = Intent(context, DetailPastryActivity::class.java)
+                Toast.makeText(context, data.ID.toString(), Toast.LENGTH_SHORT).show()
+                //intent.putExtra(DetailPastryActivity.ID, data.ID)
+                //context.startActivity(intent)
+            }
 
         }
 

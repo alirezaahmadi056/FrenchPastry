@@ -4,13 +4,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import info.alirezaahmadi.frenchpastry.data.remote.dataModel.SliderModel
 import info.alirezaahmadi.frenchpastry.ui.fragment.MainSliderFragment
 
 class CustomSliderPagerAdapter(
     fragmentManager: FragmentManager,
     lifecycle: Lifecycle,
-    private val data: ArrayList<SliderModel>
+    private val data: ArrayList<String>
 ) : FragmentStateAdapter(fragmentManager, lifecycle) {
 
     override fun getItemCount() = data.size
@@ -24,7 +23,7 @@ class CustomSliderPagerAdapter(
             count.add(num++)
         }
 
-        return MainSliderFragment(data[position].small, count, position)
+        return MainSliderFragment(data[position], count, position)
 
     }
 

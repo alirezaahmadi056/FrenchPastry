@@ -12,6 +12,7 @@ data class BannersModel(
 )
 
 data class PastriesModel(
+    val ID: Int,
     val title: String,
     val min_order: Int,
     val thumbnail: String,
@@ -22,13 +23,9 @@ data class PastriesModel(
 )
 
 data class RequestMain(
-    val success:Int,
-    val message:String,
-    val sliders : ArrayList<SliderModel>,
-    val pastries : ArrayList<MainPastriesModel>,
-    val banners : ArrayList<BannersModel>
-)
-
-data class SliderModel(
-    val small: String
+    val success: Int,
+    val message: String,
+    val sliders: ArrayList<String>,
+    val pastries: ArrayList<MainPastriesModel>,
+    val banners: ArrayList<BannersModel>
 )

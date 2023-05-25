@@ -2,6 +2,7 @@ package info.alirezaahmadi.frenchpastry.mvp.view
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
@@ -65,6 +66,7 @@ class ViewHomeFragment : FrameLayout {
         specialOfferData.add(
             0,
             PastriesModel(
+                0,
                 "",
                 0,
                 "",
@@ -76,6 +78,7 @@ class ViewHomeFragment : FrameLayout {
         )
         specialOfferData.add(
             PastriesModel(
+                0,
                 "",
                 0,
                 "",
@@ -90,8 +93,9 @@ class ViewHomeFragment : FrameLayout {
 
         binding.topPastryRecycler.getRecycler().layoutManager =
             GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
+        Log.i("SERVICE_TEST", data.pastries[2].pastries.toString())
         binding.topPastryRecycler.getRecycler().adapter =
-            TopPastryRecyclerAdapter(data.pastries[2].pastries)
+            TopPastryRecyclerAdapter(data.pastries[2].pastries, context)
 
         if (data.banners.isNotEmpty() && data.banners[0].large.isNotEmpty())
             Picasso.get()

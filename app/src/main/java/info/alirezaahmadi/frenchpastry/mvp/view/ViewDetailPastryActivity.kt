@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
+import info.alirezaahmadi.frenchpastry.R
 import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastryDetailModel
 import info.alirezaahmadi.frenchpastry.databinding.ActivityDetailPastryBinding
@@ -29,6 +30,12 @@ class ViewDetailPastryActivity : FrameLayout {
         binding.txtTitle.text = detail.title
         binding.txtDesc.text = detail.content
         binding.txtRate.text = detail.rate.toString()
+        binding.ratingComment.rating = 4.5f
+
+        if (detail.bookmark)
+            binding.imgFavorite.setImageResource(R.drawable.ic_favorite)
+        else
+            binding.imgFavorite.setImageResource(R.drawable.ic_favorite)
 
         if (detail.comment_count > 0)
             binding.commentCount.visibility = View.VISIBLE
