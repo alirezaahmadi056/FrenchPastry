@@ -2,6 +2,8 @@ package info.alirezaahmadi.frenchpastry.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager2.widget.ViewPager2
+import info.alirezaahmadi.frenchpastry.adapter.viewPager.CustomSliderPagerAdapter
 import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
 import info.alirezaahmadi.frenchpastry.mvp.model.ModelDetailPastryActivity
 import info.alirezaahmadi.frenchpastry.mvp.presenter.PresenterDetailPastryActivity
@@ -28,6 +30,13 @@ class DetailPastryActivity : AppCompatActivity(), ActivityUtils {
             )
         presenter.onCreate()
 
+
+    }
+
+    override fun setViewPagerFragment(viewPager: ViewPager2, data: ArrayList<String>) {
+
+        viewPager.adapter =
+            CustomSliderPagerAdapter(supportFragmentManager, lifecycle, data)
 
     }
 

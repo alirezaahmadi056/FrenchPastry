@@ -24,22 +24,27 @@ class MainSliderFragment(
 
         val binding = FragmentMainImageSliderBinding.inflate(inflater)
 
-        count.forEach {
+        if (count.size > 1) {
 
-            val view = View(context)
-            val size = OthersUtilities.getPixel(10f, resources)
-            val param = ViewGroup.MarginLayoutParams(size, size)
-            param.marginEnd = OthersUtilities.getPixel(8f, resources)
-            view.layoutParams = param
+            count.forEach {
 
-            if (it == position)
-                view.setBackgroundResource(R.drawable.back_slider_count_enable)
-            else
-                view.setBackgroundResource(R.drawable.back_slider_count_disable)
+                val view = View(context)
+                val size = OthersUtilities.getPixel(10f, resources)
+                val param = ViewGroup.MarginLayoutParams(size, size)
+                param.marginEnd = OthersUtilities.getPixel(8f, resources)
+                view.layoutParams = param
 
-            binding.linearLayoutSliderCount.addView(view)
+                if (it == position)
+                    view.setBackgroundResource(R.drawable.back_slider_count_enable)
+                else
+                    view.setBackgroundResource(R.drawable.back_slider_count_disable)
 
-        }
+                binding.linearLayoutSliderCount.addView(view)
+
+            }
+
+        } else
+            binding.linearLayoutSliderCount.visibility = View.INVISIBLE
 
         Picasso.get()
             .load(url)

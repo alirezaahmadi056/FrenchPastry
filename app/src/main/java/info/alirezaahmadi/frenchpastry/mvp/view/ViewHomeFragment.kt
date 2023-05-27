@@ -93,7 +93,6 @@ class ViewHomeFragment : FrameLayout {
 
         binding.topPastryRecycler.getRecycler().layoutManager =
             GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
-        Log.i("SERVICE_TEST", data.pastries[2].pastries.toString())
         binding.topPastryRecycler.getRecycler().adapter =
             TopPastryRecyclerAdapter(data.pastries[2].pastries, context)
 

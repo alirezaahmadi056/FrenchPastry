@@ -27,10 +27,12 @@ class ViewDetailPastryActivity : FrameLayout {
 
     fun setData(detail: PastryDetailModel) {
 
+        binding.viewPagerSlider.layoutDirection = View.LAYOUT_DIRECTION_RTL
+        actUtils.setViewPagerFragment(binding.viewPagerSlider, detail.gallery)
+
         binding.txtTitle.text = detail.title
         binding.txtDesc.text = detail.content
-        binding.txtRate.text = detail.rate.toString()
-        binding.ratingComment.rating = 4.5f
+        binding.txtRate.text = detail.rate.rate.toString()
 
         if (detail.bookmark)
             binding.imgFavorite.setImageResource(R.drawable.ic_favorite)

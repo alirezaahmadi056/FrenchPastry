@@ -70,10 +70,9 @@ class TopPastryRecyclerAdapter(
                     .into(binding.imgPastry)
 
             binding.root.setOnClickListener {
-                //val intent = Intent(context, DetailPastryActivity::class.java)
-                Toast.makeText(context, data.ID.toString(), Toast.LENGTH_SHORT).show()
-                //intent.putExtra(DetailPastryActivity.ID, data.ID)
-                //context.startActivity(intent)
+                val intent = Intent(context, DetailPastryActivity::class.java)
+                intent.putExtra(DetailPastryActivity.ID, data.ID)
+                context.startActivity(intent)
             }
 
         }
