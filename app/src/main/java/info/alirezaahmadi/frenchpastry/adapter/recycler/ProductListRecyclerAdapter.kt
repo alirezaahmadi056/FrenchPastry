@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import info.alirezaahmadi.frenchpastry.R
-import info.alirezaahmadi.frenchpastry.adapter.recycler.diffUtil.ProductListDiffUtil
+import info.alirezaahmadi.frenchpastry.adapter.recycler.diffUtil.RecyclerDiffUtil
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastryModel
 import info.alirezaahmadi.frenchpastry.databinding.RecyclerItemListProductsBinding
 import info.alirezaahmadi.frenchpastry.mvp.ext.OthersUtilities
@@ -116,7 +116,7 @@ class ProductListRecyclerAdapter(
 
     private fun dataUpdate(newList: ArrayList<PastryModel>) {
 
-        val diffCallback = ProductListDiffUtil(dataMain, newList)
+        val diffCallback = RecyclerDiffUtil(dataMain, newList)
         val diffResult = DiffUtil.calculateDiff(diffCallback)
 
         dataMain.clear()

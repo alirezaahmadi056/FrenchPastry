@@ -4,7 +4,10 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import info.alirezaahmadi.frenchpastry.R
+import info.alirezaahmadi.frenchpastry.adapter.recycler.MaterialsRecyclerAdapter
 import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastryDetailModel
 import info.alirezaahmadi.frenchpastry.databinding.ActivityDetailPastryBinding
@@ -29,6 +32,10 @@ class ViewDetailPastryActivity : FrameLayout {
 
         binding.viewPagerSlider.layoutDirection = View.LAYOUT_DIRECTION_RTL
         actUtils.setViewPagerFragment(binding.viewPagerSlider, detail.gallery)
+
+        binding.recyclerMaterials.layoutManager =
+            LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        binding.recyclerMaterials.adapter = MaterialsRecyclerAdapter(detail.materials)
 
         binding.txtTitle.text = detail.title
         binding.txtDesc.text = detail.content

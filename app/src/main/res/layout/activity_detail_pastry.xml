@@ -228,10 +228,14 @@
                     <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/back_item_recycler_main"
                         android:layout_margin="12dp">
 
                         <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerMaterials"
                             android:layout_width="match_parent"
+                            tools:listitem="@layout/recycler_item_list_pastry_materials"
+                            tools:itemCount="4"
                             android:layout_height="wrap_content" />
 
                     </FrameLayout>
@@ -325,7 +329,7 @@
                             android:layout_marginHorizontal="8dp"
                             app:buttonText="ثبت نظر" />
 
-                        <androidx.appcompat.widget.AppCompatRatingBar
+                        <RatingBar
                             android:id="@+id/ratingComment"
                             style="?android:attr/ratingBarStyleIndicator"
                             android:layout_width="wrap_content"
