@@ -55,13 +55,21 @@ class ViewDetailPastryActivity : FrameLayout {
             binding.commentCount.visibility = View.INVISIBLE
         binding.txtCommentCount.text = detail.comment_count.toString()
 
+        var bookmark = detail.bookmark
+
         binding.imgFavorite.setOnClickListener {
 
-            val action =
-                if (detail.bookmark)
-                    ModelDetailPastryActivity.ACTION_FAVORITE
-                else
-                    ModelDetailPastryActivity.ACTION_UN_FAVORITE
+            var action = ""
+
+            if (bookmark) {
+                action = ModelDetailPastryActivity.ACTION_UN_FAVORITE
+                binding.imgFavorite.setImageResource(R.drawable.ic_favorite)
+                bookmark = false
+            } else {
+                action = ModelDetailPastryActivity.ACTION_FAVORITE
+                binding.imgFavorite.setImageResource(R.drawable.ic_actived_favorite)
+                bookmark = true
+            }
 
             sendRequests.startSendFavorite(
                 DeviceInfo.getDeviceID(context),
