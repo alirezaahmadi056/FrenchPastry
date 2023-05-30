@@ -9,8 +9,11 @@ import androidx.recyclerview.widget.RecyclerView
 import info.alirezaahmadi.frenchpastry.R
 import info.alirezaahmadi.frenchpastry.adapter.recycler.MaterialsRecyclerAdapter
 import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
+import info.alirezaahmadi.frenchpastry.androidWrapper.DeviceInfo
+import info.alirezaahmadi.frenchpastry.data.remote.apiRepository.SendRequests
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastryDetailModel
 import info.alirezaahmadi.frenchpastry.databinding.ActivityDetailPastryBinding
+import info.alirezaahmadi.frenchpastry.mvp.model.ModelDetailPastryActivity
 
 class ViewDetailPastryActivity : FrameLayout {
 
@@ -28,7 +31,7 @@ class ViewDetailPastryActivity : FrameLayout {
     val binding =
         ActivityDetailPastryBinding.inflate(LayoutInflater.from(context))
 
-    fun setData(detail: PastryDetailModel) {
+    fun setData(detail: PastryDetailModel, sendRequests: SendRequests) {
 
         binding.viewPagerSlider.layoutDirection = View.LAYOUT_DIRECTION_RTL
         actUtils.setViewPagerFragment(binding.viewPagerSlider, detail.gallery)
@@ -42,7 +45,7 @@ class ViewDetailPastryActivity : FrameLayout {
         binding.txtRate.text = detail.rate.rate.toString()
 
         if (detail.bookmark)
-            binding.imgFavorite.setImageResource(R.drawable.ic_favorite)
+            binding.imgFavorite.setImageResource(R.drawable.ic_actived_favorite)
         else
             binding.imgFavorite.setImageResource(R.drawable.ic_favorite)
 
@@ -51,6 +54,23 @@ class ViewDetailPastryActivity : FrameLayout {
         else
             binding.commentCount.visibility = View.INVISIBLE
         binding.txtCommentCount.text = detail.comment_count.toString()
+
+        binding.imgFavorite.setOnClickListener {
+
+            val action =
+                if (detail.bookmark)
+                    ModelDetailPastryActivity.ACTION_FAVORITE
+                else
+                    ModelDetailPastryActivity.ACTION_UN_FAVORITE
+
+            sendRequests.startSendFavorite(
+                DeviceInfo.getDeviceID(context),
+                DeviceInfo.getPublicKey(context),
+                DeviceInfo.getApi(context),
+                action
+            )
+
+        }
 
     }
 

@@ -80,3 +80,8 @@ data class Related(
     val price: Int,
     val sale_price: Int
 )
+
+data class RequestFavorite(
+    val success: Int,
+    val message: String
+)

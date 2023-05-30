@@ -3,7 +3,9 @@ package info.alirezaahmadi.frenchpastry.mvp.presenter
 import android.content.Context
 import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
 import info.alirezaahmadi.frenchpastry.androidWrapper.NetworkInfo
+import info.alirezaahmadi.frenchpastry.data.remote.apiRepository.SendRequests
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastryMainModel
+import info.alirezaahmadi.frenchpastry.data.remote.dataModel.RequestFavorite
 import info.alirezaahmadi.frenchpastry.data.remote.ext.CallbackRequest
 import info.alirezaahmadi.frenchpastry.mvp.ext.BaseLifeCycle
 import info.alirezaahmadi.frenchpastry.mvp.ext.ToastUtils
@@ -14,7 +16,7 @@ class PresenterDetailPastryActivity(
     private val view: ViewDetailPastryActivity,
     private val model: ModelDetailPastryActivity,
     private val context: Context
-) : BaseLifeCycle, ActivityUtils {
+) : BaseLifeCycle, ActivityUtils, SendRequests {
 
     override fun onCreate() {
 
@@ -33,13 +35,13 @@ class PresenterDetailPastryActivity(
 
     private fun getDataPastry() {
 
-        model.getCats(
+        model.getDetailPastry(
 
             object : CallbackRequest<PastryMainModel> {
 
                 override fun onSuccess(code: Int, data: PastryMainModel) {
                     view.endGetData()
-                    view.setData(data.pastry)
+                    view.setData(data.pastry, this@PresenterDetailPastryActivity)
                 }
 
                 override fun onNotSuccess(code: Int, error: String) {
@@ -54,6 +56,37 @@ class PresenterDetailPastryActivity(
 
             }
 
+        )
+
+    }
+
+    override fun startSendFavorite(
+        uId: String,
+        pubKey: String,
+        apiKey: String,
+        action: String
+    ) {
+
+        model.setPastryFavorite(
+            object : CallbackRequest<RequestFavorite> {
+
+                override fun onSuccess(code: Int, data: RequestFavorite) {
+                    ToastUtils.toast(context, data.message)
+                }
+
+                override fun onNotSuccess(code: Int, error: String) {
+                    ToastUtils.toast(context, error)
+                }
+
+                override fun onError(error: String) {
+                    ToastUtils.toastServerError(context)
+                }
+
+            },
+            apiKey,
+            uId,
+            pubKey,
+            action
         )
 
     }
