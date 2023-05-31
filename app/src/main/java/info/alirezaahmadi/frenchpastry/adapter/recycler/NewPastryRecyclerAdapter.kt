@@ -1,5 +1,7 @@
 package info.alirezaahmadi.frenchpastry.adapter.recycler
 
+import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Paint
 import android.view.LayoutInflater
@@ -12,9 +14,11 @@ import info.alirezaahmadi.frenchpastry.R
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastriesModel
 import info.alirezaahmadi.frenchpastry.databinding.RecyclerItemMainHorizontalBinding
 import info.alirezaahmadi.frenchpastry.mvp.ext.OthersUtilities
+import info.alirezaahmadi.frenchpastry.ui.activity.DetailPastryActivity
 
 class NewPastryRecyclerAdapter(
-    private val pastries: ArrayList<PastriesModel>
+    private val pastries: ArrayList<PastriesModel>,
+    private val context: Context
 ) : RecyclerView.Adapter<NewPastryRecyclerAdapter.NewPastryViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewPastryViewHolder {
@@ -61,6 +65,12 @@ class NewPastryRecyclerAdapter(
                     .placeholder(R.drawable.img_place_holder)
                     .error(R.drawable.img_place_holder)
                     .into(binding.imgPastry)
+
+            binding.root.setOnClickListener {
+                val intent = Intent(context, DetailPastryActivity::class.java)
+                intent.putExtra(DetailPastryActivity.ID, data.ID)
+                context.startActivity(intent)
+            }
 
         }
     }

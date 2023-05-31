@@ -13,6 +13,7 @@ import info.alirezaahmadi.frenchpastry.androidWrapper.DeviceInfo
 import info.alirezaahmadi.frenchpastry.data.remote.apiRepository.SendRequests
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastryDetailModel
 import info.alirezaahmadi.frenchpastry.databinding.ActivityDetailPastryBinding
+import info.alirezaahmadi.frenchpastry.mvp.ext.ToastUtils
 import info.alirezaahmadi.frenchpastry.mvp.model.ModelDetailPastryActivity
 
 class ViewDetailPastryActivity : FrameLayout {
@@ -76,6 +77,27 @@ class ViewDetailPastryActivity : FrameLayout {
                 DeviceInfo.getPublicKey(context),
                 DeviceInfo.getApi(context),
                 action
+            )
+
+        }
+
+        binding.btnSendComment.setOnClickListener {
+
+            val text = binding.edtComment.text.toString()
+            val rate = binding.ratingComment.rating
+
+            if (text.isEmpty() || (text.length < 10)) {
+                ToastUtils.toast(context, "نظر شما نمیتواند کمتر از 10 کاراکتر باشد")
+                return@setOnClickListener
+            }
+
+            sendRequests.sendComment(
+                DeviceInfo.getDeviceID(context),
+                DeviceInfo.getPublicKey(context),
+                DeviceInfo.getApi(context),
+                text,
+                rate,
+                detail.ID
             )
 
         }

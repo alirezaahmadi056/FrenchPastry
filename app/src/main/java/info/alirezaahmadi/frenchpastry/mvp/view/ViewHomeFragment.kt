@@ -58,7 +58,7 @@ class ViewHomeFragment : FrameLayout {
         binding.newPastryRecycler.getRecycler().layoutManager =
             LinearLayoutManager(context, RecyclerView.HORIZONTAL, true)
         binding.newPastryRecycler.getRecycler().adapter =
-            NewPastryRecyclerAdapter(data.pastries[0].pastries)
+            NewPastryRecyclerAdapter(data.pastries[0].pastries, context)
 
         binding.specialOfferPastryRecycler.getRecycler().layoutManager =
             LinearLayoutManager(context, RecyclerView.HORIZONTAL, true)

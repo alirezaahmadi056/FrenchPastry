@@ -14,6 +14,7 @@ import info.alirezaahmadi.frenchpastry.R
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastriesModel
 import info.alirezaahmadi.frenchpastry.databinding.RecyclerItemMainVerticalBinding
 import info.alirezaahmadi.frenchpastry.mvp.ext.OthersUtilities
+import info.alirezaahmadi.frenchpastry.ui.activity.DetailPastryActivity
 import info.alirezaahmadi.frenchpastry.ui.activity.ListPastryActivity
 
 class SpecialOfferPastryRecyclerAdapter(
@@ -86,6 +87,12 @@ class SpecialOfferPastryRecyclerAdapter(
                         context.startActivity(intent)
                     }
 
+                }
+
+                binding.root.setOnClickListener {
+                    val intent = Intent(context, DetailPastryActivity::class.java)
+                    intent.putExtra(DetailPastryActivity.ID, data.ID)
+                    context.startActivity(intent)
                 }
 
             }

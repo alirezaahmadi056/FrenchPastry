@@ -266,12 +266,12 @@
 
                     </LinearLayout>
 
-                    <TextView
+                    <com.codesgood.views.JustifiedTextView
                         android:id="@+id/txtDesc"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="16dp"
-                        android:text="@string/lorem"
+                        android:layout_marginHorizontal="20dp"
+                        tools:text="@string/lorem"
                         android:textColor="@color/color_text_gray"
                         android:textSize="@dimen/text_normal_size" />
 
@@ -306,7 +306,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
                         android:layoutDirection="rtl"
-                        android:gravity="end|top"
+                        android:hint="@string/comment_hint"
+                        android:gravity="start|top"
                         android:layout_marginHorizontal="16dp"
                         android:background="@drawable/back_edit_text"
                         android:inputType="textMultiLine"
@@ -329,15 +330,22 @@
                             android:layout_marginHorizontal="8dp"
                             app:buttonText="ثبت نظر" />
 
-                        <RatingBar
+                        <com.willy.ratingbar.ScaleRatingBar
                             android:id="@+id/ratingComment"
-                            style="?android:attr/ratingBarStyleIndicator"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:numStars="5"
-                            android:rating="4.5"
-                            android:theme="@style/CustomRatingBar" />
+                            app:srb_numStars="5"
+                            app:srb_minimumStars="1"
+                            app:srb_rating="4.5"
+                            app:srb_starWidth="22dp"
+                            app:srb_starHeight="22dp"
+                            app:srb_starPadding="4dp"
+                            app:srb_stepSize="0.5"
+                            app:srb_isIndicator="false"
+                            app:srb_clickable="true"
+                            app:srb_scrollable="true"
+                            app:srb_clearRatingEnabled="true"/>
 
                     </LinearLayout>
 

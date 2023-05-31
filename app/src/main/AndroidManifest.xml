@@ -16,10 +16,10 @@
         android:theme="@style/Theme.FrenchPastry"
         tools:targetApi="32">
         <activity
-            android:name=".AboutActivity"
+            android:name=".ui.activity.AboutActivity"
             android:exported="false" />
         <activity
-            android:name=".FavoriteActivity"
+            android:name=".ui.activity.FavoriteActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activity.UserActivity"

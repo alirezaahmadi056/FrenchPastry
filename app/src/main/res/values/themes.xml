@@ -23,7 +23,7 @@
     </style>
 
     <style name="CustomRatingBar" parent="Theme.AppCompat">
-        <item name="colorControlNormal">@color/gray_main</item>
+        <item name="colorControlNormal">@color/yellow_200</item>
         <item name="colorControlActivated">@color/yellow_main</item>
     </style>
 

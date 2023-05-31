@@ -131,6 +131,17 @@ interface PastryApiService {
         @Field("action") action: String
     ): Call<RequestFavorite>
 
+    @FormUrlEncoded
+    @POST("comment/")
+    fun setPastryComment(
+        @Header("app-api-key") apiKey: String,
+        @Header("app-device-uid") id: String,
+        @Header("app-public-key") pubKey: String,
+        @Field("post_id") post_id: Int,
+        @Field("content") content: String,
+        @Field("rate") rate: Float
+    ): Call<RequestFavorite>
+
 }
 
 interface SendRequests {
@@ -140,6 +151,15 @@ interface SendRequests {
         pubKey: String,
         apiKey: String,
         action: String
+    )
+
+    fun sendComment(
+        uId: String,
+        pubKey: String,
+        apiKey: String,
+        content: String,
+        rate: Float,
+        postId: Int
     )
 
 }
