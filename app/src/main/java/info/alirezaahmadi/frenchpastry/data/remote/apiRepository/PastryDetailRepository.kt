@@ -26,10 +26,18 @@ class PastryApiRepository private constructor() {
 
     fun getPastryDetail(
         callbackRequest: CallbackRequest<PastryMainModel>,
-        id: Int
+        id: Int,
+        apiKey: String,
+        uId: String,
+        pubKey: String,
     ) {
 
-        RetrofitService.pastryApiService.getPastry(id).enqueue(
+        RetrofitService.pastryApiService.getPastry(
+            id,
+            apiKey,
+            uId,
+            pubKey
+        ).enqueue(
 
             object : Callback<PastryMainModel> {
 
@@ -118,7 +126,10 @@ interface PastryApiService {
 
     @GET("pastry/{id}")
     fun getPastry(
-        @Path(value = "id", encoded = false) ID: Int
+        @Path(value = "id", encoded = false) ID: Int,
+        @Header("app-api-key") apiKey: String,
+        @Header("app-device-uid") id: String,
+        @Header("app-public-key") pubKey: String
     ): Call<PastryMainModel>
 
     @FormUrlEncoded

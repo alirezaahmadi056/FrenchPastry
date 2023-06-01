@@ -2,6 +2,7 @@ package info.alirezaahmadi.frenchpastry.mvp.presenter
 
 import android.content.Context
 import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
+import info.alirezaahmadi.frenchpastry.androidWrapper.DeviceInfo
 import info.alirezaahmadi.frenchpastry.androidWrapper.NetworkInfo
 import info.alirezaahmadi.frenchpastry.data.remote.apiRepository.SendRequests
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastryMainModel
@@ -54,7 +55,10 @@ class PresenterDetailPastryActivity(
                     ToastUtils.toastServerError(context)
                 }
 
-            }
+            },
+            DeviceInfo.getDeviceID(context),
+            DeviceInfo.getPublicKey(context),
+            DeviceInfo.getApi(context)
 
         )
 
@@ -88,6 +92,17 @@ class PresenterDetailPastryActivity(
             pubKey,
             action
         )
+
+    }
+
+    override fun sendComment(
+        uId: String,
+        pubKey: String,
+        apiKey: String,
+        content: String,
+        rate: Float,
+        postId: Int
+    ) {
 
     }
 

@@ -14,8 +14,19 @@ class ModelDetailPastryActivity(private val id: Int) {
 
     }
 
-    fun getDetailPastry(callbackRequest: CallbackRequest<PastryMainModel>) {
-        PastryApiRepository.instance.getPastryDetail(callbackRequest, id)
+    fun getDetailPastry(
+        callbackRequest: CallbackRequest<PastryMainModel>,
+        uId: String,
+        pubKey: String,
+        apiKey: String
+    ) {
+        PastryApiRepository.instance.getPastryDetail(
+            callbackRequest,
+            id,
+            apiKey,
+            uId,
+            pubKey
+        )
     }
 
     fun setPastryFavorite(
