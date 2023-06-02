@@ -16,6 +16,17 @@ object NetworkInfo {
 
     fun internetInfo(context: Context, activityUtils: ActivityUtils): Boolean {
 
+        return if (netInfo(context))
+            true
+        else {
+            showNetDialog(context, activityUtils)
+            false
+        }
+
+    }
+
+    fun internetInfoRetry(context: Context, activityUtils: ActivityUtils): Boolean {
+
         return if (netInfo(context)) {
             activityUtils.activeNetwork()
             true
@@ -55,7 +66,7 @@ object NetworkInfo {
 
         view5.btnRetry.setOnClickListener {
             dialog.dismiss()
-            internetInfo(context, activityUtils)
+            internetInfoRetry(context, activityUtils)
         }
 
         view5.btnSettings.setOnClickListener {

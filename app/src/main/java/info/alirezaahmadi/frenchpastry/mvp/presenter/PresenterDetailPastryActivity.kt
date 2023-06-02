@@ -5,6 +5,7 @@ import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
 import info.alirezaahmadi.frenchpastry.androidWrapper.DeviceInfo
 import info.alirezaahmadi.frenchpastry.androidWrapper.NetworkInfo
 import info.alirezaahmadi.frenchpastry.data.remote.apiRepository.SendRequests
+import info.alirezaahmadi.frenchpastry.data.remote.dataModel.DefaultModel
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastryMainModel
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.RequestFavorite
 import info.alirezaahmadi.frenchpastry.data.remote.ext.CallbackRequest
@@ -36,8 +37,7 @@ class PresenterDetailPastryActivity(
 
     private fun getDataPastry() {
 
-        model.getDetailPastry(
-
+        val result =
             object : CallbackRequest<PastryMainModel> {
 
                 override fun onSuccess(code: Int, data: PastryMainModel) {
@@ -55,7 +55,11 @@ class PresenterDetailPastryActivity(
                     ToastUtils.toastServerError(context)
                 }
 
-            },
+            }
+
+        model.getDetailPastry(
+
+            result,
             DeviceInfo.getDeviceID(context),
             DeviceInfo.getPublicKey(context),
             DeviceInfo.getApi(context)
@@ -71,22 +75,24 @@ class PresenterDetailPastryActivity(
         action: String
     ) {
 
+        val result = object : CallbackRequest<RequestFavorite> {
+
+            override fun onSuccess(code: Int, data: RequestFavorite) {
+                ToastUtils.toast(context, data.message)
+            }
+
+            override fun onNotSuccess(code: Int, error: String) {
+                ToastUtils.toast(context, error)
+            }
+
+            override fun onError(error: String) {
+                ToastUtils.toastServerError(context)
+            }
+
+        }
+
         model.setPastryFavorite(
-            object : CallbackRequest<RequestFavorite> {
-
-                override fun onSuccess(code: Int, data: RequestFavorite) {
-                    ToastUtils.toast(context, data.message)
-                }
-
-                override fun onNotSuccess(code: Int, error: String) {
-                    ToastUtils.toast(context, error)
-                }
-
-                override fun onError(error: String) {
-                    ToastUtils.toastServerError(context)
-                }
-
-            },
+            result,
             apiKey,
             uId,
             pubKey,
@@ -103,6 +109,30 @@ class PresenterDetailPastryActivity(
         rate: Float,
         postId: Int
     ) {
+
+        model.setPastryComment(
+            apiKey, uId, pubKey, postId, content, rate,
+
+            object : CallbackRequest<DefaultModel> {
+
+                override fun onSuccess(code: Int, data: DefaultModel) {
+                    view.disableButtonProgress()
+                    ToastUtils.toast(context, data.message)
+                }
+
+                override fun onNotSuccess(code: Int, error: String) {
+                    view.disableButtonProgress()
+                    ToastUtils.toast(context, error)
+                }
+
+                override fun onError(error: String) {
+                    view.disableButtonProgress()
+                    ToastUtils.toastServerError(context)
+                }
+
+            }
+
+        )
 
     }
 

@@ -7,6 +7,7 @@ import android.widget.FrameLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import info.alirezaahmadi.frenchpastry.R
+import info.alirezaahmadi.frenchpastry.adapter.recycler.CommentsRecyclerAdapter
 import info.alirezaahmadi.frenchpastry.adapter.recycler.MaterialsRecyclerAdapter
 import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
 import info.alirezaahmadi.frenchpastry.androidWrapper.DeviceInfo
@@ -45,6 +46,8 @@ class ViewDetailPastryActivity : FrameLayout {
         binding.txtDesc.text = detail.content
         binding.txtRate.text = detail.rate.rate.toString()
 
+        //todo بوک مارک و علاقه مندی کار نمیکنه
+
         if (detail.bookmark)
             binding.imgFavorite.setImageResource(R.drawable.ic_actived_favorite)
         else
@@ -81,7 +84,7 @@ class ViewDetailPastryActivity : FrameLayout {
 
         }
 
-        binding.btnSendComment.setOnClickListener {
+        binding.btnSendComment.getView().setOnClickListener {
 
             val text = binding.edtComment.text.toString()
             val rate = binding.ratingComment.rating
@@ -90,6 +93,8 @@ class ViewDetailPastryActivity : FrameLayout {
                 ToastUtils.toast(context, "نظر شما نمیتواند کمتر از 10 کاراکتر باشد")
                 return@setOnClickListener
             }
+
+            binding.btnSendComment.enableProgress()
 
             sendRequests.sendComment(
                 DeviceInfo.getDeviceID(context),
@@ -102,6 +107,17 @@ class ViewDetailPastryActivity : FrameLayout {
 
         }
 
+        binding.recyclerComments.layoutManager =
+            LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        binding.recyclerComments.adapter =
+            CommentsRecyclerAdapter(detail.comments)
+
+        //todo بایستی بخش محصولات مشابه رو ایجاد کنی
+
+    }
+
+    fun disableButtonProgress() {
+        binding.btnSendComment.disableProgress()
     }
 
     fun startGetData() {

@@ -66,6 +66,10 @@ class CustomEditText(
         binding.textInputLayout.error = errorText
     }
 
+    fun nullError() {
+        binding.textInputLayout.error = null
+    }
+
     fun getText() = binding.textInputEditText.text.toString()
 
     fun setText(text: String) {

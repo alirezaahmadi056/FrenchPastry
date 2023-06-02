@@ -1,5 +1,6 @@
 package info.alirezaahmadi.frenchpastry.data.remote.apiRepository
 
+import info.alirezaahmadi.frenchpastry.data.remote.dataModel.DefaultModel
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastryMainModel
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.RequestFavorite
 import info.alirezaahmadi.frenchpastry.data.remote.ext.CallbackRequest
@@ -34,9 +35,9 @@ class PastryApiRepository private constructor() {
 
         RetrofitService.pastryApiService.getPastry(
             id,
-            apiKey,
             uId,
-            pubKey
+            pubKey,
+            apiKey
         ).enqueue(
 
             object : Callback<PastryMainModel> {
@@ -120,6 +121,55 @@ class PastryApiRepository private constructor() {
 
     }
 
+    fun setPastryComments(
+        apiKey: String,
+        uId: String,
+        pubKey: String,
+        post_id: Int,
+        content: String,
+        rate: Float,
+        callbackRequest: CallbackRequest<DefaultModel>
+    ) {
+
+        RetrofitService.pastryApiService.setPastryComment(
+            apiKey, uId, pubKey, post_id, content, rate
+        ).enqueue(
+
+            object : Callback<DefaultModel> {
+
+                override fun onResponse(
+                    call: Call<DefaultModel>,
+                    response: Response<DefaultModel>
+                ) {
+
+                    if (response.isSuccessful) {
+                        val data = response.body() as DefaultModel
+                        callbackRequest.onSuccess(
+                            response.code(),
+                            data
+                        )
+                    } else {
+                        val error = ErrorUtils.parseError(response)
+                        callbackRequest.onNotSuccess(
+                            response.code(),
+                            error
+                        )
+                    }
+
+                }
+
+                override fun onFailure(call: Call<DefaultModel>, t: Throwable) {
+
+                    callbackRequest.onError(t.message.toString())
+
+                }
+
+            }
+
+        )
+
+    }
+
 }
 
 interface PastryApiService {
@@ -127,9 +177,9 @@ interface PastryApiService {
     @GET("pastry/{id}")
     fun getPastry(
         @Path(value = "id", encoded = false) ID: Int,
-        @Header("app-api-key") apiKey: String,
-        @Header("app-device-uid") id: String,
-        @Header("app-public-key") pubKey: String
+        @Header("app-device-uid") uId: String,
+        @Header("app-public-key") pubKey: String,
+        @Header("app-api-key") apiKey: String
     ): Call<PastryMainModel>
 
     @FormUrlEncoded
@@ -151,7 +201,7 @@ interface PastryApiService {
         @Field("post_id") post_id: Int,
         @Field("content") content: String,
         @Field("rate") rate: Float
-    ): Call<RequestFavorite>
+    ): Call<DefaultModel>
 
 }
 
