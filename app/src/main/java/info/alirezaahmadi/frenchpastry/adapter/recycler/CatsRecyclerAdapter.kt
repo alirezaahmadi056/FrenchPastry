@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.squareup.picasso.Picasso
 import info.alirezaahmadi.frenchpastry.R
+import info.alirezaahmadi.frenchpastry.androidWrapper.PicassoHandler
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.CategoriesModel
 import info.alirezaahmadi.frenchpastry.databinding.RecyclerItemMainCategoriesBinding
 import info.alirezaahmadi.frenchpastry.ui.activity.ListPastryActivity
@@ -43,12 +44,7 @@ class CatsRecyclerAdapter(
             binding.txtCategory.text = data.title
 
             if (data.thumbnail.isNotEmpty())
-                Picasso.get()
-                    .load(data.thumbnail)
-                    .fit()
-                    .placeholder(R.drawable.ic_pastry_place_holder)
-                    .error(R.drawable.ic_pastry_place_holder)
-                    .into(binding.imgCategory)
+                PicassoHandler.setPicassoCats(binding.imgCategory, data.thumbnail)
 
             binding.root.setOnClickListener {
                 val intent = Intent(context, ListPastryActivity::class.java)

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
 import info.alirezaahmadi.frenchpastry.R
+import info.alirezaahmadi.frenchpastry.androidWrapper.PicassoHandler
 import info.alirezaahmadi.frenchpastry.databinding.FragmentMainImageSliderBinding
 import info.alirezaahmadi.frenchpastry.mvp.ext.OthersUtilities
 
@@ -46,12 +47,7 @@ class MainSliderFragment(
         } else
             binding.linearLayoutSliderCount.visibility = View.INVISIBLE
 
-        Picasso.get()
-            .load(url)
-            .placeholder(R.drawable.img_place_holder)
-            .error(R.drawable.img_place_holder)
-            .fit()
-            .into(binding.imgSlider)
+        PicassoHandler.setPicasso(binding.imgSlider, url)
 
         return binding.root
 

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.squareup.picasso.Picasso
 import info.alirezaahmadi.frenchpastry.R
+import info.alirezaahmadi.frenchpastry.androidWrapper.PicassoHandler
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastriesModel
 import info.alirezaahmadi.frenchpastry.databinding.RecyclerItemMainVerticalBinding
 import info.alirezaahmadi.frenchpastry.mvp.ext.OthersUtilities
@@ -62,12 +63,7 @@ class TopPastryRecyclerAdapter(
                 binding.off.visibility = View.GONE
 
             if (data.thumbnail.isNotEmpty())
-                Picasso.get()
-                    .load(data.thumbnail)
-                    .fit()
-                    .placeholder(R.drawable.img_place_holder)
-                    .error(R.drawable.img_place_holder)
-                    .into(binding.imgPastry)
+                PicassoHandler.setPicasso(binding.imgPastry, data.thumbnail)
 
             binding.root.setOnClickListener {
                 val intent = Intent(context, DetailPastryActivity::class.java)

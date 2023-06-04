@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import info.alirezaahmadi.frenchpastry.R
 import info.alirezaahmadi.frenchpastry.adapter.recycler.diffUtil.RecyclerDiffUtil
+import info.alirezaahmadi.frenchpastry.androidWrapper.PicassoHandler
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastryModel
 import info.alirezaahmadi.frenchpastry.databinding.RecyclerItemListProductsBinding
 import info.alirezaahmadi.frenchpastry.mvp.ext.OthersUtilities
@@ -57,12 +58,7 @@ class ProductListRecyclerAdapter(
             binding.txtPriceMain.text = OthersUtilities.changePrice(data.price).toString()
 
             if (data.thumbnail.isNotEmpty())
-                Picasso.get()
-                    .load(data.thumbnail)
-                    .fit()
-                    .placeholder(R.drawable.img_place_holder)
-                    .error(R.drawable.img_place_holder)
-                    .into(binding.imgProduct)
+                PicassoHandler.setPicasso(binding.imgProduct, data.thumbnail)
 
             if (data.has_discount) {
 

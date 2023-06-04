@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import info.alirezaahmadi.frenchpastry.R
 import info.alirezaahmadi.frenchpastry.adapter.recycler.CatsRecyclerAdapter
+import info.alirezaahmadi.frenchpastry.androidWrapper.PicassoHandler
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.ParentCategoryModel
 import info.alirezaahmadi.frenchpastry.databinding.FragmentPastryCatsBinding
 
@@ -27,12 +28,7 @@ class ViewCakeCatsFragment(
         binding.recyclerPastryCats.adapter = CatsRecyclerAdapter(cats.categories, context)
 
         if (cats.banner.isNotEmpty())
-            Picasso.get()
-                .load(cats.banner)
-                .fit()
-                .placeholder(R.drawable.img_banner_place_holder)
-                .error(R.drawable.img_banner_place_holder)
-                .into(binding.imgCatsBanner)
+            PicassoHandler.setPicassoBanner(binding.imgCatsBanner, cats.banner)
 
     }
 

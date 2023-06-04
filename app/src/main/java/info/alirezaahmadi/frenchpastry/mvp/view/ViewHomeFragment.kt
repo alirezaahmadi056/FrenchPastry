@@ -15,6 +15,7 @@ import info.alirezaahmadi.frenchpastry.adapter.recycler.NewPastryRecyclerAdapter
 import info.alirezaahmadi.frenchpastry.adapter.recycler.SpecialOfferPastryRecyclerAdapter
 import info.alirezaahmadi.frenchpastry.adapter.recycler.TopPastryRecyclerAdapter
 import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
+import info.alirezaahmadi.frenchpastry.androidWrapper.PicassoHandler
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastriesModel
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.RequestMain
 import info.alirezaahmadi.frenchpastry.databinding.FragmentHomeBinding
@@ -97,12 +98,7 @@ class ViewHomeFragment : FrameLayout {
             TopPastryRecyclerAdapter(data.pastries[2].pastries, context)
 
         if (data.banners.isNotEmpty() && data.banners[0].large.isNotEmpty())
-            Picasso.get()
-                .load(data.banners[0].large)
-                .fit()
-                .placeholder(R.drawable.img_banner_place_holder)
-                .error(R.drawable.img_banner_place_holder)
-                .into(binding.imgBanner)
+            PicassoHandler.setPicassoBanner(binding.imgBanner, data.banners[0].large)
 
         binding.newPastryRecycler.getAll().setOnClickListener {
             val intent = Intent(context, ListPastryActivity::class.java)
