@@ -19,6 +19,18 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/imgShopping"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:visibility="invisible"
+        android:contentDescription="@string/shopping_desc"
+        android:layout_marginStart="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgBack"
+        app:layout_constraintStart_toEndOf="@+id/imgBack"
+        app:layout_constraintTop_toTopOf="@+id/imgBack"
+        app:srcCompat="@drawable/ic_shopping_cart_black" />
+
+    <ImageView
         android:id="@+id/imageView5"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
@@ -74,7 +86,7 @@
         app:srcCompat="@drawable/ic_menu" />
 
     <androidx.constraintlayout.widget.Group
-        android:id="@+id/alertGroup"
+        android:id="@+id/countGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="invisible"

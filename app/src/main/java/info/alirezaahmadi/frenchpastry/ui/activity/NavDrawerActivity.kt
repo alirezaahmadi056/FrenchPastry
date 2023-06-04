@@ -92,6 +92,7 @@ class NavDrawerActivity : AppCompatActivity(), OnClickListener {
 
             R.id.txtAbout -> {
                 startActivity(Intent(this, AboutActivity::class.java))
+                finish()
                 overridePendingTransition(R.anim.trans_right_in, R.anim.trans_right_out)
             }
 

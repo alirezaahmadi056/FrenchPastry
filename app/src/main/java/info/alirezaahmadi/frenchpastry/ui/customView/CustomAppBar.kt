@@ -32,8 +32,11 @@ class CustomAppBar(
 
         val isBack = typeArray.getBoolean(R.styleable.CustomAppBar_backIcon, false)
 
-        if (isBack)
+        if (isBack) {
             binding.imgBack.visibility = View.VISIBLE
+            binding.imgShopping.visibility = View.VISIBLE
+            binding.imgAlert.visibility = View.INVISIBLE
+        }
 
         typeArray.recycle()
 
@@ -41,15 +44,15 @@ class CustomAppBar(
 
     fun getBackIcon() = binding.imgBack
 
-    fun alertShow() {
-        binding.alertGroup.visibility = VISIBLE
+    fun countShow() {
+        binding.countGroup.visibility = VISIBLE
     }
 
-    fun alertHide() {
-        binding.alertGroup.visibility = INVISIBLE
+    fun countHide() {
+        binding.countGroup.visibility = INVISIBLE
     }
 
-    fun setAlertCount(count: String) {
+    fun setCount(count: String) {
         binding.txtAlertCount.text = count
     }
 

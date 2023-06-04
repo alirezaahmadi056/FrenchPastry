@@ -7,12 +7,22 @@ import android.widget.FrameLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import info.alirezaahmadi.frenchpastry.adapter.recycler.ProductListRecyclerAdapter
+import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastryModel
 import info.alirezaahmadi.frenchpastry.databinding.ActivityFavoriteBinding
 
-class ViewFavoriteActivity(
-    contextInstance: Context
-) : FrameLayout(contextInstance) {
+class ViewFavoriteActivity: FrameLayout {
+
+    private lateinit var actUtils: ActivityUtils
+
+    constructor(contextInstance: Context) : super(contextInstance)
+
+    constructor(
+        contextInstance: Context,
+        activityUtils: ActivityUtils
+    ) : super(contextInstance) {
+        actUtils = activityUtils
+    }
 
     val binding =
         ActivityFavoriteBinding.inflate(LayoutInflater.from(context))
@@ -25,6 +35,16 @@ class ViewFavoriteActivity(
         binding.recyclerViewPastry.adapter =
             ProductListRecyclerAdapter(pastry, context)
 
+    }
+
+    fun showNavDrawer() {
+        binding.customAppBar.showNavDrawer(context)
+    }
+
+    fun onBack() {
+        binding.customAppBar.getBackIcon().setOnClickListener {
+            actUtils.finished()
+        }
     }
 
     fun startGetData() {

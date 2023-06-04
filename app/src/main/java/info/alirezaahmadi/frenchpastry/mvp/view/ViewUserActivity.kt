@@ -5,14 +5,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
 import info.alirezaahmadi.frenchpastry.R
+import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
 import info.alirezaahmadi.frenchpastry.androidWrapper.DeviceInfo
 import info.alirezaahmadi.frenchpastry.data.remote.apiRepository.StartSetUserInfo
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.UserData
 import info.alirezaahmadi.frenchpastry.databinding.ActivityUserBinding
 
-class ViewUserActivity(
-    contextInstance: Context
-) : FrameLayout(contextInstance) {
+class ViewUserActivity: FrameLayout {
+
+    private lateinit var actUtils: ActivityUtils
+
+    constructor(contextInstance: Context) : super(contextInstance)
+
+    constructor(
+        contextInstance: Context,
+        activityUtils: ActivityUtils
+    ) : super(contextInstance) {
+        actUtils = activityUtils
+    }
 
     val binding = ActivityUserBinding.inflate(
         LayoutInflater.from(context)
@@ -40,10 +50,9 @@ class ViewUserActivity(
         binding.txtEditName.setText(userData.fullname)
         binding.txtEmail.setText(userData.email)
 
-        //todo در اینجا باید روز و سال و ماه را اضافه کنیم به دیتا خودمان و بریزیم توش
-        //binding.txtDay.setText()
-        //binding.txtMount.setText()
-        //binding.txtYear.setText()
+        binding.txtDay.setText(userData.day)
+        binding.txtMonth.setText(userData.month)
+        binding.txtYear.setText(userData.year)
 
         //todo اینجا هم باید بریم به آدرس های من
         //binding.txtAddress.setOnClickListener {  }
@@ -90,6 +99,16 @@ class ViewUserActivity(
 
         }
 
+    }
+
+    fun showNavDrawer() {
+        binding.customAppBar.showNavDrawer(context)
+    }
+
+    fun onBack() {
+        binding.customAppBar.getBackIcon().setOnClickListener {
+            actUtils.finished()
+        }
     }
 
     fun endSetUserInfoSuccess() {

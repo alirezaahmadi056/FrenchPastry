@@ -18,6 +18,10 @@ class PresenterFavoriteActivity(
 
     override fun onCreate() {
 
+        view.startGetData()
+        view.showNavDrawer()
+        view.onBack()
+
         if (NetworkInfo.internetInfo(context, this))
             getPastries()
 

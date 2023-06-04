@@ -12,5 +12,8 @@ data class UserData(
     val phone: String,
     val avatar: String,
     val birthdate: String,
+    val day:String,
+    val month:String,
+    val year:String,
     val sex: Int
 )

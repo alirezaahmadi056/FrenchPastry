@@ -19,6 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
+        android:id="@+id/frameLayout2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -228,15 +229,15 @@
                     <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/back_item_recycler_main"
-                        android:layout_margin="12dp">
+                        android:layout_margin="12dp"
+                        android:background="@drawable/back_item_recycler_main">
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/recyclerMaterials"
                             android:layout_width="match_parent"
-                            tools:listitem="@layout/recycler_item_list_pastry_materials"
+                            android:layout_height="wrap_content"
                             tools:itemCount="4"
-                            android:layout_height="wrap_content" />
+                            tools:listitem="@layout/recycler_item_list_pastry_materials" />
 
                     </FrameLayout>
 
@@ -271,9 +272,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="20dp"
-                        tools:text="@string/lorem"
                         android:textColor="@color/color_text_gray"
-                        android:textSize="@dimen/text_normal_size" />
+                        android:textSize="@dimen/text_normal_size"
+                        tools:text="@string/lorem" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -305,12 +306,12 @@
                         android:id="@+id/edtComment"
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
-                        android:layoutDirection="rtl"
-                        android:hint="@string/comment_hint"
-                        android:gravity="start|top"
                         android:layout_marginHorizontal="16dp"
                         android:background="@drawable/back_edit_text"
+                        android:gravity="start|top"
+                        android:hint="@string/comment_hint"
                         android:inputType="textMultiLine"
+                        android:layoutDirection="rtl"
                         android:padding="8dp"
                         android:textColor="@color/color_text_black"
                         android:textColorHint="@color/color_text_gray"
@@ -335,17 +336,17 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            app:srb_numStars="5"
+                            app:srb_clearRatingEnabled="true"
+                            app:srb_clickable="true"
+                            app:srb_isIndicator="false"
                             app:srb_minimumStars="1"
+                            app:srb_numStars="5"
                             app:srb_rating="4.5"
-                            app:srb_starWidth="22dp"
+                            app:srb_scrollable="true"
                             app:srb_starHeight="22dp"
                             app:srb_starPadding="4dp"
-                            app:srb_stepSize="0.5"
-                            app:srb_isIndicator="false"
-                            app:srb_clickable="true"
-                            app:srb_scrollable="true"
-                            app:srb_clearRatingEnabled="true"/>
+                            app:srb_starWidth="22dp"
+                            app:srb_stepSize="0.5" />
 
                     </LinearLayout>
 
@@ -394,5 +395,55 @@
             android:layout_gravity="center" />
 
     </FrameLayout>
+
+    <View
+        android:id="@+id/viewBottom"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:background="@color/white_main"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="@drawable/back_view_bottom_detail"
+        app:layout_constraintEnd_toEndOf="@id/viewBottom"
+        app:layout_constraintStart_toStartOf="@id/viewBottom"
+        app:layout_constraintBottom_toTopOf="@id/viewBottom"/>
+
+    <TextView
+        android:id="@+id/txtMainPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        tools:text="430,000"
+        android:textColor="@color/color_text_black"
+        android:textSize="@dimen/text_large_size"
+        app:layout_constraintBottom_toBottomOf="@+id/frameLayout2"
+        app:layout_constraintStart_toStartOf="@+id/viewBottom"
+        app:layout_constraintTop_toTopOf="@+id/viewBottom" />
+
+    <TextView
+        android:id="@+id/txtOffPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:textColor="@color/color_text_black"
+        android:textSize="@dimen/text_large_size"
+        app:layout_constraintBottom_toBottomOf="@+id/txtMainPrice"
+        app:layout_constraintStart_toEndOf="@+id/txtMainPrice"
+        app:layout_constraintTop_toTopOf="@+id/txtMainPrice"
+        tools:text="380,000" />
+
+    <info.alirezaahmadi.frenchpastry.ui.customView.CustomButton
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:paddingHorizontal="8dp"
+        app:buttonText="@string/add_to_shop"
+        app:layout_constraintBottom_toBottomOf="@id/viewBottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/viewBottom" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

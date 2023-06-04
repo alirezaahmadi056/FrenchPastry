@@ -11,6 +11,12 @@ class AboutActivity : AppCompatActivity() {
         val binding = ActivityAboutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.customAppBar.showNavDrawer(this)
+
+        binding.customAppBar.getBackIcon().setOnClickListener {
+            finish()
+        }
+
     }
 
 }
