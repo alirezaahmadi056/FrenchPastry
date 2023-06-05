@@ -4,7 +4,6 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
-import androidx.core.view.marginBottom
 import info.alirezaahmadi.frenchpastry.R
 import info.alirezaahmadi.frenchpastry.databinding.CustomBottomNavigationBinding
 
@@ -84,6 +83,7 @@ class CustomBottomNavigation(
     }
 
     fun changeCount(count: String) {
+        binding.off.visibility = VISIBLE
         binding.txtShoppingCount.text = count
     }
 

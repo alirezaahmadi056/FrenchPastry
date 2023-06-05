@@ -171,23 +171,26 @@
 
                         <RadioButton
                             android:id="@+id/rdbHide"
+                            android:layoutDirection="rtl"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="12dp"
+                            android:layout_marginStart="12dp"
                             android:text="@string/hide" />
 
                         <RadioButton
                             android:id="@+id/rdbWomen"
+                            android:layoutDirection="rtl"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="12dp"
+                            android:layout_marginStart="12dp"
                             android:text="@string/women" />
 
                         <RadioButton
                             android:id="@+id/rdbMen"
+                            android:layoutDirection="rtl"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="12dp"
+                            android:layout_marginStart="12dp"
                             android:text="@string/men" />
 
                     </RadioGroup>

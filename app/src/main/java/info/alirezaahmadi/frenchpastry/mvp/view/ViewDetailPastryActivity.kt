@@ -1,6 +1,8 @@
 package info.alirezaahmadi.frenchpastry.mvp.view
 
 import android.content.Context
+import android.graphics.Color
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
@@ -14,6 +16,7 @@ import info.alirezaahmadi.frenchpastry.androidWrapper.DeviceInfo
 import info.alirezaahmadi.frenchpastry.data.remote.apiRepository.SendRequests
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastryDetailModel
 import info.alirezaahmadi.frenchpastry.databinding.ActivityDetailPastryBinding
+import info.alirezaahmadi.frenchpastry.mvp.ext.OthersUtilities
 import info.alirezaahmadi.frenchpastry.mvp.ext.ToastUtils
 import info.alirezaahmadi.frenchpastry.mvp.model.ModelDetailPastryActivity
 
@@ -111,6 +114,24 @@ class ViewDetailPastryActivity : FrameLayout {
             LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         binding.recyclerComments.adapter =
             CommentsRecyclerAdapter(detail.comments)
+
+        binding.txtMainPrice.text = OthersUtilities.changePrice(detail.price).toString()
+
+        if (detail.has_discount) {
+
+            binding.txtMainPrice.paintFlags =
+                binding.txtMainPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+            binding.txtMainPrice.setTextColor(Color.GRAY)
+
+            binding.txtOffPrice.text = OthersUtilities.changePrice(detail.sale_price).toString()
+            binding.txtOffCount.text = detail.discount_percent_110n
+
+        } else
+            binding.off.visibility = View.GONE
+
+        binding.btnShop.setOnClickListener {
+
+        }
 
         //todo بایستی بخش محصولات مشابه رو ایجاد کنی
 

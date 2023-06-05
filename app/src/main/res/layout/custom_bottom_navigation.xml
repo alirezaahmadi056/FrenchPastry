@@ -143,11 +143,16 @@
         android:contentDescription="@string/image_shopping_desc"
         app:layout_constraintBottom_toBottomOf="@+id/shoppingCart"
         app:layout_constraintEnd_toEndOf="@+id/shoppingCart"
-        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="@+id/shoppingCart"
         app:layout_constraintTop_toTopOf="@+id/shoppingCart"
-        app:layout_constraintVertical_bias="0.55"
         app:srcCompat="@drawable/ic_shopping_cart" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/off"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="view6,txtShoppingCount" />
 
     <View
         android:id="@+id/view6"

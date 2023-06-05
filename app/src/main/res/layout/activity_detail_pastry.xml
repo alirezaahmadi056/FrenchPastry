@@ -406,30 +406,43 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <View
+        android:id="@+id/view21"
         android:layout_width="0dp"
         android:layout_height="2dp"
         android:background="@drawable/back_view_bottom_detail"
+        app:layout_constraintBottom_toTopOf="@id/viewBottom"
         app:layout_constraintEnd_toEndOf="@id/viewBottom"
-        app:layout_constraintStart_toStartOf="@id/viewBottom"
-        app:layout_constraintBottom_toTopOf="@id/viewBottom"/>
+        app:layout_constraintStart_toStartOf="@id/viewBottom" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/sell"
+        android:textColor="@color/color_text_black"
+        android:textSize="@dimen/text_normal_size"
+        app:layout_constraintBottom_toBottomOf="@+id/frameLayout2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/viewBottom" />
 
     <TextView
         android:id="@+id/txtMainPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        tools:text="430,000"
         android:textColor="@color/color_text_black"
+        android:layout_marginStart="10dp"
         android:textSize="@dimen/text_large_size"
         app:layout_constraintBottom_toBottomOf="@+id/frameLayout2"
-        app:layout_constraintStart_toStartOf="@+id/viewBottom"
-        app:layout_constraintTop_toTopOf="@+id/viewBottom" />
+        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintTop_toTopOf="@+id/viewBottom"
+        tools:text="430,000" />
 
     <TextView
         android:id="@+id/txtOffPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="8dp"
         android:textColor="@color/color_text_black"
         android:textSize="@dimen/text_large_size"
         app:layout_constraintBottom_toBottomOf="@+id/txtMainPrice"
@@ -437,7 +450,35 @@
         app:layout_constraintTop_toTopOf="@+id/txtMainPrice"
         tools:text="380,000" />
 
+    <View
+        android:id="@+id/view22"
+        android:layout_width="30dp"
+        android:layout_height="20dp"
+        android:background="@drawable/back_shopping_detail_off"
+        app:layout_constraintBottom_toTopOf="@+id/txtMainPrice"
+        app:layout_constraintEnd_toEndOf="@+id/txtMainPrice"
+        app:layout_constraintTop_toTopOf="@+id/txtMainPrice" />
+
+    <TextView
+        android:id="@+id/txtOffCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="55%"
+        android:textSize="11sp"
+        android:textColor="@color/white_main"
+        app:layout_constraintBottom_toBottomOf="@+id/view22"
+        app:layout_constraintEnd_toEndOf="@+id/view22"
+        app:layout_constraintStart_toStartOf="@+id/view22"
+        app:layout_constraintTop_toTopOf="@+id/view22" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/off"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="view22,txtOffPrice,txtOffCount" />
+
     <info.alirezaahmadi.frenchpastry.ui.customView.CustomButton
+        android:id="@+id/btnShop"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:paddingHorizontal="8dp"

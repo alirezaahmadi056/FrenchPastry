@@ -76,4 +76,6 @@
     <string name="img_rate_desc">img_rate</string>
     <string name="hide">نامشخص</string>
     <string name="add_to_shop">افزودن به سبد خرید</string>
+    <string name="sell_normal">سفارش عادی</string>
+    <string name="sell_big">سفارش عمده</string>
 </resources>
