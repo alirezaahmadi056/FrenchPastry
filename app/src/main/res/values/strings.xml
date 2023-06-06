@@ -78,4 +78,9 @@
     <string name="add_to_shop">افزودن به سبد خرید</string>
     <string name="sell_normal">سفارش عادی</string>
     <string name="sell_big">سفارش عمده</string>
+    <string name="kg">(کیلوگرم)</string>
+    <string name="tone">انتخاب وزن</string>
+    <string name="off">با تخفیف</string>
+    <string name="price_base">قیمت پایه</string>
+    <string name="price_total">جمع مبلغ نهایی</string>
 </resources>

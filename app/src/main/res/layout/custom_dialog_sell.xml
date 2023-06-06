@@ -6,13 +6,13 @@
     android:layoutDirection="ltr"
     android:background="@color/white_color200"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="350dp"
+    android:layout_height="wrap_content">
 
     <View
         android:id="@+id/view23"
         android:layout_width="0dp"
-        android:layout_height="55dp"
+        android:layout_height="45dp"
         android:background="@drawable/back_radio_sell_white"
         android:layout_marginStart="4dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +24,7 @@
         android:id="@+id/view24"
         android:layout_width="0dp"
         android:layout_marginEnd="4dp"
-        android:layout_height="55dp"
+        android:layout_height="45dp"
         android:background="@drawable/back_radio_sell_transparent"
         app:layout_constraintEnd_toStartOf="@+id/view23"
         app:layout_constraintHorizontal_bias="0.5"
@@ -57,11 +57,246 @@
     <View
         android:id="@+id/view25"
         android:layout_width="wrap_content"
-        android:layout_height="300dp"
+        android:layout_height="205dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/back_radio_sell_white"
         app:layout_constraintEnd_toEndOf="@+id/view23"
         app:layout_constraintStart_toStartOf="@+id/view24"
         app:layout_constraintTop_toBottomOf="@+id/view23" />
+
+    <TextView
+        android:id="@+id/txtPriceTotalOff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="150,000"
+        android:textColor="@color/green_main"
+        android:textSize="@dimen/text_normal_size"
+        app:layout_constraintBottom_toBottomOf="@+id/txtPriceTotal"
+        app:layout_constraintStart_toEndOf="@+id/txtPriceTotal"
+        app:layout_constraintTop_toTopOf="@+id/txtPriceTotal" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:textSize="@dimen/text_normal_size"
+        android:textColor="@color/color_text_black"
+        android:text="@string/tone"
+        app:layout_constraintEnd_toEndOf="@+id/view25"
+        app:layout_constraintTop_toTopOf="@+id/view25" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="@string/kg"
+        android:textColor="@color/color_text_gray"
+        android:textSize="@dimen/text_small_size"
+        app:layout_constraintBottom_toBottomOf="@+id/textView7"
+        app:layout_constraintEnd_toStartOf="@+id/textView7"
+        app:layout_constraintTop_toTopOf="@+id/textView7" />
+
+    <View
+        android:id="@+id/viewMin"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/back_alert_dialog_gray"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView7"
+        app:layout_constraintStart_toStartOf="@+id/view25"
+        app:layout_constraintTop_toTopOf="@+id/textView7" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:textColor="@color/color_text_black"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/viewMin"
+        app:layout_constraintEnd_toEndOf="@+id/viewMin"
+        app:layout_constraintStart_toStartOf="@+id/viewMin"
+        app:layout_constraintTop_toTopOf="@+id/viewMin" />
+
+    <TextView
+        android:id="@+id/txtCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="2"
+        android:textSize="@dimen/heading_small_size"
+        android:textColor="@color/color_text_black"
+        app:layout_constraintBottom_toBottomOf="@+id/viewMin"
+        app:layout_constraintStart_toEndOf="@+id/viewMin"
+        app:layout_constraintTop_toTopOf="@+id/viewMin" />
+
+    <View
+        android:id="@+id/viewPlus"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/back_alert_dialog_gray"
+        app:layout_constraintBottom_toBottomOf="@+id/txtCount"
+        app:layout_constraintStart_toEndOf="@+id/txtCount"
+        app:layout_constraintTop_toTopOf="@+id/txtCount" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:textColor="@color/color_text_black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/viewPlus"
+        app:layout_constraintEnd_toEndOf="@+id/viewPlus"
+        app:layout_constraintStart_toStartOf="@+id/viewPlus"
+        app:layout_constraintTop_toTopOf="@+id/viewPlus" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:textSize="@dimen/text_normal_size"
+        android:textColor="@color/color_text_black"
+        android:text="@string/price_base"
+        app:layout_constraintEnd_toEndOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="@string/kg"
+        android:textColor="@color/color_text_gray"
+        android:textSize="@dimen/text_small_size"
+        app:layout_constraintBottom_toBottomOf="@+id/textView14"
+        app:layout_constraintEnd_toStartOf="@+id/textView14"
+        app:layout_constraintTop_toTopOf="@+id/textView14" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sell"
+        android:layout_marginStart="3dp"
+        android:textColor="@color/color_text_gray"
+        android:textSize="@dimen/text_small_size"
+        app:layout_constraintBottom_toBottomOf="@+id/textView15"
+        app:layout_constraintStart_toStartOf="@+id/viewMin"
+        app:layout_constraintTop_toTopOf="@+id/textView15" />
+
+    <TextView
+        android:id="@+id/txtPriceBased"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="180,000"
+        android:textColor="@color/color_text_black"
+        android:textSize="@dimen/text_normal_size"
+        app:layout_constraintBottom_toBottomOf="@+id/textView16"
+        app:layout_constraintStart_toEndOf="@+id/textView16"
+        app:layout_constraintTop_toTopOf="@+id/textView16" />
+
+    <TextView
+        android:id="@+id/txtOff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/off"
+        android:textSize="@dimen/text_normal_size"
+        android:textColor="@color/color_text_black"
+        app:layout_constraintEnd_toEndOf="@+id/textView14"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+    <TextView
+        android:id="@+id/txtKG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="@string/kg"
+        android:textColor="@color/color_text_gray"
+        android:textSize="@dimen/text_small_size"
+        app:layout_constraintBottom_toBottomOf="@+id/txtOff"
+        app:layout_constraintEnd_toStartOf="@+id/txtOff"
+        app:layout_constraintTop_toTopOf="@+id/txtOff" />
+
+    <TextView
+        android:id="@+id/txtSellOff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sell"
+        android:textColor="@color/color_text_gray"
+        app:layout_constraintBottom_toBottomOf="@+id/txtKG"
+        app:layout_constraintStart_toStartOf="@+id/textView16"
+        app:layout_constraintTop_toTopOf="@+id/txtKG" />
+
+    <TextView
+        android:id="@+id/txtPriceOff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="150,000"
+        android:textSize="@dimen/text_normal_size"
+        android:textColor="@color/red_main"
+        app:layout_constraintBottom_toBottomOf="@+id/txtSellOff"
+        app:layout_constraintEnd_toEndOf="@+id/txtPriceBased"
+        app:layout_constraintTop_toTopOf="@+id/txtSellOff" />
+
+    <TextView
+        android:id="@+id/txtOff18n"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="(20%)"
+        android:textSize="@dimen/text_small_size"
+        android:textColor="@color/red_main"
+        app:layout_constraintBottom_toBottomOf="@+id/txtPriceOff"
+        app:layout_constraintStart_toEndOf="@+id/txtPriceOff"
+        app:layout_constraintTop_toTopOf="@+id/txtPriceOff" />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/price_total"
+        android:textColor="@color/color_text_black"
+        android:textSize="@dimen/text_normal_size"
+        app:layout_constraintEnd_toEndOf="@+id/txtOff"
+        app:layout_constraintTop_toBottomOf="@+id/txtOff" />
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sell"
+        android:textColor="@color/color_text_gray"
+        app:layout_constraintBottom_toBottomOf="@+id/textView23"
+        app:layout_constraintStart_toStartOf="@+id/txtSellOff"
+        app:layout_constraintTop_toTopOf="@+id/textView23" />
+
+    <TextView
+        android:id="@+id/txtPriceTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="180,000"
+        android:textSize="@dimen/text_normal_size"
+        android:textColor="@color/green_main"
+        app:layout_constraintBottom_toBottomOf="@+id/textView25"
+        app:layout_constraintEnd_toEndOf="@+id/txtPriceOff"
+        app:layout_constraintTop_toTopOf="@+id/textView25" />
+
+    <info.alirezaahmadi.frenchpastry.ui.customView.CustomButton
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:buttonText="@string/add_to_shop"
+        app:layout_constraintEnd_toEndOf="@+id/view25"
+        app:layout_constraintStart_toStartOf="@+id/view25"
+        app:layout_constraintTop_toBottomOf="@+id/view25" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
