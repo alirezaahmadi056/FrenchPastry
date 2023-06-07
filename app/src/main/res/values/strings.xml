@@ -83,4 +83,8 @@
     <string name="off">با تخفیف</string>
     <string name="price_base">قیمت پایه</string>
     <string name="price_total">جمع مبلغ نهایی</string>
+    <string name="plus">+</string>
+    <string name="min">-</string>
+    <string name="one_number">1</string>
+    <string name="continue_sell">ادامه فرآیند ثبت سفارش</string>
 </resources>

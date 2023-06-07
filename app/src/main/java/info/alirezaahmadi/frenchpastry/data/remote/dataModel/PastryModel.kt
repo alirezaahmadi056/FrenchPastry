@@ -32,7 +32,7 @@ data class PastryDetailModel(
     val materials: ArrayList<Materials>,
     val comment_count: Int,
     val rate: Rate,
-    val comments: ArrayList<Comments>,
+    val comments: ArrayList<Comments>?,
     val bookmark: Boolean,
     val categories: ArrayList<Categories>,
     val thumbnail: String,

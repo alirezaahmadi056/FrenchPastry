@@ -1,8 +1,10 @@
 package info.alirezaahmadi.frenchpastry.mvp.view
 
+import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.Paint
+import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
@@ -16,6 +18,7 @@ import info.alirezaahmadi.frenchpastry.androidWrapper.DeviceInfo
 import info.alirezaahmadi.frenchpastry.data.remote.apiRepository.SendRequests
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastryDetailModel
 import info.alirezaahmadi.frenchpastry.databinding.ActivityDetailPastryBinding
+import info.alirezaahmadi.frenchpastry.databinding.CustomDialogSellBinding
 import info.alirezaahmadi.frenchpastry.mvp.ext.OthersUtilities
 import info.alirezaahmadi.frenchpastry.mvp.ext.ToastUtils
 import info.alirezaahmadi.frenchpastry.mvp.model.ModelDetailPastryActivity
@@ -110,10 +113,14 @@ class ViewDetailPastryActivity : FrameLayout {
 
         }
 
-        binding.recyclerComments.layoutManager =
-            LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-        binding.recyclerComments.adapter =
-            CommentsRecyclerAdapter(detail.comments)
+        if (detail.comments != null) {
+
+            binding.recyclerComments.layoutManager =
+                LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+            binding.recyclerComments.adapter =
+                CommentsRecyclerAdapter(detail.comments)
+
+        }
 
         binding.txtMainPrice.text = OthersUtilities.changePrice(detail.price).toString()
 
@@ -129,7 +136,37 @@ class ViewDetailPastryActivity : FrameLayout {
         } else
             binding.off.visibility = View.GONE
 
-        binding.btnShop.setOnClickListener {
+        binding.btnShop.getView().setOnClickListener {
+
+            binding.btnShop.enableProgress()
+
+            val view = CustomDialogSellBinding.inflate(LayoutInflater.from(context))
+            val dialog = Dialog(context)
+            dialog.setContentView(view.root)
+            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            dialog.show()
+
+            view.btnContinueSell.getView().setOnClickListener {
+
+            }
+
+            view.viewPlus.setOnClickListener {
+                var count = view.txtCount.text.toString().toInt()
+                if (count < 10)
+                    count++
+                view.txtCount.text = count.toString()
+            }
+
+            view.viewMin.setOnClickListener {
+                var count = view.txtCount.text.toString().toInt()
+                if (count > 1)
+                    count--
+                view.txtCount.text = count.toString()
+            }
+
+            dialog.setOnCancelListener {
+                binding.btnShop.disableProgress()
+            }
 
         }
 
@@ -143,6 +180,7 @@ class ViewDetailPastryActivity : FrameLayout {
 
     fun startGetData() {
         binding.allViews.visibility = View.INVISIBLE
+        binding.bottomViews.visibility = View.INVISIBLE
         binding.progressBar.visibility = View.VISIBLE
     }
 
@@ -158,6 +196,7 @@ class ViewDetailPastryActivity : FrameLayout {
 
     fun endGetData() {
         binding.allViews.visibility = View.VISIBLE
+        binding.bottomViews.visibility = View.VISIBLE
         binding.progressBar.visibility = View.INVISIBLE
     }
 

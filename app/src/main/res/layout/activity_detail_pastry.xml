@@ -195,6 +195,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="12dp"
                     android:orientation="vertical"
+                    android:paddingBottom="60dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -430,8 +431,8 @@
         android:id="@+id/txtMainPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/color_text_black"
         android:layout_marginStart="10dp"
+        android:textColor="@color/color_text_black"
         android:textSize="@dimen/text_large_size"
         app:layout_constraintBottom_toBottomOf="@+id/frameLayout2"
         app:layout_constraintStart_toEndOf="@+id/textView6"
@@ -475,7 +476,14 @@
         android:id="@+id/off"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:constraint_referenced_ids="view22,txtOffPrice,txtOffCount" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/bottomViews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="btnShop,txtMainPrice,textView6,view21,viewBottom" />
 
     <info.alirezaahmadi.frenchpastry.ui.customView.CustomButton
         android:id="@+id/btnShop"
