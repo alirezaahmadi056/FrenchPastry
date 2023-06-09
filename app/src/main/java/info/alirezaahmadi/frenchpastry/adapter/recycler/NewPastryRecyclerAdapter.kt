@@ -9,8 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.squareup.picasso.Picasso
-import info.alirezaahmadi.frenchpastry.R
 import info.alirezaahmadi.frenchpastry.androidWrapper.PicassoHandler
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastriesModel
 import info.alirezaahmadi.frenchpastry.databinding.RecyclerItemMainHorizontalBinding
@@ -45,7 +43,7 @@ class NewPastryRecyclerAdapter(
         fun setData(data: PastriesModel) {
 
             binding.txtPastryName.text = data.title
-            binding.txtMainPrice.text = OthersUtilities.changePrice(data.price).toString()
+            binding.txtMainPrice.text = OthersUtilities.changePrice(data.price)
 
             if (data.has_discount) {
 
@@ -53,7 +51,7 @@ class NewPastryRecyclerAdapter(
                     binding.txtMainPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
                 binding.txtMainPrice.setTextColor(Color.GRAY)
 
-                binding.txtOffPrice.text = OthersUtilities.changePrice(data.sale_price).toString()
+                binding.txtOffPrice.text = OthersUtilities.changePrice(data.sale_price)
                 binding.txtOff.text = data.discount
 
             } else

@@ -1,5 +1,6 @@
 package info.alirezaahmadi.frenchpastry.mvp.view
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
@@ -39,6 +40,7 @@ class ViewDetailPastryActivity : FrameLayout {
     val binding =
         ActivityDetailPastryBinding.inflate(LayoutInflater.from(context))
 
+    @SuppressLint("SetTextI18n")
     fun setData(detail: PastryDetailModel, sendRequests: SendRequests) {
 
         binding.viewPagerSlider.layoutDirection = View.LAYOUT_DIRECTION_RTL
@@ -122,7 +124,7 @@ class ViewDetailPastryActivity : FrameLayout {
 
         }
 
-        binding.txtMainPrice.text = OthersUtilities.changePrice(detail.price).toString()
+        binding.txtMainPrice.text = OthersUtilities.changePrice(detail.price)
 
         if (detail.has_discount) {
 
@@ -130,7 +132,9 @@ class ViewDetailPastryActivity : FrameLayout {
                 binding.txtMainPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
             binding.txtMainPrice.setTextColor(Color.GRAY)
 
-            binding.txtOffPrice.text = OthersUtilities.changePrice(detail.sale_price).toString()
+            binding.off.visibility = View.VISIBLE
+
+            binding.txtOffPrice.text = OthersUtilities.changePrice(detail.sale_price)
             binding.txtOffCount.text = detail.discount_percent_110n
 
         } else
@@ -142,6 +146,26 @@ class ViewDetailPastryActivity : FrameLayout {
 
             val view = CustomDialogSellBinding.inflate(LayoutInflater.from(context))
             val dialog = Dialog(context)
+
+            view.txtPriceBased.text = OthersUtilities.changePrice(detail.price)
+
+            setPriceWithCount(view, detail)
+
+            if (detail.has_discount) {
+
+                view.offViews.visibility = View.VISIBLE
+                view.txtPriceOff.text = OthersUtilities.changePrice(detail.sale_price)
+                view.txtOff18n.text = "(${detail.discount_percent_110n})"
+
+                view.txtPriceTotal.paintFlags =
+                    view.txtPriceTotal.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                view.txtPriceTotal.setTextColor(Color.GRAY)
+
+            } else {
+                view.offViews.visibility = View.GONE
+                view.txtPriceTotalOff.visibility = View.GONE
+            }
+
             dialog.setContentView(view.root)
             dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             dialog.show()
@@ -150,18 +174,64 @@ class ViewDetailPastryActivity : FrameLayout {
 
             }
 
+            view.rdbSellNormal.setOnClickListener {
+
+                view.txtCount.text = "1"
+                setPriceWithCount(view, detail)
+
+                view.rdbSellNormal.isChecked = true
+                view.rdbSellBig.isChecked = false
+
+                view.viewNormal.setBackgroundResource(R.drawable.back_radio_sell_white)
+                view.viewBig.setBackgroundResource(R.drawable.back_radio_sell_transparent)
+
+            }
+
+            view.rdbSellBig.setOnClickListener {
+
+                view.txtCount.text = "10"
+                setPriceWithCount(view, detail)
+
+                view.rdbSellNormal.isChecked = false
+                view.rdbSellBig.isChecked = true
+
+                view.viewNormal.setBackgroundResource(R.drawable.back_radio_sell_transparent)
+                view.viewBig.setBackgroundResource(R.drawable.back_radio_sell_white)
+
+            }
+
             view.viewPlus.setOnClickListener {
+
                 var count = view.txtCount.text.toString().toInt()
-                if (count < 10)
-                    count++
+
+                if (view.rdbSellNormal.isChecked)
+                    if (count < 10)
+                        count++
+
+                if (view.rdbSellBig.isChecked)
+                    if (count < 100)
+                        count += 5
+
                 view.txtCount.text = count.toString()
+                setPriceWithCount(view, detail)
+
             }
 
             view.viewMin.setOnClickListener {
+
                 var count = view.txtCount.text.toString().toInt()
-                if (count > 1)
-                    count--
+
+                if (view.rdbSellNormal.isChecked)
+                    if (count > 1)
+                        count--
+
+                if (view.rdbSellBig.isChecked)
+                    if (count > 10)
+                        count -= 5
+
                 view.txtCount.text = count.toString()
+                setPriceWithCount(view, detail)
+
             }
 
             dialog.setOnCancelListener {
@@ -172,6 +242,13 @@ class ViewDetailPastryActivity : FrameLayout {
 
         //todo بایستی بخش محصولات مشابه رو ایجاد کنی
 
+    }
+
+    private fun setPriceWithCount(view: CustomDialogSellBinding, detail: PastryDetailModel) {
+        val priceTo = view.txtCount.text.toString().toInt() * detail.price
+        view.txtPriceTotal.text = OthersUtilities.changePrice(priceTo)
+        val priceTotalOff = view.txtCount.text.toString().toInt() * detail.sale_price
+        view.txtPriceTotalOff.text = OthersUtilities.changePrice(priceTotalOff)
     }
 
     fun disableButtonProgress() {

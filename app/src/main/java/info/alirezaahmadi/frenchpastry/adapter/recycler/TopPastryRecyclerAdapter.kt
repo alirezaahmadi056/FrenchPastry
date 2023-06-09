@@ -7,11 +7,8 @@ import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.squareup.picasso.Picasso
-import info.alirezaahmadi.frenchpastry.R
 import info.alirezaahmadi.frenchpastry.androidWrapper.PicassoHandler
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastriesModel
 import info.alirezaahmadi.frenchpastry.databinding.RecyclerItemMainVerticalBinding
@@ -48,7 +45,7 @@ class TopPastryRecyclerAdapter(
 
             binding.root.visibility = View.VISIBLE
             binding.txtPastryName.text = data.title
-            binding.txtMainPrice.text = OthersUtilities.changePrice(data.price).toString()
+            binding.txtMainPrice.text = OthersUtilities.changePrice(data.price)
 
             if (data.has_discount) {
 
@@ -56,7 +53,7 @@ class TopPastryRecyclerAdapter(
                     binding.txtMainPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
                 binding.txtMainPrice.setTextColor(Color.GRAY)
 
-                binding.txtOffPrice.text = OthersUtilities.changePrice(data.sale_price).toString()
+                binding.txtOffPrice.text = OthersUtilities.changePrice(data.sale_price)
                 binding.txtOff.text = data.discount
 
             } else
