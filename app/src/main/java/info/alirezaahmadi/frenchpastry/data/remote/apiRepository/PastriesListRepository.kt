@@ -9,6 +9,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -108,6 +109,53 @@ class PastryListApiRepository private constructor() {
 
     }
 
+    fun getFavoriteContent(
+        apiKey: String,
+        pubKey: String,
+        id: String,
+        callbackRequest: CallbackRequest<AllPastriesModel>
+    ) {
+
+        RetrofitService.pastriesListApiService.getFavoritePastries(
+            apiKey,
+            id,
+            pubKey,
+            true
+        ).enqueue(
+
+            object : Callback<AllPastriesModel> {
+
+                override fun onResponse(
+                    call: Call<AllPastriesModel>,
+                    response: Response<AllPastriesModel>
+                ) {
+
+                    if (response.isSuccessful) {
+                        val data = response.body() as AllPastriesModel
+                        callbackRequest.onSuccess(
+                            response.code(),
+                            data
+                        )
+                    } else
+                        callbackRequest.onNotSuccess(
+                            response.code(),
+                            response.errorBody().toString()
+                        )
+
+                }
+
+                override fun onFailure(call: Call<AllPastriesModel>, t: Throwable) {
+
+                    callbackRequest.onError(t.message.toString())
+
+                }
+
+            }
+
+        )
+
+    }
+
 }
 
 interface PastryListApiService {
@@ -121,6 +169,14 @@ interface PastryListApiService {
     @GET("pastries")
     fun getPastriesByType(
         @Query("orderBy") type: String
+    ): Call<AllPastriesModel>
+
+    @GET("pastries")
+    fun getFavoritePastries(
+        @Header("app-api-key") apiKey: String,
+        @Header("app-device-uid") id: String,
+        @Header("app-public-key") pubKey: String,
+        @Query("favorite") favorite: Boolean
     ): Call<AllPastriesModel>
 
 }

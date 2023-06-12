@@ -11,7 +11,7 @@ import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastryModel
 import info.alirezaahmadi.frenchpastry.databinding.ActivityFavoriteBinding
 
-class ViewFavoriteActivity: FrameLayout {
+class ViewFavoriteActivity : FrameLayout {
 
     private lateinit var actUtils: ActivityUtils
 
@@ -30,10 +30,14 @@ class ViewFavoriteActivity: FrameLayout {
     fun setDataRecycler(pastry: ArrayList<PastryModel>) {
 
         //todo اینجا یه دکمه برای حذف علاقه مندی ها کم داره
+
         binding.recyclerViewPastry.layoutManager =
             LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         binding.recyclerViewPastry.adapter =
             ProductListRecyclerAdapter(pastry, context)
+
+        if (pastry.isEmpty())
+            binding.txtNotFavorite.visibility = View.VISIBLE
 
     }
 

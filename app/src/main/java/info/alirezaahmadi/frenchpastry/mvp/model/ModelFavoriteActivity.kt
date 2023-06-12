@@ -6,13 +6,19 @@ import info.alirezaahmadi.frenchpastry.data.remote.ext.CallbackRequest
 
 class ModelFavoriteActivity {
 
-    companion object {
-        private const val TYPE = ""
-    }
+    fun getPastries(
+        apiKey: String,
+        pubKey: String,
+        id: String,
+        callbackRequest: CallbackRequest<AllPastriesModel>
+    ) {
 
-    fun getPastries(callbackRequest: CallbackRequest<AllPastriesModel>) {
-
-        PastryListApiRepository.instance.getContentByType(callbackRequest, TYPE)
+        PastryListApiRepository.instance.getFavoriteContent(
+            apiKey,
+            pubKey,
+            id,
+            callbackRequest
+        )
 
     }
 

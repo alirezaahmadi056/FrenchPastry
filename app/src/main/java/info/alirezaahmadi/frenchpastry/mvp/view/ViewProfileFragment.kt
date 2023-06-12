@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.FrameLayout
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.UserData
 import info.alirezaahmadi.frenchpastry.databinding.FragmentProfileBinding
+import info.alirezaahmadi.frenchpastry.ui.activity.FavoriteActivity
 import info.alirezaahmadi.frenchpastry.ui.activity.UserActivity
 
 class ViewProfileFragment(
@@ -41,6 +42,10 @@ class ViewProfileFragment(
 
         binding.imgUserInfo.setOnClickListener {
             context.startActivity(Intent(context, UserActivity::class.java))
+        }
+
+        binding.imgFavorite.setOnClickListener {
+            context.startActivity(Intent(context, FavoriteActivity::class.java))
         }
 
     }

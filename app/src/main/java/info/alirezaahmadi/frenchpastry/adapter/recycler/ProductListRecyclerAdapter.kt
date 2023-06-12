@@ -1,6 +1,7 @@
 package info.alirezaahmadi.frenchpastry.adapter.recycler
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Paint
 import android.view.LayoutInflater
@@ -15,6 +16,7 @@ import info.alirezaahmadi.frenchpastry.androidWrapper.PicassoHandler
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.PastryModel
 import info.alirezaahmadi.frenchpastry.databinding.RecyclerItemListProductsBinding
 import info.alirezaahmadi.frenchpastry.mvp.ext.OthersUtilities
+import info.alirezaahmadi.frenchpastry.ui.activity.DetailPastryActivity
 
 class ProductListRecyclerAdapter(
     private val pastries: ArrayList<PastryModel>,
@@ -72,6 +74,12 @@ class ProductListRecyclerAdapter(
             } else {
                 binding.off.visibility = View.GONE
                 binding.txtPriceOff.visibility = View.GONE
+            }
+
+            binding.root.setOnClickListener {
+                val intent = Intent(context, DetailPastryActivity::class.java)
+                intent.putExtra(DetailPastryActivity.ID, data.ID)
+                context.startActivity(intent)
             }
 
         }

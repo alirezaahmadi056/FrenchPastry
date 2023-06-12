@@ -43,7 +43,7 @@
         android:id="@+id/txtTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="@string/favorite"
+        android:text="@string/favorite"
         android:layout_marginEnd="8dp"
         android:textColor="@color/color_text_black"
         android:textSize="@dimen/heading_large_size"
@@ -71,5 +71,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:constraint_referenced_ids="recyclerViewPastry,txtTitle,imageView9" />
+
+    <TextView
+        android:id="@+id/txtNotFavorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/not_favorite"
+        android:textColor="@color/color_text_gray"
+        android:textSize="@dimen/text_normal_size"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

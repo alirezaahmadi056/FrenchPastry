@@ -2,6 +2,7 @@ package info.alirezaahmadi.frenchpastry.mvp.presenter
 
 import android.content.Context
 import info.alirezaahmadi.frenchpastry.androidWrapper.ActivityUtils
+import info.alirezaahmadi.frenchpastry.androidWrapper.DeviceInfo
 import info.alirezaahmadi.frenchpastry.androidWrapper.NetworkInfo
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.AllPastriesModel
 import info.alirezaahmadi.frenchpastry.data.remote.ext.CallbackRequest
@@ -27,6 +28,15 @@ class PresenterFavoriteActivity(
 
     }
 
+    override fun onStart() {
+
+        view.startGetData()
+
+        if (NetworkInfo.internetInfo(context, this))
+            getPastries()
+
+    }
+
     override fun activeNetwork() {
         getPastries()
     }
@@ -35,6 +45,9 @@ class PresenterFavoriteActivity(
 
         model.getPastries(
 
+            DeviceInfo.getApi(context),
+            DeviceInfo.getPublicKey(context),
+            DeviceInfo.getDeviceID(context),
             object : CallbackRequest<AllPastriesModel> {
 
                 override fun onSuccess(code: Int, data: AllPastriesModel) {

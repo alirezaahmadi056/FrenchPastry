@@ -9,18 +9,25 @@ import info.alirezaahmadi.frenchpastry.mvp.view.ViewFavoriteActivity
 
 class FavoriteActivity : AppCompatActivity(), ActivityUtils {
 
+    private lateinit var presenter: PresenterFavoriteActivity
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val view = ViewFavoriteActivity(this, this)
         setContentView(view.binding.root)
 
-        val presenter = PresenterFavoriteActivity(view, ModelFavoriteActivity(), this)
+        presenter = PresenterFavoriteActivity(view, ModelFavoriteActivity(), this)
         presenter.onCreate()
 
     }
 
     override fun finished() {
         finish()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        presenter.onStart()
     }
 
 }
