@@ -88,4 +88,8 @@
     <string name="one_number">1</string>
     <string name="continue_sell">ادامه فرآیند ثبت سفارش</string>
     <string name="not_favorite">محصول منتخبی وجود ندارد</string>
+    <string name="add_address">افزودن آدرس جدید</string>
+    <string name="address">آدرس :</string>
+    <string name="phone_number">شماره تماس :</string>
+    <string name="getting">گیرنده :</string>
 </resources>

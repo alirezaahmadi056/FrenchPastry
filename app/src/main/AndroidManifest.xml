@@ -16,6 +16,9 @@
         android:theme="@style/Theme.FrenchPastry"
         tools:targetApi="32">
         <activity
+            android:name=".AddressActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.AboutActivity"
             android:exported="false" />
         <activity
