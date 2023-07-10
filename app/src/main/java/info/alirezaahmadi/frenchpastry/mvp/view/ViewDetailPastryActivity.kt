@@ -245,10 +245,25 @@ class ViewDetailPastryActivity : FrameLayout {
     }
 
     private fun setPriceWithCount(view: CustomDialogSellBinding, detail: PastryDetailModel) {
+
+        val count = view.txtCount.text.toString().toInt()
+        var salePrice = 0
+
+        if (detail.bulk_price.isNotEmpty()) {
+            detail.bulk_price.forEach {
+                if (it.amount > count) {
+                    salePrice = it.sale_price
+                    return@forEach
+                }
+            }
+        }
+
         val priceTo = view.txtCount.text.toString().toInt() * detail.price
         view.txtPriceTotal.text = OthersUtilities.changePrice(priceTo)
-        val priceTotalOff = view.txtCount.text.toString().toInt() * detail.sale_price
+        view.offViews.visibility = View.VISIBLE
+        val priceTotalOff = view.txtCount.text.toString().toInt() * salePrice
         view.txtPriceTotalOff.text = OthersUtilities.changePrice(priceTotalOff)
+
     }
 
     fun disableButtonProgress() {

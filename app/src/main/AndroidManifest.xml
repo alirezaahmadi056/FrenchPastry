@@ -16,7 +16,10 @@
         android:theme="@style/Theme.FrenchPastry"
         tools:targetApi="32">
         <activity
-            android:name=".AddressActivity"
+            android:name=".ui.activity.EditAddressActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.AddressActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activity.AboutActivity"

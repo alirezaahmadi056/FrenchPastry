@@ -92,4 +92,5 @@
     <string name="address">آدرس :</string>
     <string name="phone_number">شماره تماس :</string>
     <string name="getting">گیرنده :</string>
+    <string name="add_new_address">ثبت آدرس جدید</string>
 </resources>

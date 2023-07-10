@@ -105,7 +105,7 @@
         app:srcCompat="@drawable/ic_edite" />
 
     <ImageView
-        android:id="@+id/imageView26"
+        android:id="@+id/imgDelete"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_marginTop="16dp"

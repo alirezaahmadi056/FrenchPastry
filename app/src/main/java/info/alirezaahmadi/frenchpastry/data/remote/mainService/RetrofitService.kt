@@ -27,6 +27,7 @@ object RetrofitService {
     val userApiService: UserApiService = retrofit.create(UserApiService::class.java)
     val catsApiService: CatsApiService = retrofit.create(CatsApiService::class.java)
     val pastryApiService: PastryApiService = retrofit.create(PastryApiService::class.java)
+    val addressApiService: AddressApiService = retrofit.create(AddressApiService::class.java)
     val pastriesListApiService: PastryListApiService =
         retrofit.create(PastryListApiService::class.java)
 
