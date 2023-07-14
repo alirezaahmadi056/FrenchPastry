@@ -20,9 +20,9 @@
         android:id="@+id/imageView9"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:contentDescription="@string/f_logo_desc"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:contentDescription="@string/f_logo_desc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/customAppBar"
         app:srcCompat="@drawable/ic_f" />
@@ -44,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -54,39 +54,32 @@
 
         <info.alirezaahmadi.frenchpastry.ui.customView.CustomEditText
             android:id="@+id/edt_name"
-            android:layout_marginHorizontal="8dp"
-            app:hintText="نام و نام خانوادگی گیرنده"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            app:hintText="نام و نام خانوادگی گیرنده" />
 
         <info.alirezaahmadi.frenchpastry.ui.customView.CustomEditText
             android:id="@+id/edt_phone"
-            android:layout_marginHorizontal="8dp"
-            app:hintText="شماره همراه گیرنده"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            app:hintText="شماره همراه گیرنده" />
 
         <info.alirezaahmadi.frenchpastry.ui.customView.CustomEditText
             android:id="@+id/edt_address"
-            android:layout_marginHorizontal="8dp"
-            app:hintText="آدرس کامل"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <info.alirezaahmadi.frenchpastry.ui.customView.CustomEditText
-            android:id="@+id/edt_post_code"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
-            app:hintText="کد پستی (اختیاری)"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            app:hintText="آدرس کامل" />
 
         <info.alirezaahmadi.frenchpastry.ui.customView.CustomButton
             android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
             android:layout_marginHorizontal="8dp"
             android:layout_marginTop="16dp"
-            app:buttonText="ثبت اطلاعات آدرس"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"/>
+            app:buttonText="ثبت اطلاعات آدرس" />
 
     </LinearLayout>
 

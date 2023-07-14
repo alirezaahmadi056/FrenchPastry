@@ -15,8 +15,6 @@ class AddressApiRepository private constructor() {
     companion object {
 
         private var apiRepository: AddressApiRepository? = null
-        const val PASTRY_TYPE = "pastries"
-        const val CAKE_TYPE = "cake"
 
         val instance: AddressApiRepository
             get() {
@@ -118,7 +116,7 @@ class AddressApiRepository private constructor() {
         address: String,
         phone: String,
         receiver: String,
-        addressID: Int,
+        addressID: String,
         callbackRequest: CallbackRequest<DefaultModel>
     ) {
 
@@ -243,7 +241,7 @@ interface AddressApiService {
         @Field("address") address: String,
         @Field("receiver") receiver: String,
         @Field("phone") phone: String,
-        @Path(value = "id", encoded = false) ID: Int
+        @Path(value = "id", encoded = false) ID: String
     ): Call<DefaultModel>
 
     @FormUrlEncoded
