@@ -93,4 +93,8 @@
     <string name="phone_number">شماره تماس :</string>
     <string name="getting">گیرنده :</string>
     <string name="add_new_address">ثبت آدرس</string>
+    <string name="delete">حذف</string>
+    <string name="delete_question">آیا مایل به حذف این آیتم هستید؟</string>
+    <string name="canceling">انصراف دادن</string>
+    <string name="deleting">حذف کردن</string>
 </resources>

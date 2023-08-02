@@ -1,7 +1,10 @@
 package info.alirezaahmadi.frenchpastry.adapter.recycler
 
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -13,6 +16,7 @@ import info.alirezaahmadi.frenchpastry.data.remote.apiRepository.AddressApiRepos
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.Address
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.Addresses
 import info.alirezaahmadi.frenchpastry.data.remote.ext.CallbackRequest
+import info.alirezaahmadi.frenchpastry.databinding.CustomDialogDeleteBinding
 import info.alirezaahmadi.frenchpastry.databinding.RecyclerItemAddressBinding
 import info.alirezaahmadi.frenchpastry.mvp.ext.ToastUtils
 import info.alirezaahmadi.frenchpastry.ui.activity.EditAddressActivity
@@ -48,37 +52,64 @@ class AddressRecyclerAdapter(
             binding.txtPhone.text = address.phone
 
             binding.imgEdit.setOnClickListener {
-                context.startActivity(
-                    Intent(context, EditAddressActivity::class.java)
-                )
+                val intent = Intent(context, EditAddressActivity::class.java)
+                intent.putExtra(EditAddressActivity.ADDRESS_ID_NAME, address.ID)
+                intent.putExtra(EditAddressActivity.EDIT_NAME, true)
+                context.startActivity(intent)
             }
 
             binding.imgDelete.setOnClickListener {
 
-                AddressApiRepository.instance.deleteAddresses(
-                    DeviceInfo.getApi(context),
-                    DeviceInfo.getDeviceID(context),
-                    DeviceInfo.getPublicKey(context),
-                    address.ID,
+                val view = CustomDialogDeleteBinding.inflate(
+                    LayoutInflater.from(context)
+                )
+                val dialog = Dialog(context)
+                dialog.setContentView(view.root)
+                dialog.setCancelable(false)
+                dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                dialog.show()
 
-                    object : CallbackRequest<Address> {
+                var state = true
 
-                        override fun onSuccess(code: Int, data: Address) {
-                            ToastUtils.toast(context, data.message)
-                            dataUpdate(data.addresses)
-                        }
+                view.txtDelete.setOnClickListener {
 
-                        override fun onNotSuccess(code: Int, error: String) {
-                            ToastUtils.toast(context, error)
-                        }
+                    if (state){
 
-                        override fun onError(error: String) {
-                            ToastUtils.toastServerError(context)
-                        }
+                        state = false
+
+                        AddressApiRepository.instance.deleteAddresses(
+                            DeviceInfo.getApi(context),
+                            DeviceInfo.getDeviceID(context),
+                            DeviceInfo.getPublicKey(context),
+                            address.ID,
+
+                            object : CallbackRequest<Address> {
+
+                                override fun onSuccess(code: Int, data: Address) {
+                                    ToastUtils.toast(context, data.message)
+                                    dialog.dismiss()
+                                    dataUpdate(data.addresses)
+                                }
+
+                                override fun onNotSuccess(code: Int, error: String) {
+                                    ToastUtils.toast(context, error)
+                                    dialog.dismiss()
+                                }
+
+                                override fun onError(error: String) {
+                                    ToastUtils.toastServerError(context)
+                                    dialog.dismiss()
+                                }
+
+                            }
+
+                        )
 
                     }
 
-                )
+                }
+
+                view.txtCancel.setOnClickListener { dialog.dismiss() }
 
             }
 

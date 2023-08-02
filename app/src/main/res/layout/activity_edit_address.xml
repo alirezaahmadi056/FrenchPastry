@@ -61,6 +61,8 @@
 
         <info.alirezaahmadi.frenchpastry.ui.customView.CustomEditText
             android:id="@+id/edt_phone"
+            app:max="11"
+            app:type="2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"

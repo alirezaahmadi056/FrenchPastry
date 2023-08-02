@@ -30,7 +30,7 @@ class EditAddressActivity : AppCompatActivity() {
         binding.customAppBar.getBackIcon().setOnClickListener { finish() }
 
         val edit = intent.getBooleanExtra(EDIT_NAME, false)
-        val addressId = intent.getStringExtra(ADDRESS_ID_NAME) ?: "0"
+        val addressId = intent.getIntExtra(ADDRESS_ID_NAME, 0)
 
         if (edit) {
 
@@ -63,73 +63,138 @@ class EditAddressActivity : AppCompatActivity() {
 
         binding.btnSave.getView().setOnClickListener {
 
-            binding.btnSave.enableProgress()
-
             val name = binding.edtName.getText()
             val phone = binding.edtPhone.getText()
             val address = binding.edtAddress.getText()
 
-            if (edit) {
+            if (nameValidation(name) && numberValidation(phone) && addressValidation(address)) {
 
-                AddressApiRepository.instance.editAddresses(
-                    DeviceInfo.getApi(this),
-                    DeviceInfo.getDeviceID(this),
-                    DeviceInfo.getPublicKey(this),
-                    address, phone, name, addressId,
+                binding.btnSave.enableProgress()
 
-                    object : CallbackRequest<DefaultModel> {
+                if (edit) {
 
-                        override fun onSuccess(code: Int, data: DefaultModel) {
-                            binding.btnSave.disableProgress()
-                            ToastUtils.toast(this@EditAddressActivity, data.message)
+                    AddressApiRepository.instance.editAddresses(
+                        DeviceInfo.getApi(this),
+                        DeviceInfo.getDeviceID(this),
+                        DeviceInfo.getPublicKey(this),
+                        address, phone, name, addressId.toString(),
+
+                        object : CallbackRequest<DefaultModel> {
+
+                            override fun onSuccess(code: Int, data: DefaultModel) {
+                                binding.btnSave.disableProgress()
+                                ToastUtils.toast(this@EditAddressActivity, data.message)
+                                finish()
+                            }
+
+                            override fun onNotSuccess(code: Int, error: String) {
+                                binding.btnSave.disableProgress()
+                                ToastUtils.toast(this@EditAddressActivity, error)
+                            }
+
+                            override fun onError(error: String) {
+                                binding.btnSave.disableProgress()
+                                ToastUtils.toastServerError(this@EditAddressActivity)
+                            }
+
                         }
 
-                        override fun onNotSuccess(code: Int, error: String) {
-                            binding.btnSave.disableProgress()
-                            ToastUtils.toast(this@EditAddressActivity, error)
+                    )
+
+                } else {
+
+                    AddressApiRepository.instance.addAddresses(
+                        DeviceInfo.getApi(this),
+                        DeviceInfo.getDeviceID(this),
+                        DeviceInfo.getPublicKey(this),
+                        address, phone, name,
+
+                        object : CallbackRequest<DefaultModel> {
+
+                            override fun onSuccess(code: Int, data: DefaultModel) {
+                                binding.btnSave.disableProgress()
+                                ToastUtils.toast(this@EditAddressActivity, data.message)
+                                finish()
+                            }
+
+                            override fun onNotSuccess(code: Int, error: String) {
+                                binding.btnSave.disableProgress()
+                                ToastUtils.toast(this@EditAddressActivity, error)
+                            }
+
+                            override fun onError(error: String) {
+                                binding.btnSave.disableProgress()
+                                ToastUtils.toastServerError(this@EditAddressActivity)
+                            }
+
                         }
 
-                        override fun onError(error: String) {
-                            binding.btnSave.disableProgress()
-                            ToastUtils.toastServerError(this@EditAddressActivity)
-                        }
+                    )
 
-                    }
-
-                )
-
-            } else {
-
-                AddressApiRepository.instance.addAddresses(
-                    DeviceInfo.getApi(this),
-                    DeviceInfo.getDeviceID(this),
-                    DeviceInfo.getPublicKey(this),
-                    address, phone, name,
-
-                    object : CallbackRequest<DefaultModel> {
-
-                        override fun onSuccess(code: Int, data: DefaultModel) {
-                            binding.btnSave.disableProgress()
-                            ToastUtils.toast(this@EditAddressActivity, data.message)
-                        }
-
-                        override fun onNotSuccess(code: Int, error: String) {
-                            binding.btnSave.disableProgress()
-                            ToastUtils.toast(this@EditAddressActivity, error)
-                        }
-
-                        override fun onError(error: String) {
-                            binding.btnSave.disableProgress()
-                            ToastUtils.toastServerError(this@EditAddressActivity)
-                        }
-
-                    }
-
-                )
+                }
 
             }
 
         }
+
+    }
+
+    private fun numberValidation(number: String): Boolean {
+
+        if (number.isEmpty()) {
+            binding.edtPhone.setError("شماره گیرنده را وارد کنید")
+            return false
+        }
+
+        if (number.length < 11) {
+            binding.edtPhone.setError("شماره را صحیح وارد کنید")
+            return false
+        }
+
+        if (!number.matches(Regex("(\\+98|0)?9\\d{9}"))) {
+            binding.edtPhone.setError("شماره را صحیح وارد کنید")
+            return false
+        }
+
+        binding.edtPhone.setError(null)
+
+        return true
+
+    }
+
+    private fun nameValidation(name: String): Boolean {
+
+        if (name.isEmpty()) {
+            binding.edtName.setError("نام گیرنده را وارد کنید")
+            return false
+        }
+
+        if (name.length < 3) {
+            binding.edtName.setError("نام را صحیح وارد کنید")
+            return false
+        }
+
+        binding.edtName.setError(null)
+
+        return true
+
+    }
+
+    private fun addressValidation(address: String): Boolean {
+
+        if (address.isEmpty()) {
+            binding.edtAddress.setError("آدرس گیرنده را وارد کنید")
+            return false
+        }
+
+        if (address.length < 5) {
+            binding.edtAddress.setError("آدرس را صحیح وارد کنید")
+            return false
+        }
+
+        binding.edtAddress.setError(null)
+
+        return true
 
     }
 

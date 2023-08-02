@@ -9,18 +9,25 @@ import info.alirezaahmadi.frenchpastry.mvp.view.ViewAddressActivity
 
 class AddressActivity : AppCompatActivity(), ActivityUtils {
 
+    private lateinit var presenter: PresenterAddressActivity
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val view = ViewAddressActivity(this, this)
         setContentView(view.binding.root)
 
-        val presenter = PresenterAddressActivity(view, ModelAddressActivity(), this)
+        presenter = PresenterAddressActivity(view, ModelAddressActivity(), this)
         presenter.onCreate()
 
     }
 
     override fun finished() {
         finish()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        presenter.onStart()
     }
 
 }

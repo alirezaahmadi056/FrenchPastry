@@ -28,6 +28,10 @@ class PresenterAddressActivity(
 
     }
 
+    override fun onStart() {
+        getAddress()
+    }
+
     override fun activeNetwork() {
         getAddress()
     }
