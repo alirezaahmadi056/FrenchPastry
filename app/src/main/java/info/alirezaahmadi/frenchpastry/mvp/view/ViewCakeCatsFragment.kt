@@ -1,6 +1,7 @@
 package info.alirezaahmadi.frenchpastry.mvp.view
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
@@ -12,6 +13,7 @@ import info.alirezaahmadi.frenchpastry.adapter.recycler.CatsRecyclerAdapter
 import info.alirezaahmadi.frenchpastry.androidWrapper.PicassoHandler
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.ParentCategoryModel
 import info.alirezaahmadi.frenchpastry.databinding.FragmentPastryCatsBinding
+import info.alirezaahmadi.frenchpastry.ui.activity.CustomCakeActivity
 
 class ViewCakeCatsFragment(
     contextInstance: Context
@@ -29,6 +31,10 @@ class ViewCakeCatsFragment(
 
         if (cats.banner.isNotEmpty())
             PicassoHandler.setPicassoBanner(binding.imgCatsBanner, cats.banner)
+
+        binding.imgCatsBanner.setOnClickListener {
+            context.startActivity(Intent(context, CustomCakeActivity::class.java))
+        }
 
     }
 

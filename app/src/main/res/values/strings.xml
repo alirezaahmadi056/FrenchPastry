@@ -97,4 +97,5 @@
     <string name="delete_question">آیا مایل به حذف این آیتم هستید؟</string>
     <string name="canceling">انصراف دادن</string>
     <string name="deleting">حذف کردن</string>
+    <string name="add_image">افزودن تصویر</string>
 </resources>

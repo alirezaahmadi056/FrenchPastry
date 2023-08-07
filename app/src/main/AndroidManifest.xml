@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".androidWrapper.A"
@@ -15,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FrenchPastry"
         tools:targetApi="32">
+        <activity
+            android:name=".ui.activity.CustomCakeActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.activity.EditAddressActivity"
             android:exported="false" />
