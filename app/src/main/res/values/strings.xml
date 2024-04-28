@@ -10,7 +10,7 @@
     <string name="confirm_code">تایید کد و ادامه</string>
     <string name="edit_phone">ویرایش شماره</string>
     <string name="resend_code">ارسال مجدد</string>
-    <string name="enter_code_sample">_ _ _ _</string>
+    <string name="enter_code_sample">_ _ _ _ _</string>
     <string name="not_internet">لطفا گوشی خود را به اینترنت متصل کنید</string>
     <string name="internet_error_desc">آیکن هشدار اینترنت</string>
     <string name="retry">تلاش مجدد</string>
@@ -98,4 +98,6 @@
     <string name="canceling">انصراف دادن</string>
     <string name="deleting">حذف کردن</string>
     <string name="add_image">افزودن تصویر</string>
+    <string name="select">انتخاب طبقه</string>
+    <string name="detail_cake">توضیحات خود را بنویسید</string>
 </resources>

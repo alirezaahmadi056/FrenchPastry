@@ -25,7 +25,7 @@ object NetworkInfo {
 
     }
 
-    fun internetInfoRetry(context: Context, activityUtils: ActivityUtils): Boolean {
+    private fun internetInfoRetry(context: Context, activityUtils: ActivityUtils): Boolean {
 
         return if (netInfo(context)) {
             activityUtils.activeNetwork()

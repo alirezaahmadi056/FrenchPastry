@@ -53,7 +53,7 @@
             android:gravity="center_horizontal"
             android:hint="@string/enter_code_sample"
             android:inputType="number"
-            android:maxLength="4"
+            android:maxLength="5"
             android:paddingTop="12dp"
             android:paddingBottom="-12dp"
             android:textColor="@color/color_text_black"

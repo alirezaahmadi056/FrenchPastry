@@ -1,201 +1,321 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white_color200"
+    android:layoutDirection="ltr"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.activity.CustomCakeActivity">
 
-    <info.alirezaahmadi.frenchpastry.ui.customView.CustomAppBar
-        android:id="@+id/customAppBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:backIcon="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:contentDescription="@string/f_logo_desc"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/customAppBar"
-        app:srcCompat="@drawable/ic_f" />
-
-    <TextView
-        android:id="@+id/txtTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:textColor="@color/color_text_black"
-        android:textSize="@dimen/heading_large_size"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView8"
-        app:layout_constraintEnd_toStartOf="@+id/imageView8"
-        app:layout_constraintTop_toTopOf="@+id/imageView8"
-        android:text="@string/special_cake" />
-
-    <View
-        android:id="@+id/viewAddImage"
-        android:layout_width="160dp"
-        android:layout_height="140dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/back_item_white_default"
-        app:layout_constraintEnd_toStartOf="@+id/frameLayout"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
-
-    <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginHorizontal="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/viewAddImage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/viewAddImage"
-        app:layout_constraintTop_toTopOf="@+id/viewAddImage">
-
-        <androidx.cardview.widget.CardView
-            app:cardCornerRadius="15dp"
-            app:cardElevation="0dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/imgCake"
-                android:contentDescription="@string/image_desc"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY"
-                app:srcCompat="@drawable/img_my_info" />
-
-        </androidx.cardview.widget.CardView>
-
-    </FrameLayout>
-
-    <ImageView
-        android:id="@+id/imageView32"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="@+id/viewAddImage"
-        app:layout_constraintStart_toStartOf="@+id/viewAddImage"
-        app:layout_constraintTop_toTopOf="@+id/viewAddImage"
-        app:srcCompat="@drawable/ic_add_image" />
-
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textSize="@dimen/text_normal_size"
-        android:textColor="@color/color_text_black"
-        android:text="@string/add_image"
-        app:layout_constraintEnd_toEndOf="@+id/imageView32"
-        app:layout_constraintStart_toStartOf="@+id/imageView32"
-        app:layout_constraintTop_toBottomOf="@+id/imageView32" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/view25"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/back_radio_sell_white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewAddImage">
+        android:layout_height="match_parent">
 
-        <View
-            android:id="@+id/viewMin"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/back_alert_dialog_gray_plus_and_min"
+        <info.alirezaahmadi.frenchpastry.ui.customView.CustomAppBar
+            android:id="@+id/customAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:backIcon="true"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/min"
-            android:textColor="@color/color_text_black"
-            android:textSize="30sp"
-            app:layout_constraintBottom_toBottomOf="@+id/viewMin"
-            app:layout_constraintEnd_toEndOf="@+id/viewMin"
-            app:layout_constraintStart_toStartOf="@+id/viewMin"
-            app:layout_constraintTop_toTopOf="@+id/viewMin" />
-
-        <TextView
-            android:id="@+id/txtCount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="@string/one_number"
-            android:textSize="@dimen/heading_small_size"
-            android:textColor="@color/color_text_black"
-            app:layout_constraintBottom_toBottomOf="@+id/viewMin"
-            app:layout_constraintStart_toEndOf="@+id/viewMin"
-            app:layout_constraintTop_toTopOf="@+id/viewMin" />
-
-        <View
-            android:id="@+id/viewPlus"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="16dp"
-            android:background="@drawable/back_alert_dialog_gray_plus_and_min"
-            app:layout_constraintBottom_toBottomOf="@+id/txtCount"
-            app:layout_constraintStart_toEndOf="@+id/txtCount"
-            app:layout_constraintTop_toTopOf="@+id/txtCount" />
-
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/plus"
-            android:textColor="@color/color_text_black"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/viewPlus"
-            app:layout_constraintEnd_toEndOf="@+id/viewPlus"
-            app:layout_constraintStart_toStartOf="@+id/viewPlus"
-            app:layout_constraintTop_toTopOf="@+id/viewPlus" />
-
-        <TextView
-            android:id="@+id/textView19"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:textSize="@dimen/text_normal_size"
-            android:textColor="@color/color_text_black"
-            android:text="@string/tone"
+            android:contentDescription="@string/f_logo_desc"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/customAppBar"
+            app:srcCompat="@drawable/ic_f" />
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/txtTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:text="@string/kg"
-            android:textColor="@color/color_text_gray"
-            android:textSize="@dimen/text_small_size"
-            app:layout_constraintBottom_toBottomOf="@+id/textView19"
-            app:layout_constraintEnd_toStartOf="@+id/textView19"
-            app:layout_constraintTop_toTopOf="@+id/textView19" />
+            android:textColor="@color/color_text_black"
+            android:textSize="@dimen/heading_large_size"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView8"
+            app:layout_constraintEnd_toStartOf="@+id/imageView8"
+            app:layout_constraintTop_toTopOf="@+id/imageView8"
+            android:text="@string/special_cake" />
+
+        <View
+            android:id="@+id/viewAddImage"
+            android:layout_width="0dp"
+            android:layout_height="140dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/back_item_white_default"
+            app:layout_constraintEnd_toStartOf="@+id/frameLayout"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="190dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/viewAddImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/viewAddImage"
+            app:layout_constraintTop_toTopOf="@+id/viewAddImage">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="0dp">
+
+                <ImageView
+                    android:id="@+id/imgCake"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/image_desc"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/cake_sample" />
+
+            </androidx.cardview.widget.CardView>
+
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/imageView32"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="@string/image_desc"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="@+id/viewAddImage"
+            app:layout_constraintStart_toStartOf="@+id/viewAddImage"
+            app:layout_constraintTop_toTopOf="@+id/viewAddImage"
+            app:srcCompat="@drawable/ic_add_image" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="@dimen/text_normal_size"
+            android:textColor="@color/color_text_black"
+            android:text="@string/add_image"
+            app:layout_constraintEnd_toEndOf="@+id/imageView32"
+            app:layout_constraintStart_toStartOf="@+id/imageView32"
+            app:layout_constraintTop_toBottomOf="@+id/imageView32" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/view25"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/back_radio_sell_white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewAddImage">
+
+            <View
+                android:id="@+id/viewMin"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/back_alert_dialog_gray_plus_and_min"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/min"
+                android:textColor="@color/color_text_black"
+                android:textSize="30sp"
+                app:layout_constraintBottom_toBottomOf="@+id/viewMin"
+                app:layout_constraintEnd_toEndOf="@+id/viewMin"
+                app:layout_constraintStart_toStartOf="@+id/viewMin"
+                app:layout_constraintTop_toTopOf="@+id/viewMin" />
+
+            <TextView
+                android:id="@+id/txtCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/one_number"
+                android:textColor="@color/color_text_black"
+                android:textSize="@dimen/heading_small_size"
+                app:layout_constraintBottom_toBottomOf="@+id/viewMin"
+                app:layout_constraintStart_toEndOf="@+id/viewMin"
+                app:layout_constraintTop_toTopOf="@+id/viewMin" />
+
+            <TextView
+                android:id="@+id/txtCountRate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/one_number"
+                android:textColor="@color/color_text_black"
+                android:textSize="@dimen/heading_small_size"
+                app:layout_constraintBottom_toBottomOf="@+id/viewMin2"
+                app:layout_constraintStart_toEndOf="@+id/viewMin2"
+                app:layout_constraintTop_toTopOf="@+id/viewMin2" />
+
+            <View
+                android:id="@+id/viewPlus"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/back_alert_dialog_gray_plus_and_min"
+                app:layout_constraintBottom_toBottomOf="@+id/txtCount"
+                app:layout_constraintStart_toEndOf="@+id/txtCount"
+                app:layout_constraintTop_toTopOf="@+id/txtCount" />
+
+            <View
+                android:id="@+id/viewPlus2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/back_alert_dialog_gray_plus_and_min"
+                app:layout_constraintBottom_toBottomOf="@+id/txtCountRate"
+                app:layout_constraintStart_toEndOf="@+id/txtCountRate"
+                app:layout_constraintTop_toTopOf="@+id/txtCountRate" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/plus"
+                android:textColor="@color/color_text_black"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/viewPlus"
+                app:layout_constraintEnd_toEndOf="@+id/viewPlus"
+                app:layout_constraintStart_toStartOf="@+id/viewPlus"
+                app:layout_constraintTop_toTopOf="@+id/viewPlus" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/plus"
+                android:textColor="@color/color_text_black"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/viewPlus2"
+                app:layout_constraintEnd_toEndOf="@+id/viewPlus2"
+                app:layout_constraintStart_toStartOf="@+id/viewPlus2"
+                app:layout_constraintTop_toTopOf="@+id/viewPlus2" />
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/tone"
+                android:textColor="@color/color_text_black"
+                android:textSize="@dimen/text_normal_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@string/kg"
+                android:textColor="@color/color_text_gray"
+                android:textSize="@dimen/text_small_size"
+                app:layout_constraintBottom_toBottomOf="@+id/textView19"
+                app:layout_constraintEnd_toStartOf="@+id/textView19"
+                app:layout_constraintTop_toTopOf="@+id/textView19" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="24dp"
+                android:text="@string/select"
+                android:textColor="@color/color_text_black"
+                android:textSize="@dimen/text_normal_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/textView19"
+                app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@string/kg"
+                android:textColor="@color/color_text_gray"
+                android:textSize="@dimen/text_small_size"
+                app:layout_constraintBottom_toBottomOf="@+id/textView21"
+                app:layout_constraintEnd_toStartOf="@+id/textView21"
+                app:layout_constraintTop_toTopOf="@+id/textView21" />
+
+            <View
+                android:id="@+id/viewMin2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/back_alert_dialog_gray_plus_and_min"
+                app:layout_constraintBottom_toBottomOf="@+id/textView22"
+                app:layout_constraintEnd_toEndOf="@+id/viewMin"
+                app:layout_constraintStart_toStartOf="@+id/viewMin"
+                app:layout_constraintTop_toTopOf="@+id/textView22" />
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/min"
+                android:textColor="@color/color_text_black"
+                android:textSize="30sp"
+                app:layout_constraintBottom_toBottomOf="@+id/viewMin2"
+                app:layout_constraintEnd_toEndOf="@+id/viewMin2"
+                app:layout_constraintStart_toStartOf="@+id/viewMin2"
+                app:layout_constraintTop_toTopOf="@+id/viewMin2" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edtComment"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/back_edit_text"
+            android:gravity="start|top"
+            android:hint="@string/detail_cake"
+            android:inputType="textMultiLine"
+            android:layoutDirection="rtl"
+            android:padding="12dp"
+            android:textColor="@color/color_text_black"
+            android:textColorHint="@color/color_text_gray"
+            android:textSize="@dimen/text_normal_size"
+            app:layout_constraintEnd_toEndOf="@+id/view25"
+            app:layout_constraintStart_toStartOf="@+id/view25"
+            app:layout_constraintTop_toBottomOf="@+id/view25" />
+
+        <info.alirezaahmadi.frenchpastry.ui.customView.CustomButton
+            android:id="@+id/btnConfirm"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            app:buttonText="ثبت سفارش"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/edtComment"
+            app:layout_constraintStart_toStartOf="@+id/edtComment"
+            app:layout_constraintTop_toBottomOf="@+id/edtComment" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

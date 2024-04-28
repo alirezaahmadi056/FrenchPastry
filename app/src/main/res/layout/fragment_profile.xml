@@ -303,7 +303,7 @@
                 app:srcCompat="@drawable/img_my_discounts" />
 
             <ImageView
-                android:id="@+id/imageView31"
+                android:id="@+id/img_cake"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
                 android:contentDescription="@string/image_desc"
@@ -318,10 +318,10 @@
                 android:layout_width="110dp"
                 android:layout_height="110dp"
                 android:contentDescription="@string/image_desc"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView31"
+                app:layout_constraintBottom_toBottomOf="@+id/img_cake"
                 app:layout_constraintEnd_toEndOf="@+id/img_address"
                 app:layout_constraintStart_toStartOf="@+id/img_address"
-                app:layout_constraintTop_toTopOf="@+id/imageView31"
+                app:layout_constraintTop_toTopOf="@+id/img_cake"
                 app:srcCompat="@drawable/img_my_notification" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

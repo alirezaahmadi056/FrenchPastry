@@ -25,7 +25,6 @@ class FullscreenActivity : AppCompatActivity(), ActivityUtils {
 
         Handler(Looper.getMainLooper()).postDelayed(
             {
-                //TODO change default to false
                 if (loginState.getBoolean(SharedPrefKey.LOGIN_STATE_KEY, false))
                     startActivity(
                         Intent(this@FullscreenActivity, MainActivity::class.java)

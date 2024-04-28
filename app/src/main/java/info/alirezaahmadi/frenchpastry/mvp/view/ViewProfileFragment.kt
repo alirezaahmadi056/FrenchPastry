@@ -8,6 +8,7 @@ import android.widget.FrameLayout
 import info.alirezaahmadi.frenchpastry.data.remote.dataModel.UserData
 import info.alirezaahmadi.frenchpastry.databinding.FragmentProfileBinding
 import info.alirezaahmadi.frenchpastry.ui.activity.AddressActivity
+import info.alirezaahmadi.frenchpastry.ui.activity.CustomCakeActivity
 import info.alirezaahmadi.frenchpastry.ui.activity.FavoriteActivity
 import info.alirezaahmadi.frenchpastry.ui.activity.UserActivity
 
@@ -51,6 +52,10 @@ class ViewProfileFragment(
 
         binding.imgAddress.setOnClickListener {
             context.startActivity(Intent(context, AddressActivity::class.java))
+        }
+
+        binding.imgCake.setOnClickListener {
+            context.startActivity(Intent(context, CustomCakeActivity::class.java))
         }
 
     }

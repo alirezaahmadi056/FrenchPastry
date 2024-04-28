@@ -54,8 +54,6 @@ class ViewDetailPastryActivity : FrameLayout {
         binding.txtDesc.text = detail.content
         binding.txtRate.text = detail.rate.rate.toString()
 
-        //todo بوک مارک و علاقه مندی کار نمیکنه
-
         if (detail.bookmark)
             binding.imgFavorite.setImageResource(R.drawable.ic_actived_favorite)
         else

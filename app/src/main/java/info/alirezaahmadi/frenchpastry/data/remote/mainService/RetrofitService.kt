@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitService {
 
-    private const val url = "https://frenchpastry.ir/api/v1/"
+    private const val url = "https://pastry.alirezaahmadi.info/api/v1/"
 
     private val okHttpClient = OkHttpClient.Builder()
         .connectTimeout(20, TimeUnit.SECONDS) // TIMEOUT برای برقراری اتصال به سرور
@@ -28,6 +28,7 @@ object RetrofitService {
     val catsApiService: CatsApiService = retrofit.create(CatsApiService::class.java)
     val pastryApiService: PastryApiService = retrofit.create(PastryApiService::class.java)
     val addressApiService: AddressApiService = retrofit.create(AddressApiService::class.java)
+    val cakeApiService: CakeApiService = retrofit.create(CakeApiService::class.java)
     val pastriesListApiService: PastryListApiService =
         retrofit.create(PastryListApiService::class.java)
 
